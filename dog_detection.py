@@ -1,9 +1,9 @@
 import os
-
+from config import Configuration
 from google.cloud import vision
 from google.cloud.vision_v1 import types
 
-os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = 'api_credentials.json'
+os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = '.env'
 
 
 # Instantiates a client
