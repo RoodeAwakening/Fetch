@@ -1,9 +1,9 @@
 import os
-from config import Configuration
+
 from google.cloud import vision
 from google.cloud.vision_v1 import types
 
-os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = '.env'
+os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = 'dog-instagram-aa-project-a065f808e7b8.json'
 
 
 # Instantiates a client
