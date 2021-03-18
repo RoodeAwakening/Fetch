@@ -85,7 +85,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+[![Fetch][product-screenshot]](https://example.com)
 
 We have a dream and that dream is to have a site that you can go to at any time day or night and look at thousands of pictures of dogs!!! Who doesn't love that idea! With our top of the line image recognition software we can verify that every picture does indeed contain an image of a dog.
 
@@ -126,6 +126,7 @@ This is an example of how to list things you need to use the software and how to
    ```
 2. Install NPM packages
    ```sh
+   pipenv install google-cloud-vision
    npm install
    ```
 
