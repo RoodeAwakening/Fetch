@@ -10,7 +10,6 @@ os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = 'dog-instagram-aa-project-a065f80
 client = vision.ImageAnnotatorClient()
 
 
-
 #set this thumbnail as the url
 current_image = 'https://s3.amazonaws.com/cdn-origin-etr.akc.org/wp-content/uploads/2017/11/12235957/Border-Collie-On-White-01.jpg'
 image = types.Image()
