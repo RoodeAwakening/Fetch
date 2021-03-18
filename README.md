@@ -90,11 +90,11 @@
 We have a dream and that dream is to have a site that you can go to at any time day or night and look at thousands of pictures of dogs!!! Who doesn't love that idea! With our top of the line image recognition software we can verify that every picture does indeed contain an image of a dog.
 
 ### Built With
-<img src="images/react.svg " alt="react" width="150"/>
-<img src="images/python.svg " alt="python" width="100"/>
-<img src="images/flask.png " alt="flask" width="100"/>
-<img src="images/sqlalchemy.png " alt="sqlalchemy" width="100"/>
-<img src="images/redux.png " alt="react" width="100"/>
+<img src="images/react.svg " alt="react" width="150"/><img src="images/python.svg " alt="python" width="100"/><img src="images/flask.png " alt="flask" width="100"/><img src="images/sqlalchemy.png " alt="sqlalchemy" width="100"/><img src="images/redux.png " alt="react" width="100"/>
+
+
+
+
 
 * [React](https://reactjs.org/docs/hooks-effect.html)
 * [Python](https://www.python.org/)
