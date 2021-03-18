@@ -12,9 +12,26 @@ client = vision.ImageAnnotatorClient()
 
 
 #set this thumbnail as the url
-current_image = 'https://i0.wp.com/post.healthline.com/wp-content/uploads/2020/07/dog_sleeping-in-bed-with-his-human-1296x728-header.jpg'
+current_image = 'https://s3.amazonaws.com/cdn-origin-etr.akc.org/wp-content/uploads/2017/11/12235957/Border-Collie-On-White-01.jpg'
 image = types.Image()
 image.source.image_uri = current_image
+
+
+# #### FACE DETECTION ######
+
+# response_face = client.face_detection(image=image)
+
+# face_data = []
+
+# for face_detection in response_face.face_annotations:
+#     d = {
+#         'confidence': face_detection.detection_confidence,
+#         'joy': face_detection.joy_likelihood,
+#         'sorrow': face_detection.sorrow_likelihood,
+#         'surprise': face_detection.surprise_likelihood,
+#         'anger': face_detection.anger_likelihood
+#     }
+#     print(d)
 
 
 #### LABEL DETECTION ######
@@ -27,3 +44,4 @@ response_label = client.label_detection(image=image)
 for label in response_label.label_annotations:
   if 'Dog' in label.description and label.score > 0.90:
     print(True, label.description)
+  # else: print(False)
