@@ -41,7 +41,7 @@
   <p align="center">
     Like instigram but its only for dogs!
     <br />
-    <a href="https://github.com/RoodeAwakening/Fetch"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/RoodeAwakening/Fetch/wiki"><strong>Explore the docs »</strong></a>
     <br />
     <br />
     <a href="https://github.com/RoodeAwakening/Fetch">View Demo</a>
@@ -87,16 +87,21 @@
 
 [![Product Name Screen Shot][product-screenshot]](https://example.com)
 
-Here's a blank template to get started:
-**To avoid retyping too much info. Do a search and replace with your text editor for the following:**
-`RoodeAwakening`, `Fetch`, `twitter_handle`, `derek.i.roode@gmail.com`, `Fetch`, `project_description`
-
+We have a dream and that dream is to have a site that you can go to at any time day or night and look at thousands of pictures of dogs!!! Who doesn't love that idea! With our top of the line image recognition software we can verify that every picture does indeed contain an image of a dog.
 
 ### Built With
+<img src="images/react.svg " alt="react" width="150"/>
+<img src="images/python.svg " alt="python" width="100"/>
+<img src="images/flask.png " alt="flask" width="100"/>
+<img src="images/sqlalchemy.png " alt="sqlalchemy" width="100"/>
+<img src="images/redux.png " alt="react" width="100"/>
 
-* []()
-* []()
-* []()
+* [React](https://reactjs.org/docs/hooks-effect.html)
+* [Python](https://www.python.org/)
+* [Flask](https://flask.palletsprojects.com/en/1.1.x/)
+* [SQLAlchemy](https://www.sqlalchemy.org/)
+* [Redux](https://redux.js.org/)
+
 
 
 
@@ -129,9 +134,22 @@ This is an example of how to list things you need to use the software and how to
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+We designed this app to be a pet friendly place. Making sure all the photos of your dog can be seen by the world! By implemeniting our dog verification system we can make sure that your seeing nothing but dogs!
 
-_For more examples, please refer to the [Documentation](https://example.com)_
+### An easy to use login.
+![Login](https://media.tenor.com/images/53ed3f69d8af8e1fb7b0025a97452e38/tenor.gif)
+
+### A dog filled feed page.
+![Feed](https://media.tenor.com/images/53ed3f69d8af8e1fb7b0025a97452e38/tenor.gif)
+
+### An easy to read profile page.
+![Profile](https://media.tenor.com/images/53ed3f69d8af8e1fb7b0025a97452e38/tenor.gif)
+
+### Check out a post.
+![Post](https://media.tenor.com/images/53ed3f69d8af8e1fb7b0025a97452e38/tenor.gif)
+
+
+_For more examples, please refer to the [Documentation](https://github.com/RoodeAwakening/Fetch/wiki)_
 
 
 
@@ -165,7 +183,9 @@ Distributed under the MIT License. See `LICENSE` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Your Name - [@twitter_handle](https://twitter.com/twitter_handle) - derek.i.roode@gmail.com
+* Derek Roode - derek.i.roode@gmail.com
+* Justin Payne - justinppayne@gmail.com
+* Bryan Burns - Na@na.com
 
 Project Link: [https://github.com/RoodeAwakening/Fetch](https://github.com/RoodeAwakening/Fetch)
 
@@ -184,15 +204,15 @@ Project Link: [https://github.com/RoodeAwakening/Fetch](https://github.com/Roode
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/RoodeAwakening/repo.svg?style=for-the-badge
-[contributors-url]: https://github.com/RoodeAwakening/repo/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/RoodeAwakening/repo.svg?style=for-the-badge
-[forks-url]: https://github.com/RoodeAwakening/repo/network/members
-[stars-shield]: https://img.shields.io/github/stars/RoodeAwakening/repo.svg?style=for-the-badge
-[stars-url]: https://github.com/RoodeAwakening/repo/stargazers
-[issues-shield]: https://img.shields.io/github/issues/RoodeAwakening/repo.svg?style=for-the-badge
-[issues-url]: https://github.com/RoodeAwakening/repo/issues
-[license-shield]: https://img.shields.io/github/license/RoodeAwakening/repo.svg?style=for-the-badge
-[license-url]: https://github.com/RoodeAwakening/repo/blob/master/LICENSE.txt
+[contributors-shield]: https://img.shields.io/github/contributors/RoodeAwakening/Fetch.svg?style=for-the-badge
+[contributors-url]: https://github.com/RoodeAwakening/Fetch/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/RoodeAwakening/Fetch.svg?style=for-the-badge
+[forks-url]: https://github.com/RoodeAwakening/Fetch/network/members
+[stars-shield]: https://img.shields.io/github/stars/RoodeAwakening/Fetch.svg?style=for-the-badge
+[stars-url]: https://github.com/RoodeAwakening/Fetch/stargazers
+[issues-shield]: https://img.shields.io/github/issues/RoodeAwakening/Fetch.svg?style=for-the-badge
+[issues-url]: https://github.com/RoodeAwakening/Fetch/issues
+[license-shield]: https://img.shields.io/github/license/RoodeAwakening/Fetch.svg?style=for-the-badge
+[license-url]: https://github.com/RoodeAwakening/Fetch/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/RoodeAwakening
+[linkedin-url]: https://www.linkedin.com/in/derek-roode-9014a796/
