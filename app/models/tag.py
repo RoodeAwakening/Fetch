@@ -1,5 +1,6 @@
 from .db import db
 
+
 class Tag(db.Model):
   __tablename__='tags'
 
