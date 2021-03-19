@@ -1,6 +1,6 @@
 from .db import db
 
-class Like(db.Model):
+class Tag_Post(db.Model):
   __tablename__='tags_posts'
 
   id = db.Column(db.Integer, primary_key = True)
