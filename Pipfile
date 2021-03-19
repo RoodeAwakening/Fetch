@@ -28,6 +28,7 @@ psycopg2-binary = "==2.8.6"
 autopep8 = "*"
 pylint = "*"
 google-cloud-vision = "*"
+bcrypt = "*"
 
 [requires]
 python_version = "3.8"
