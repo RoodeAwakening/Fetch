@@ -27,6 +27,7 @@ flask-login = "*"
 psycopg2-binary = "==2.8.6"
 autopep8 = "*"
 pylint = "*"
+google-cloud-vision = "*"
 
 [requires]
 python_version = "3.8"
