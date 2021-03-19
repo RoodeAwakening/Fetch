@@ -4,8 +4,6 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-python-dotenv = "*"
-google-cloud-vision = "*"
 click = "==7.1.2"
 gunicorn = "==20.0.4"
 itsdangerous = "==1.1.0"
@@ -23,10 +21,9 @@ WTForms = "==2.3.3"
 Flask-JWT-Extended = "==3.24.1"
 flask-migrate = "*"
 email-validator = "*"
-flask-login = "*
+flask-login = "*"
 
 [dev-packages]
-google-cloud-vision = "*"
 psycopg2-binary = "==2.8.6"
 autopep8 = "*"
 pylint = "*"
