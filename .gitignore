@@ -2,7 +2,7 @@
 dog-instagram-aa-project-a065f808e7b8.json
 
 # Byte-compiled / optimized / DLL files
-__pycache__/
+#__pycache__/
 *.py[cod]
 *$py.class
 
@@ -82,7 +82,7 @@ target/
 
 # IPython
 profile_default/
-ipython_config.py
+#ipython_config.py
 
 # pyenv
 .python-version
