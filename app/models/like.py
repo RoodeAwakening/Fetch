@@ -1,4 +1,6 @@
 from .db import db
+from sqlalchemy import Column, Integer, String, ForeignKey, Date, Text
+
 
 class Like(db.Model):
   __tablename__='likes'

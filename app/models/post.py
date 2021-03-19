@@ -1,10 +1,12 @@
 from .db import db
+from sqlalchemy import Column, Integer, String, ForeignKey, Date, Text
+
 
 class Post(db.Model):
   __tablename__='Posts'
 
   id = db.Column(db.Integer, primary_key = True)
-  userId = db.Column(db.Integer, nullable = False, ForeignKey("user.id"))
+  userId = db.Column(db.Integer,ForeignKey("user.id"), nullable = False )
   photo = db.Column(db.String, nullable = False)
   caption = db.Column(db.String(140), nullable = True)
 # NEED TO ADD UNIQUE
