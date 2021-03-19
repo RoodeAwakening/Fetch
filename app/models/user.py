@@ -6,19 +6,20 @@ class User(db.Model, UserMixin):
   __tablename__ = 'users'
 
   id = db.Column(db.Integer, primary_key = True)
-  username = db.Column(db.String(40), nullable = False, unique = True)
+  userName = db.Column(db.String(40), nullable = False, unique = True)
   email = db.Column(db.String(255), nullable = False, unique = True)
-  hashed_password = db.Column(db.String(255), nullable = False)
+  hashedPassword = db.Column(db.String(255), nullable = False)
+  profilePhoto = db.Column(db.String, nullable = False)
 
 
   @property
   def password(self):
-    return self.hashed_password
+    return self.hashedPassword
 
 
   @password.setter
   def password(self, password):
-    self.hashed_password = generate_password_hash(password)
+    self.hashedPassword = generate_password_hash(password)
 
 
   def check_password(self, password):
@@ -28,6 +29,7 @@ class User(db.Model, UserMixin):
   def to_dict(self):
     return {
       "id": self.id,
-      "username": self.username,
-      "email": self.email
+      "username": self.userName,
+      "email": self.email,
+      "profilePhoto": self.profilePhoto
     }
