@@ -126,7 +126,9 @@ This is an example of how to list things you need to use the software and how to
    ```
 2. Install NPM packages
    ```sh
-   pipenv install google-cloud-vision
+   pipenv install
+   pipenv install python-dotenv
+   pip install google-cloud-vision
    npm install
    ```
 
