@@ -19,7 +19,6 @@ app = Flask(__name__)
 login = LoginManager(app)
 login.login_view = 'auth.unauthorized'
 
-
 @login.user_loader
 def load_user(id):
     return User.query.get(int(id))
@@ -39,7 +38,7 @@ CORS(app)
 
 # Since we are deploying with Docker and Flask,
 # we won't be using a buildpack when we deploy to Heroku.
-# Therefore, we need to make sure that in production any 
+# Therefore, we need to make sure that in production any
 # request made over http is redirected to https.
 # Well.........
 
