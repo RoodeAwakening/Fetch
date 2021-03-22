@@ -7,6 +7,10 @@
   width: -webkit-fill-available;
   margin-top: 5px;
   margin-bottom: 30px;
+  border-radius: 5px;
+  height: 30px;
+  border-style: none;
+  
 }
 
 #loginButtonTrue {
@@ -14,8 +18,18 @@
   width: -webkit-fill-available;
   margin-top: 5px;
   margin-bottom: 30px;
+  border-radius: 5px;
+  height: 30px;
+  border-style: none;
 }
-
+.login_form-email input,
+.login_form-password input{
+height: 30px;
+  background-color: #E8F0FE;
+  border: none;
+  border-radius: 5px;
+  border: 1px solid rgba(var(--b6a,219,219,219),1);
+}
 
 .login_form-email{
   padding-bottom: 10px;
