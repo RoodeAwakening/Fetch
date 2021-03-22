@@ -5,10 +5,10 @@ import { useHistory } from "react-router-dom";
 import './auth.css'
 
 
-const LoginForm = () => {
+const LoginForm = ({ authenticated, setAuthenticated }) => {
   let history = useHistory();
   const [errors, setErrors] = useState([]);
-  const [authenticated, setAuthenticated] = useState(false);
+
 
 
 
