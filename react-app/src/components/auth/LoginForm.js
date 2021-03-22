@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Redirect } from "react-router-dom";
 import { login } from "../../services/auth";
+import './auth.css'
 
 const LoginForm = ({ authenticated, setAuthenticated }) => {
   const [errors, setErrors] = useState([]);
@@ -25,8 +26,15 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
     setPassword(e.target.value);
   };
 
+ const emailAndPassword = ()=>{
+   if (email.length >= 3 && password.length >= 3) {
+     return true
+   }
+     return false
+ }
+
   if (authenticated) {
-    return <Redirect to="/" />;
+    return <Redirect to="/feed" />;
   }
 
   return (
@@ -36,8 +44,8 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
           <div>{error}</div>
         ))}
       </div>
-      <div>
-        <label htmlFor="email">Email</label>
+      <div className="login_form-email">
+        <label htmlFor="email"></label>
         <input
           name="email"
           type="text"
@@ -46,8 +54,8 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
           onChange={updateEmail}
         />
       </div>
-      <div>
-        <label htmlFor="password">Password</label>
+      <div className="login_form-password">
+        <label htmlFor="password"></label>
         <input
           name="password"
           type="password"
@@ -55,8 +63,8 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
           value={password}
           onChange={updatePassword}
         />
-        <button type="submit">Login</button>
       </div>
+        <button id='loginButton' id={emailAndPassword()? 'loginButtonTrue':'loginButtonFalse'} type="submit">Log In</button>
     </form>
   );
 };
