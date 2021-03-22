@@ -1,18 +1,16 @@
-from app.models import db, Follower
+from app.models import db, followers
 
 
 def seed_followers():
 
-    # Everyone follows Tom
-    tom1 = Follower(followerId=1, userId=2)
-    tom2 = Follower(followerId=3, userId=2)
-    # Example Follow
-    demo1 = Follower(followerId=1, userId=3)
-    demo2 = Follower(followerId=3, userId=1)
+    # Tom is user 2
 
-    db.session.add([tom1, tom2, demo1, demo2])
-
-    db.session.commit()
+    db.session.execute(followers.insert([
+        {'followerId': 1, 'userId': 2},
+        {'followerId': 3, 'userId': 2},
+        {'followerId': 1, 'userId': 3},
+        {'followerId': 3, 'userId': 1},
+    ]))
 
 
 def undo_followers():

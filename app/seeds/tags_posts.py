@@ -14,8 +14,10 @@ def seed_tags_posts():
     tag_post8 = Tag_Post(tagId=2, postId=3)
     tag_post9 = Tag_Post(tagId=3, postId=3)
 
-
-    db.session.add([tag_post1, tag_post2, tag_post3, tag_post4, tag_post5, tag_post6, tag_post7, tag_post8, tag_post9])
+    tag_posts = [tag_post1, tag_post2, tag_post3, tag_post4,
+                 tag_post5, tag_post6, tag_post7, tag_post8, tag_post9]
+    for tag_post in tag_posts:
+        db.session.add(tag_post)
 
     db.session.commit()
 

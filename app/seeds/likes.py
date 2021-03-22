@@ -14,8 +14,9 @@ def seed_likes():
     like8 = Like(userId=3, postId=2)
     like9 = Like(userId=3, postId=3)
 
-
-    db.session.add([like1,like2,like3,like4,like5,like6,like7,like8,like9])
+    likes = [like1, like2, like3, like4, like5, like6, like7, like8, like9]
+    for like in likes:
+        db.session.add(like)
 
     db.session.commit()
 
