@@ -1,0 +1,84 @@
+/* body */
+.Splash_Page-body {
+}
+
+.Splash_Page-body-container {
+  display: flex;
+  justify-content: center;
+  
+}
+
+/* left */
+.Splash_Page-body-left {
+  background-color: green;
+  margin-right: 25px;
+}
+
+
+/* right */
+.Splash_Page-body-right {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: yellow;
+  margin-left: 25px;
+}
+
+.Splash_Page-body-right-top {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  border: 1px solid rgba(var(--b6a,219,219,219),1);
+  background-color: #FFFFFF;
+}
+
+
+.Splash_Page-body-right-middle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  border: 1px solid rgba(var(--b6a,219,219,219),1);
+  background-color: #FFFFFF;
+  margin-top: 10px;
+}
+
+#splash_logo{
+  max-width: 175px;
+}
+
+#splash-signup{
+  
+  font-size: 14px;
+}
+
+.Splash_Page-body-right-bottom {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+}
+
+.Splash_Page-body-right-bottom h1{
+  font-size: 14px;
+  
+}
+
+
+#apple{
+  max-width: 136px;
+  max-height: 40.8px;
+  margin-right: 5px;
+}
+#android{
+  max-width: 136px;
+  margin-left: 5px;
+}
+
+/* footer */
+.Splash_Page-body-footer {
+  display: flex;
+  justify-content: center;
+  background-color: teal;
+}
