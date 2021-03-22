@@ -21,7 +21,14 @@
   padding-bottom: 10px;
 }
 
+
 .login_form-password{
   padding-bottom: 10px;
+  
+}
 
+.login_form-email input,
+.login_form-password input{
+
+  width: -webkit-fill-available;
 }
