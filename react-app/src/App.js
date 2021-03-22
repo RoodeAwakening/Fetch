@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom";
 import LoginPage from "./components/LoginPage";
 import SplashPage from "./components/SplashPage/SplashPage";
 import SignupPage from "./components/SignupPage";
@@ -27,9 +27,9 @@ function App() {
     return null;
   }
 
-  return (
-    <BrowserRouter>
-      <NavBar setAuthenticated={setAuthenticated} />
+  if (!authenticated) {
+    console.log("test");
+    return (
       <Switch>
         <Route path="/" exact={true}>
           <SplashPage
@@ -37,38 +37,47 @@ function App() {
             setAuthenticated={setAuthenticated}
           />
         </Route>
-        <Route path="/login" exact={true}>
-          <LoginPage
-            authenticated={authenticated}
-            setAuthenticated={setAuthenticated}
-          />
-        </Route>
-        <Route path="/sign-up" exact={true}>
+        <Route path="/signup" exact={true}>
           <SignupPage
             authenticated={authenticated}
             setAuthenticated={setAuthenticated}
           />
         </Route>
-        <ProtectedRoute
-          path="/users"
-          exact={true}
-          authenticated={authenticated}
-        >
-          <UsersList />
-        </ProtectedRoute>
-        <ProtectedRoute
-          path="/users/:userId"
-          exact={true}
-          authenticated={authenticated}
-        >
-          <User />
-        </ProtectedRoute>
-        {/* <ProtectedRoute path="/" exact={true} authenticated={authenticated}>
-          <h1>My Home Page</h1>
-        </ProtectedRoute> */}
+        <Redirect to="/" />
       </Switch>
-    </BrowserRouter>
-  );
+    );
+  } else {
+    return (
+      <BrowserRouter>
+        <NavBar setAuthenticated={setAuthenticated} />
+        <Switch>
+          <Route path="/login" exact={true}>
+            <LoginPage
+              authenticated={authenticated}
+              setAuthenticated={setAuthenticated}
+            />
+          </Route>
+          <ProtectedRoute
+            path="/users"
+            exact={true}
+            authenticated={authenticated}
+          >
+            <UsersList />
+          </ProtectedRoute>
+          <ProtectedRoute
+            path="/users/:userId"
+            exact={true}
+            authenticated={authenticated}
+          >
+            <User />
+          </ProtectedRoute>
+          {/* <ProtectedRoute path="/" exact={true} authenticated={authenticated}>
+            <h1>My Home Page</h1>
+          </ProtectedRoute> */}
+        </Switch>
+      </BrowserRouter>
+    );
+  }
 }
 
 export default App;
