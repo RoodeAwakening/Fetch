@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux";
 import React from "react";
 import "./SplashPage.css";
+import LoginForm from "../auth/LoginForm";
 
 export default function SplashPage() {
   return (
@@ -16,6 +17,7 @@ export default function SplashPage() {
             <img alt="Fetch Title" id="splash_logo" src="../images/splash/splash_title.png"></img>
             <div>
               <h1>2 -login form</h1>
+              <LoginForm />
             </div>
           </div>
           <div className="Splash_Page-body-right-middle">
