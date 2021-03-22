@@ -3,6 +3,7 @@ import React from "react";
 import "./SplashPage.css";
 import LoginForm from "../auth/LoginForm";
 
+
 export default function SplashPage() {
   return (
     <div className="Splash_Page-body">
@@ -11,12 +12,12 @@ export default function SplashPage() {
           <img src="../images/splash/spash_phone.png" />
         </div>
         <div className="Splash_Page-body-right">
-          <h2>right</h2>
+          
           <div className="Splash_Page-body-right-top">
             
             <img alt="Fetch Title" id="splash_logo" src="../images/splash/splash_title.png"></img>
             <div>
-              <h1>2 -login form</h1>
+              
               <LoginForm />
             </div>
           </div>
