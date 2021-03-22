@@ -12,18 +12,22 @@ from .tags_posts import seed_tags_posts, undo_tags_posts
 seed_commands = AppGroup('seed')
 
 # Creates the `flask seed all` command
+
+
 @seed_commands.command('all')
 def seed():
     seed_users()
+    seed_posts()
     seed_comments()
     seed_followers()
     seed_likes()
-    seed_posts()
     seed_tags()
     seed_tags_posts()
     # Add other seed functions here
 
 # Creates the `flask seed undo` command
+
+
 @seed_commands.command('undo all')
 def undo():
     undo_users()

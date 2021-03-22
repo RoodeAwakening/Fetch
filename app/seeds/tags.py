@@ -10,7 +10,9 @@ def seed_tags():
     demoTag3 = Tag(name='epic')
     demoTag4 = Tag(name='totesmcgotes')
 
-    db.session.add([demoTag1, demoTag2, demoTag3, demoTag4])
+    tags = [demoTag1, demoTag2, demoTag3, demoTag4]
+    for tag in tags:
+        db.session.add(tag)
 
     db.session.commit()
 
