@@ -12,8 +12,9 @@ class User(db.Model, UserMixin):
   profilePhoto = db.Column(db.String, nullable = False)
   #relationships
   comments = db.relationship("Comment", backref="users")
-  followers = db.relationship("Follower", backref="users")
   posts = db.relationship("Post", backref="users")
+  userId = db.relationship('Follower', backref = 'users', lazy = 'dynamic', foreign_keys = 'Follower.userId')
+  followerId = db.relationship('Follower', backref = 'users', lazy = 'dynamic', foreign_keys = 'Follower.followerId')
   likes = db.relationship("Like", backref="users")
 ####NEED TO MAKE RELATIONSHIP 1 - 1 BETWEEN USERID AND FOLLOWER USER ID #######
 

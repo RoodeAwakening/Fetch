@@ -11,7 +11,7 @@ client = vision.ImageAnnotatorClient()
 
 
 #set this thumbnail as the url
-current_image = 'https://s3.amazonaws.com/cdn-origin-etr.akc.org/wp-content/uploads/2017/11/12235957/Border-Collie-On-White-01.jpg'
+current_image = 'https://i.insider.com/5e417f6edf2f660a5e129e42?width=700'
 image = types.Image()
 image.source.image_uri = current_image
 
@@ -37,10 +37,10 @@ image.source.image_uri = current_image
 
 response_label = client.label_detection(image=image)
 
-# for label in response_label.label_annotations:
-#     print({'label': label.description, 'score': label.score})
+for label in response_label.label_annotations:
+    print({'label': label.description, 'score': label.score})
 
 for label in response_label.label_annotations:
   if 'Dog' in label.description and label.score > 0.90:
     print(True, label.description)
-  # else: print(False)
+  else: print(False)
