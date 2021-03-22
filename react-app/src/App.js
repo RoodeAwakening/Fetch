@@ -28,7 +28,7 @@ function App() {
   }
 
   if (!authenticated) {
-    console.log("test");
+    
     return (
       <Switch>
         <Route path="/" exact={true}>
