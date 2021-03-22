@@ -8,6 +8,8 @@ from flask_login import LoginManager
 from .models import db, User
 from .api.user_routes import user_routes
 from .api.auth_routes import auth_routes
+from .api.post_routes import post_routes
+from .api.feed_routes import feed_routes
 
 from .seeds import seed_commands
 
@@ -18,6 +20,7 @@ app = Flask(__name__)
 # Setup login manager
 login = LoginManager(app)
 login.login_view = 'auth.unauthorized'
+
 
 @login.user_loader
 def load_user(id):
@@ -30,6 +33,8 @@ app.cli.add_command(seed_commands)
 app.config.from_object(Config)
 app.register_blueprint(user_routes, url_prefix='/api/users')
 app.register_blueprint(auth_routes, url_prefix='/api/auth')
+app.register_blueprint(post_routes, url_prefix='/api.post')
+app.register_blueprint(feed_routes, url_prefix='/api/feed')
 db.init_app(app)
 Migrate(app, db)
 
@@ -41,6 +46,7 @@ CORS(app)
 # Therefore, we need to make sure that in production any
 # request made over http is redirected to https.
 # Well.........
+
 
 @app.before_request
 def https_redirect():
