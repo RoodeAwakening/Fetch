@@ -41,4 +41,3 @@ def authenticate():
         return {'message': 'User logged out'}
 
 
-@session_routes.route('/signup')

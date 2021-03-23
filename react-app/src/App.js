@@ -12,16 +12,11 @@ import { useSelector } from "react-redux";
 import { authenticate } from "./services/auth";
 
 function App() {
-  const [authenticated, setAuthenticated] = useState(false);
   const [loaded, setLoaded] = useState(false);
   const sessionUser = useSelector((state) => state.session.user);
 
   useEffect(() => {
     (async () => {
-      // const user = await authenticate();
-      // if (!user.errors) {
-      //   setAuthenticated(true);
-      // }
       setLoaded(true);
     })();
   }, []);
@@ -29,22 +24,15 @@ function App() {
   if (!loaded) {
     return null;
   }
-console.log('-------------',sessionUser);
+
   if (!sessionUser) {
-    
     return (
       <Switch>
         <Route path="/" exact={true}>
-          <SplashPage
-            authenticated={authenticated}
-            setAuthenticated={setAuthenticated}
-          />
+          <SplashPage />
         </Route>
         <Route path="/signup" exact={true}>
-          <SignupPage
-            authenticated={authenticated}
-            setAuthenticated={setAuthenticated}
-          />
+          <SignupPage />
         </Route>
         <Redirect to="/" />
       </Switch>
@@ -52,26 +40,15 @@ console.log('-------------',sessionUser);
   } else {
     return (
       <BrowserRouter>
-        <NavBar setAuthenticated={setAuthenticated} />
+        <NavBar />
         <Switch>
           <Route path="/login" exact={true}>
-            <LoginPage
-              authenticated={authenticated}
-              setAuthenticated={setAuthenticated}
-            />
+            <LoginPage />
           </Route>
-          <ProtectedRoute
-            path="/users"
-            exact={true}
-            authenticated={authenticated}
-          >
+          <ProtectedRoute path="/users" exact={true}>
             <UsersList />
           </ProtectedRoute>
-          <ProtectedRoute
-            path="/users/:userId"
-            exact={true}
-            authenticated={authenticated}
-          >
+          <ProtectedRoute path="/users/:userId" exact={true}>
             <User />
           </ProtectedRoute>
           <Route path="/feed" exact={true}>
