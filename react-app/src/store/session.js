@@ -27,8 +27,12 @@ export const restoreUser = () => async (dispatch) => {
 
 export const signup = (user) => async (dispatch) => {
   const {profilePhoto, userName, email, password } = user;
-  const response = await fetch("/api/users", {
+  console.log('-----------', userName);
+  const response = await fetch("/api/users/", {
     method: "POST",
+    headers: {
+      'Content-Type': 'application/json'
+    },
     body: JSON.stringify({
       userName,
       email,
