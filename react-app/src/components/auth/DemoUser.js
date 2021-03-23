@@ -15,7 +15,7 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
 
   const sessionUser = useSelector((state) => state.session.user);
 
-  if (sessionUser) return <Redirect to="/feed" />;
+  // if (sessionUser) return <Redirect to="/feed" />;
 
   const setDemoLogin = (e) => {
     e.preventDefault();

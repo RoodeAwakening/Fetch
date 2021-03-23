@@ -43,16 +43,20 @@ export const signup = (user) => async (dispatch) => {
 
 export const loginThunk = (user) => async (dispatch) => {
   const { email, password } = user;
-  const response = await fetch("/api/session", {
+  const response = await fetch("/api/session/", {
     method: "POST",
+    headers: {
+      'Content-Type': 'application/json'
+    },
     body: JSON.stringify({
       email,
       password,
     }),
   });
   const data = await response.json();
+  console.log('thunk', data);
   dispatch(setUser(data.user));
-  return response;
+  return data;
 };
 
 export const logoutThunk = () => async (dispatch) => {

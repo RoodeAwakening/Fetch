@@ -18,10 +18,10 @@ function App() {
 
   useEffect(() => {
     (async () => {
-      const user = await authenticate();
-      if (!user.errors) {
-        setAuthenticated(true);
-      }
+      // const user = await authenticate();
+      // if (!user.errors) {
+      //   setAuthenticated(true);
+      // }
       setLoaded(true);
     })();
   }, []);
@@ -29,7 +29,7 @@ function App() {
   if (!loaded) {
     return null;
   }
-
+console.log('-------------',sessionUser);
   if (!sessionUser) {
     
     return (

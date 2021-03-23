@@ -16,10 +16,10 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
   const  onLogin = async (e) => {
     e.preventDefault();
     setErrors([]);
-    const  user =  await dispatch(sessionActions.loginThunk({ email, password }))
-    console.log('user--------',user);
+    const user =  await dispatch(sessionActions.loginThunk({ email, password }))
     if (user.errors) {
       setErrors(user.errors)
+      console.log(errors);
     }
     return user
   };
