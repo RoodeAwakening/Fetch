@@ -1,22 +1,28 @@
 import React, { useState } from "react";
-import { Redirect } from 'react-router-dom';
-import { signUp } from '../../services/auth';
+import { Redirect } from "react-router-dom";
+import { signup } from "../../store/session";
 
-const SignUpForm = ({authenticated, setAuthenticated}) => {
+const SignUpForm = ({ authenticated, setAuthenticated }) => {
   const [userName, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
   const [profilePhoto, setProfilePhoto] = useState("");
+  const [errors, setErrors] = useState([]);
+
+  const dispatch = useDispatch();
+
+  const sessionUser = useSelector((state) => state.session.user);
 
   const onSignUp = async (e) => {
     e.preventDefault();
     if (password === repeatPassword) {
-      const user = await signUp(userName, email, password, profilePhoto);
-      if (!user.errors) {
-        setAuthenticated(true);
+      const user = await signup(userName, email, password, profilePhoto);
+      if (user.errors) {
+        setErrors(user.errors);
       }
     }
+    return user
   };
 
   const updateUsername = (e) => {
@@ -38,8 +44,6 @@ const SignUpForm = ({authenticated, setAuthenticated}) => {
   const updateProfilePhoto = (e) => {
     setProfilePhoto(e.target.value);
   };
-
-
 
   if (authenticated) {
     return <Redirect to="/" />;
