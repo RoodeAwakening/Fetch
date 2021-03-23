@@ -15,8 +15,8 @@ export default function Post() {
           alt="post-photo"
           // src={user.profilePhoto}
           src="https://pbs.twimg.com/profile_images/1237550450/mstom_400x400.jpg"
-          ></img>
-          <h4>Tom</h4>
+        ></img>
+        <h4>Tom</h4>
         {/* <h4>{userName}</h4> */}
       </div>
       {/* <img className="Post_photo" alt="post-photo" src={post.photo}></img> */}
@@ -25,11 +25,17 @@ export default function Post() {
         alt="post-photo"
         src="https://images.pexels.com/photos/1108099/pexels-photo-1108099.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
       ></img>
-      <h4 className="Post_caption">
-        {/* <strong>{userName}</strong> {caption} */}
-      </h4>
       <div className="Post_photo-footer">
-        <span className="Post_likes">likes ❤️</span>
+        <span className="Post_likes">
+          <i className="far fa-heart" id="Post_heart"></i>
+        </span>
+        <span className="Post_comment-icon">
+        <i className="far fa-comment" id="Post_comment-bubble"></i>
+        </span>
+        <p className="Post_caption">
+          {/* <strong>{userName}</strong> {caption} */}
+          <strong>Tom</strong> My furrevver fren
+        </p>
       </div>
       <div className="Post_comment-container">
         <ul className="Post_comments-list">
@@ -39,26 +45,6 @@ export default function Post() {
           <li className="Post_comment">Comment list...</li>
         </ul>
       </div>
-      <form className="Post_comment-form">
-        <input
-          className="Post_comment-input"
-          type="text"
-          // value={comment}
-          placeholder="Write a comment..."
-          onChange={(e) => {
-            submitComment();
-          }}
-        />
-        <button
-          className="Post_comment-button"
-          type="submit"
-          // disabled={!comment}
-          // onclick={}
-        >
-          {" "}
-          post{" "}
-        </button>
-      </form>
     </div>
   );
 }
