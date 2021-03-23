@@ -3,6 +3,7 @@ import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom";
 import LoginPage from "./components/LoginPage";
 import SplashPage from "./components/SplashPage/SplashPage";
 import SignupPage from "./components/SignupPage";
+import FeedPage from "./components/FeedPage";
 import NavBar from "./components/NavBar";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import UsersList from "./components/UsersList";
@@ -71,6 +72,10 @@ function App() {
           >
             <User />
           </ProtectedRoute>
+          <Route path="/feed" exact={true}>
+            <FeedPage />
+          </Route>
+
           {/* <ProtectedRoute path="/" exact={true} authenticated={authenticated}>
             <h1>My Home Page</h1>
           </ProtectedRoute> */}

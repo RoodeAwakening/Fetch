@@ -1,5 +1,13 @@
+import React from "react";
 import { useSelector } from "react-redux";
-
+import Post from "./PostPage/Post";
 export default function FeedPage() {
-  return <h2>Feed Page</h2>;
+  return (
+    <>
+      <Post />
+      <Post />
+      <Post />
+      <Post />
+    </>
+  );
 }
