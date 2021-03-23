@@ -25,6 +25,9 @@ function User() {
   return (
     <ul>
       <li>
+        <strong>User Photo</strong> <img className='user-profile-picture' src={user.profilePhoto}/>
+      </li>
+      <li>
         <strong>User Id</strong> {userId}
       </li>
       <li>

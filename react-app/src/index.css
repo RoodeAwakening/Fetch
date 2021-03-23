@@ -5,3 +5,9 @@ body{
  padding: 0;
 }
 
+
+.user-profile-picture{
+  height: 32px;
+  width: 32px;
+  border-radius:50%;
+}
