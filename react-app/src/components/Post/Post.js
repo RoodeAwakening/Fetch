@@ -1,5 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import "./Post.css";
 
 export default function Post() {
@@ -16,7 +17,9 @@ export default function Post() {
           // src={user.profilePhoto}
           src="https://pbs.twimg.com/profile_images/1237550450/mstom_400x400.jpg"
         ></img>
-        <h4>Tom</h4>
+        <Link className="Post_user-link">
+          <h4>Tom</h4>
+        </Link>
         {/* <h4>{userName}</h4> */}
       </div>
       {/* <img className="Post_photo" alt="post-photo" src={post.photo}></img> */}
@@ -30,7 +33,7 @@ export default function Post() {
           <i className="far fa-heart" id="Post_heart"></i>
         </span>
         <span className="Post_comment-icon">
-        <i className="far fa-comment" id="Post_comment-bubble"></i>
+          <i className="far fa-comment" id="Post_comment-bubble"></i>
         </span>
         <p className="Post_caption">
           {/* <strong>{userName}</strong> {caption} */}
