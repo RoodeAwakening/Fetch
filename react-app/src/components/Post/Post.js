@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import PostPage from "./PostPage.css";
+import "./Post.css";
 
 export default function Post() {
   const submitComment = () => {
@@ -15,9 +15,9 @@ export default function Post() {
           alt="post-photo"
           // src={user.profilePhoto}
           src="https://pbs.twimg.com/profile_images/1237550450/mstom_400x400.jpg"
-        ></img>
+          ></img>
+          <h4>Tom</h4>
         {/* <h4>{userName}</h4> */}
-        <h4>Tom</h4>
       </div>
       {/* <img className="Post_photo" alt="post-photo" src={post.photo}></img> */}
       <img
