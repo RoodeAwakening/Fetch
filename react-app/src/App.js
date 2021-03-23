@@ -29,9 +29,8 @@ function App() {
   if (!loaded) {
     return null;
   }
-console.log('-------------',sessionUser);
+  console.log("-------------", sessionUser);
   if (!sessionUser) {
-    
     return (
       <Switch>
         <Route path="/" exact={true}>
