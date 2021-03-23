@@ -3,3 +3,7 @@
     Comments only for mobile
 */
 
+.PostPage_post-container {
+  display: flex;
+  justify-content: center;
+}
