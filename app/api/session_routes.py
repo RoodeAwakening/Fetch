@@ -39,3 +39,4 @@ def authenticate():
     elif m == 'DELETE':
         logout_user()
         return {'message': 'User logged out'}
+

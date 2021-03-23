@@ -60,7 +60,7 @@ export const loginThunk = (user) => async (dispatch) => {
 };
 
 export const logoutThunk = () => async (dispatch) => {
-  const response = await fetch('/api/session', {
+  const response = await fetch('/api/session/', {
     method: 'DELETE',
   });
   dispatch(removeUser());
