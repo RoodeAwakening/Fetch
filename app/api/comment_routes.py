@@ -7,4 +7,5 @@ comment_routes = Blueprint('comments',  __name__)
 
 
 @comment_routes.route('/<int:id>', methods=['GET', 'PATCH', 'DELETE'])
+# @login_required
 def comment():
