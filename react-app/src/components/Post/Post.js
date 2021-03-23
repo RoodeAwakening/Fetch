@@ -1,12 +1,10 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import "./Post.css";
 
 export default function Post() {
-  const submitComment = () => {
-    return;
-  };
+  const history = useHistory();
 
   return (
     <div className="Post">
@@ -33,7 +31,9 @@ export default function Post() {
           <i className="far fa-heart" id="Post_heart"></i>
         </span>
         <span className="Post_comment-icon">
-          <i className="far fa-comment" id="Post_comment-bubble"></i>
+          <Link className="Post_comment-icon" to="/post">
+            <i className="far fa-comment" id="Post_comment-bubble"></i>
+          </Link>
         </span>
         <p className="Post_caption">
           {/* <strong>{userName}</strong> {caption} */}

@@ -1,6 +1,6 @@
 .Post {
   max-width: 500px;
-  margin-bottom: 45px;
+  margin-bottom: 5px;
   border: 1px solid lightgray;
   background-color: white;
 }
@@ -12,8 +12,8 @@
 
 .Post_avatar {
   border-radius: 50px;
-  max-width: 50px;
-  max-height: 50px;
+  max-width: 40px;
+  max-height: 40px;
   padding: 5px;
   object-fit: contain;
   margin-right: 5px;
@@ -42,6 +42,10 @@
 #Post_heart:hover {
   color: rgb(190, 4, 4);
   cursor: pointer;
+}
+
+.Post_comment-icon {
+  color: black;
 }
 
 #Post_comment-bubble {

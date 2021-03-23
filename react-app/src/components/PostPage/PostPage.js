@@ -1,6 +1,11 @@
+import React from "react";
 import { useSelector } from "react-redux";
 import Post from "../Post/Post";
 export default function PostPage() {
+  const submitComment = () => {
+    return;
+  };
+
   return (
     <>
       {/* Placeholder Post and comment form */}

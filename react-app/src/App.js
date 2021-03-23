@@ -5,6 +5,7 @@ import SplashPage from "./components/SplashPage/SplashPage";
 import SignupPage from "./components/SignupPage";
 import FeedPage from "./components/FeedPage/FeedPage";
 import NavBar from "./components/NavBar";
+import PostPage from "./components/PostPage/PostPage";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import UsersList from "./components/UsersList";
 import User from "./components/User";
@@ -54,8 +55,9 @@ function App() {
           <Route path="/feed" exact={true}>
             <FeedPage />
           </Route>
-
-          
+          <Route path="/post" exact={true}>
+            <PostPage />
+          </Route>
         </Switch>
       </BrowserRouter>
     );
