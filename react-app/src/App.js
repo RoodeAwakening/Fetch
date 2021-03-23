@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
 import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom";
 import LoginPage from "./components/LoginPage";
 import SplashPage from "./components/SplashPage/SplashPage";
@@ -10,22 +11,20 @@ import UsersList from "./components/UsersList";
 import User from "./components/User";
 import { useSelector } from "react-redux";
 import { authenticate } from "./services/auth";
+import * as sessionActions from "./store/session";
 
 function App() {
+  const dispatch = useDispatch();
   const [loaded, setLoaded] = useState(false);
   const sessionUser = useSelector((state) => state.session.user);
 
   useEffect(() => {
-    (async () => {
-      setLoaded(true);
-    })();
-  }, []);
+    dispatch(sessionActions.restoreUser()).then(() => setLoaded(true));
+  }, []);;
 
-  if (!loaded) {
-    return null;
-  }
-
-  if (!sessionUser) {
+ 
+console.log('---------sessionuser',sessionUser, loaded);
+  if (!sessionUser ) {
     return (
       <Switch>
         <Route path="/" exact={true}>
@@ -42,8 +41,8 @@ function App() {
       <BrowserRouter>
         <NavBar />
         <Switch>
-          <Route path="/login" exact={true}>
-            <LoginPage />
+          <Route path="/feed" exact={true}>
+            <FeedPage />
           </Route>
           <ProtectedRoute path="/users" exact={true}>
             <UsersList />
@@ -51,9 +50,6 @@ function App() {
           <ProtectedRoute path="/users/:userId" exact={true}>
             <User />
           </ProtectedRoute>
-          <Route path="/feed" exact={true}>
-            <FeedPage />
-          </Route>
 
           
         </Switch>

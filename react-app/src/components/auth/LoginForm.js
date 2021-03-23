@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Redirect } from "react-router-dom";
+
 import * as sessionActions from "../../store/session";
 import { useDispatch, useSelector } from "react-redux";
 import './auth.css'
@@ -19,7 +19,8 @@ const LoginForm = () => {
     const user =  await dispatch(sessionActions.loginThunk({ email, password }))
     if (user.errors) {
       setErrors(user.errors)
-          }
+    }
+    
     return user
   };
 
