@@ -4,7 +4,7 @@ import * as sessionActions from "../../store/session";
 import { useDispatch, useSelector } from "react-redux";
 import './auth.css'
 
-const LoginForm = ({ authenticated, setAuthenticated }) => {
+const LoginForm = () => {
   const [errors, setErrors] = useState([]);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -19,8 +19,7 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
     const user =  await dispatch(sessionActions.loginThunk({ email, password }))
     if (user.errors) {
       setErrors(user.errors)
-      console.log(errors);
-    }
+          }
     return user
   };
 
@@ -54,9 +53,7 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
      return false
  }
 
-  if (authenticated) {
-    return <Redirect to="/feed" />;
-  }
+
 
   return (
     <form onSubmit={onLogin}>

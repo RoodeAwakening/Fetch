@@ -27,7 +27,6 @@ export const restoreUser = () => async (dispatch) => {
 
 export const signup = (user) => async (dispatch) => {
   const {profilePhoto, userName, email, password } = user;
-  console.log('-----------', userName);
   const response = await fetch("/api/users/", {
     method: "POST",
     headers: {
@@ -41,6 +40,7 @@ export const signup = (user) => async (dispatch) => {
     }),
   });
   const data = await response.json();
+  console.log('-----------', data);
   dispatch(setUser(data.user));
   return response;
 };
@@ -58,7 +58,6 @@ export const loginThunk = (user) => async (dispatch) => {
     }),
   });
   const data = await response.json();
-  console.log('thunk', data);
   dispatch(setUser(data.user));
   return data;
 };

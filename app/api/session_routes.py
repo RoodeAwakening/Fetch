@@ -18,7 +18,7 @@ def validation_errors_to_error_messages(validation_errors):
     return errorMessages
 
 
-@session_routes.route('/', methods=['GET', 'POST'])
+@session_routes.route('/', methods=['GET', 'POST', 'DELETE'])
 def authenticate():
     m = request.method
     if m == 'GET':
