@@ -26,11 +26,11 @@ export const restoreUser = () => async (dispatch) => {
 };
 
 export const signup = (user) => async (dispatch) => {
-  const {profilePhoto, username, email, password } = user;
+  const {profilePhoto, userName, email, password } = user;
   const response = await fetch("/api/users", {
     method: "POST",
     body: JSON.stringify({
-      username,
+      userName,
       email,
       password,
       profilePhoto,
@@ -41,21 +41,25 @@ export const signup = (user) => async (dispatch) => {
   return response;
 };
 
-export const login = (user) => async (dispatch) => {
-  const { credential, password } = user;
-  const response = await fetch("/api/session", {
+export const loginThunk = (user) => async (dispatch) => {
+  const { email, password } = user;
+  const response = await fetch("/api/session/", {
     method: "POST",
+    headers: {
+      'Content-Type': 'application/json'
+    },
     body: JSON.stringify({
-      credential,
+      email,
       password,
     }),
   });
   const data = await response.json();
+  console.log('thunk', data);
   dispatch(setUser(data.user));
-  return response;
+  return data;
 };
 
-export const logout = () => async (dispatch) => {
+export const logoutThunk = () => async (dispatch) => {
   const response = await fetch('/api/session', {
     method: 'DELETE',
   });
