@@ -40,4 +40,3 @@ def authenticate():
         logout_user()
         return {'message': 'User logged out'}
 
-
