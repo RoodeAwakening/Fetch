@@ -7,11 +7,12 @@ const SignUpForm = ({authenticated, setAuthenticated}) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
+  const [profilePhoto, setProfilePhoto] = useState("");
 
   const onSignUp = async (e) => {
     e.preventDefault();
     if (password === repeatPassword) {
-      const user = await signUp(userName, email, password);
+      const user = await signUp(userName, email, password, profilePhoto);
       if (!user.errors) {
         setAuthenticated(true);
       }
@@ -33,6 +34,12 @@ const SignUpForm = ({authenticated, setAuthenticated}) => {
   const updateRepeatPassword = (e) => {
     setRepeatPassword(e.target.value);
   };
+
+  const updateProfilePhoto = (e) => {
+    setProfilePhoto(e.target.value);
+  };
+
+
 
   if (authenticated) {
     return <Redirect to="/" />;
@@ -74,6 +81,16 @@ const SignUpForm = ({authenticated, setAuthenticated}) => {
           name="repeat_password"
           onChange={updateRepeatPassword}
           value={repeatPassword}
+          required={true}
+        ></input>
+      </div>
+      <div>
+        <label>Profile Picture</label>
+        <input
+          type="file"
+          name="profile_photo"
+          onChange={updateProfilePhoto}
+          value={profilePhoto}
           required={true}
         ></input>
       </div>
