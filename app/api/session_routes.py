@@ -34,5 +34,11 @@ def authenticate():
             # Add the user to the session, we are logged in!
             user = User.query.filter(User.email == form.data['email']).first()
             login_user(user)
-            return jsonify({'user':user.to_dict()})
+            return jsonify({'user': user.to_dict()})
         return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+    elif m == 'DELETE':
+        logout_user()
+        return {'message': 'User logged out'}
+
+
+@session_routes.route('/signup')
