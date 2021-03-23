@@ -1,16 +1,46 @@
 from flask import Blueprint, jsonify, request
-from flask_login import login_required
+from flask_login import login_required, login_user
 
-from app.models import User
+from app.models import db, User
+from app.forms import SignUpForm
 
 user_routes = Blueprint('users', __name__)
 
 
-@user_routes.route('/')
+def validation_errors_to_error_messages(validation_errors):
+    """
+    Simple function that turns the WTForms validation errors into a simple list
+    """
+    errorMessages = []
+    for field in validation_errors:
+        for error in validation_errors[field]:
+            errorMessages.append(f"{field} : {error}")
+    return errorMessages
+
+
+@user_routes.route('/', methods=[''])
 # @login_required
 def users():
-    users = User.query.all()
-    return {"users": [user.to_dict() for user in users]}
+    m = request.method
+    if m == 'GET':
+        users = User.query.all()
+        return {"users": [user.to_dict() for user in users]}
+    elif m == 'POST':
+        form = SignUpForm()
+        form['csrf_token'].data = request.cookies['csrf_token']
+        if form.validate_on_submit():
+            user = User(
+                userName=form.data['userName'],
+                email=form.data['email'],
+                password=form.data['password'],
+                profilePhoto=form.data['profilePhoto'],
+            )
+            print('user------', user)
+            db.session.add(user)
+            db.session.commit()
+            login_user(user)
+            return user.to_dict()
+        return {'errors': validation_errors_to_error_messages(form.errors)}
 
 
 @user_routes.route('/<int:id>', methods=['GET', 'PATCH', 'DELETE'])
