@@ -1,5 +1,6 @@
 from flask import Blueprint, json, jsonify, request
 from flask_login import login_required, current_user
+from sqlalchemy.orm import subqueryload
 
 from app.models import db, Post, User, Like, Comment, Tag_Post
 from app.forms import UploadForm
@@ -96,7 +97,11 @@ def tagsByPostId(id):
         tags = []
         for tag in Tag_Post.query.filter(Tag_Post.postId == id).all():
             tags.append(tag.to_dict())
-        return jsonify(tags)
+        res = {
+            'length': len(tags),
+            'tags': tags
+        }
+        return jsonify(res)
     elif m == 'POST':  # Create a new tag for the given post
         return 'POST TAG'
     elif m == 'DELETE':  # Delete a tag from the given post
