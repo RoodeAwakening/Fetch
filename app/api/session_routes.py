@@ -39,6 +39,3 @@ def authenticate():
     elif m == 'DELETE':
         logout_user()
         return {'message': 'User logged out'}
-
-
-@session_routes.route('/signup')

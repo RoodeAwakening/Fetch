@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { signup } from "../../store/session";
 
@@ -21,8 +22,8 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
       if (user.errors) {
         setErrors(user.errors);
       }
+      return user;
     }
-    return user
   };
 
   const updateUsername = (e) => {
