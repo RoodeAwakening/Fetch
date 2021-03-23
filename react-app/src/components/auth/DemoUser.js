@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import './auth.css'
 
 
-const LoginForm = ({ authenticated, setAuthenticated }) => {
+const LoginForm = () => {
   let history = useHistory();
   const [errors, setErrors] = useState([]);
 

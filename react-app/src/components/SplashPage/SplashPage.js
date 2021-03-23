@@ -4,7 +4,7 @@ import "./SplashPage.css";
 import LoginForm from "../auth/LoginForm";
 import DemoUser from "../auth/DemoUser"
 
-export default function SplashPage({ authenticated, setAuthenticated }) {
+export default function SplashPage() {
   return (
     <div className="Splash_Page-body">
       <div className="Splash_Page-body-container">
@@ -20,8 +20,7 @@ export default function SplashPage({ authenticated, setAuthenticated }) {
             ></img>
             <div className="Splash_Page-loginForm">
               <LoginForm 
-              authenticated={authenticated}
-              setAuthenticated={setAuthenticated}
+              
               />
             </div>
             <div className='Splash_Page-or'>
@@ -34,8 +33,7 @@ export default function SplashPage({ authenticated, setAuthenticated }) {
 
               <h4>Log in as a Demo user</h4>
               <DemoUser 
-              authenticated={authenticated}
-              setAuthenticated={setAuthenticated}
+              
               />
               </div>
             </div>
