@@ -1,6 +1,5 @@
 from flask import Blueprint, json, jsonify, request
 from flask_login import login_required, current_user
-from sqlalchemy.orm import subqueryload
 
 from app.models import db, Post, User, Like, Comment, Tag_Post
 from app.forms import UploadForm
@@ -15,10 +14,11 @@ post_routes = Blueprint('posts', __name__)
 def post():
     m = request.method
     if m == 'GET':  # Get a list of posts
-        posts = []
-        for post in Post.query.all():
-            posts.append(post.to_dict())
-        return jsonify(posts)
+        posts = db.session.query(Post, Comment).join(Comment).all()
+        for post in posts:
+            print(post['Post'].to_dict())
+            print(post['Comment'].to_dict(), )
+        return 'GET POSTS'
     elif m == 'POST':  # Create a new post
         form = UploadForm()
         if form.validate_on_submit():
@@ -32,7 +32,7 @@ def post():
         return post.to_dict() if post else 'Invalid operation'
 
 
-@post_routes.route('/<int:id>', methods=['GET', 'DELETE'])
+@ post_routes.route('/<int:id>', methods=['GET', 'DELETE'])
 # @login_required
 def postById(id):
     m = request.method
@@ -45,7 +45,7 @@ def postById(id):
         return jsonify('Successfully deleted.' if success else 'Invalid operation.')
 
 
-@post_routes.route('/<int:id>/likes', methods=['GET', 'POST', 'DELETE'])
+@ post_routes.route('/<int:id>/likes', methods=['GET', 'POST', 'DELETE'])
 # @login_required
 def likesByPostId(id):
     m = request.method
@@ -70,7 +70,7 @@ def likesByPostId(id):
         return jsonify()
 
 
-@post_routes.route('/<int:id>/comments', methods=['GET', 'POST'])
+@ post_routes.route('/<int:id>/comments', methods=['GET', 'POST'])
 # @login_required
 def commentsByPostId(id):
     m = request.method
@@ -89,7 +89,7 @@ def commentsByPostId(id):
         return jsonify(comment.to_dict())
 
 
-@post_routes.route('/<int:id>/tags', methods=['GET', 'POST', 'DELETE'])
+@ post_routes.route('/<int:id>/tags', methods=['GET', 'POST', 'DELETE'])
 # @login_required
 def tagsByPostId(id):
     m = request.method
