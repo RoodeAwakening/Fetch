@@ -18,7 +18,7 @@ def validation_errors_to_error_messages(validation_errors):
     return errorMessages
 
 
-@user_routes.route('/', methods=[''])
+@user_routes.route('/', methods=['GET','POST'])
 # @login_required
 def users():
     m = request.method
@@ -27,6 +27,7 @@ def users():
         return {"users": [user.to_dict() for user in users]}
     elif m == 'POST':
         form = SignUpForm()
+        print('userPOST------', form)
         form['csrf_token'].data = request.cookies['csrf_token']
         if form.validate_on_submit():
             user = User(
@@ -35,7 +36,6 @@ def users():
                 password=form.data['password'],
                 profilePhoto=form.data['profilePhoto'],
             )
-            print('user------', user)
             db.session.add(user)
             db.session.commit()
             login_user(user)
