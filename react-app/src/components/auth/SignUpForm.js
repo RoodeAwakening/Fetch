@@ -3,15 +3,16 @@ import { Redirect } from 'react-router-dom';
 import { signUp } from '../../services/auth';
 
 const SignUpForm = ({authenticated, setAuthenticated}) => {
-  const [username, setUsername] = useState("");
+  const [userName, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
+  const [profilePhoto, setProfilePhoto] = useState("");
 
   const onSignUp = async (e) => {
     e.preventDefault();
     if (password === repeatPassword) {
-      const user = await signUp(username, email, password);
+      const user = await signUp(userName, email, password, profilePhoto);
       if (!user.errors) {
         setAuthenticated(true);
       }
@@ -34,6 +35,12 @@ const SignUpForm = ({authenticated, setAuthenticated}) => {
     setRepeatPassword(e.target.value);
   };
 
+  const updateProfilePhoto = (e) => {
+    setProfilePhoto(e.target.value);
+  };
+
+
+
   if (authenticated) {
     return <Redirect to="/" />;
   }
@@ -44,9 +51,9 @@ const SignUpForm = ({authenticated, setAuthenticated}) => {
         <label>User Name</label>
         <input
           type="text"
-          name="username"
+          name="userName"
           onChange={updateUsername}
-          value={username}
+          value={userName}
         ></input>
       </div>
       <div>
@@ -74,6 +81,16 @@ const SignUpForm = ({authenticated, setAuthenticated}) => {
           name="repeat_password"
           onChange={updateRepeatPassword}
           value={repeatPassword}
+          required={true}
+        ></input>
+      </div>
+      <div>
+        <label>Profile Picture</label>
+        <input
+          type="file"
+          name="profile_photo"
+          onChange={updateProfilePhoto}
+          value={profilePhoto}
           required={true}
         ></input>
       </div>
