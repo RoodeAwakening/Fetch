@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Redirect } from "react-router-dom";
-import { login } from "../../services/auth";
+import * as sessionActions from "../../store/session";
+import { useDispatch, useSelector } from "react-redux";
 import './auth.css'
 
 const LoginForm = ({ authenticated, setAuthenticated }) => {
@@ -8,15 +9,35 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const onLogin = async (e) => {
+  const dispatch = useDispatch();
+
+  const sessionUser = useSelector((state) => state.session.user);
+  
+  const  onLogin = async (e) => {
     e.preventDefault();
-    const user = await login(email, password);
-    if (!user.errors) {
-      setAuthenticated(true);
-    } else {
-      setErrors(user.errors);
+    setErrors([]);
+    const  user =  await dispatch(sessionActions.loginThunk({ email, password }))
+    console.log('user--------',user);
+    if (user.errors) {
+      setErrors(user.errors)
     }
+    return user
   };
+
+
+
+// THIS IS OLD CODE THAT USES THE SETAUTHENTICATE
+  // const onLogin = async (e) => {
+  //   e.preventDefault();
+  //   const user = await login(email, password);
+  //   console.log('user--------',user);
+  //   if (!user.errors) {
+  //     // setAuthenticated(true);
+
+  //   } else {
+  //     setErrors(user.errors);
+  //   }
+  // };
 
   const updateEmail = (e) => {
     setEmail(e.target.value);

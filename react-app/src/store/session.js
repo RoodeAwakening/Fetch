@@ -26,11 +26,11 @@ export const restoreUser = () => async (dispatch) => {
 };
 
 export const signup = (user) => async (dispatch) => {
-  const {profilePhoto, username, email, password } = user;
+  const {profilePhoto, userName, email, password } = user;
   const response = await fetch("/api/users", {
     method: "POST",
     body: JSON.stringify({
-      username,
+      userName,
       email,
       password,
       profilePhoto,
@@ -41,12 +41,12 @@ export const signup = (user) => async (dispatch) => {
   return response;
 };
 
-export const login = (user) => async (dispatch) => {
-  const { credential, password } = user;
+export const loginThunk = (user) => async (dispatch) => {
+  const { email, password } = user;
   const response = await fetch("/api/session", {
     method: "POST",
     body: JSON.stringify({
-      credential,
+      email,
       password,
     }),
   });
@@ -55,7 +55,7 @@ export const login = (user) => async (dispatch) => {
   return response;
 };
 
-export const logout = () => async (dispatch) => {
+export const logoutThunk = () => async (dispatch) => {
   const response = await fetch('/api/session', {
     method: 'DELETE',
   });

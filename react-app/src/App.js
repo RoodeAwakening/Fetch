@@ -8,11 +8,13 @@ import NavBar from "./components/NavBar";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import UsersList from "./components/UsersList";
 import User from "./components/User";
+import { useSelector } from "react-redux";
 import { authenticate } from "./services/auth";
 
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
   const [loaded, setLoaded] = useState(false);
+  const sessionUser = useSelector((state) => state.session.user);
 
   useEffect(() => {
     (async () => {
@@ -28,7 +30,7 @@ function App() {
     return null;
   }
 
-  if (!authenticated) {
+  if (!sessionUser) {
     
     return (
       <Switch>
