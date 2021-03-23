@@ -10,7 +10,10 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
   const [repeatPassword, setRepeatPassword] = useState("");
   const [profilePhoto, setProfilePhoto] = useState("");
   const [errors, setErrors] = useState([]);
+  const [image, setImage] = useState(null);
+  const [imageLoading, setImageLoading] = useState(false);
 
+  
   const dispatch = useDispatch();
 
   const sessionUser = useSelector((state) => state.session.user);
@@ -45,7 +48,7 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
   };
 
   const updateProfilePhoto = (e) => {
-    setProfilePhoto(e.target.value);
+    setProfilePhoto(e.target.files[0]);
   };
 
   if (authenticated) {
@@ -97,7 +100,7 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
           type="file"
           name="profile_photo"
           onChange={updateProfilePhoto}
-          value={profilePhoto}
+          // value={profilePhoto}
           required={true}
         ></input>
       </div>

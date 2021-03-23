@@ -7,13 +7,8 @@ const NavBar = () => {
     <nav>
       <ul>
         <li>
-          <NavLink to="/" exact={true} activeClassName="active">
+          <NavLink to="/feed" exact={true} activeClassName="active">
             Home
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to="/login" exact={true} activeClassName="active">
-            Login
           </NavLink>
         </li>
         <li>

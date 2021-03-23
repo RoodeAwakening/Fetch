@@ -4,8 +4,6 @@ import SignUpForm from "./auth/SignUpForm";
 
 export default function SignupPage() {
   return (
-    <SignUpForm
-      
-    />
+    <SignUpForm/>
   );
 }
