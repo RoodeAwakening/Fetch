@@ -12,13 +12,11 @@ import { useSelector } from "react-redux";
 import { authenticate } from "./services/auth";
 
 function App() {
-  
   const [loaded, setLoaded] = useState(false);
   const sessionUser = useSelector((state) => state.session.user);
 
   useEffect(() => {
     (async () => {
-      
       setLoaded(true);
     })();
   }, []);
@@ -28,18 +26,13 @@ function App() {
   }
 
   if (!sessionUser) {
-    
     return (
       <Switch>
         <Route path="/" exact={true}>
-          <SplashPage
-            
-          />
+          <SplashPage />
         </Route>
         <Route path="/signup" exact={true}>
-          <SignupPage
-            
-          />
+          <SignupPage />
         </Route>
         <Redirect to="/" />
       </Switch>
@@ -47,25 +40,15 @@ function App() {
   } else {
     return (
       <BrowserRouter>
-        <NavBar  />
+        <NavBar />
         <Switch>
           <Route path="/login" exact={true}>
-            <LoginPage
-              
-            />
+            <LoginPage />
           </Route>
-          <ProtectedRoute
-            path="/users"
-            exact={true}
-            
-          >
+          <ProtectedRoute path="/users" exact={true}>
             <UsersList />
           </ProtectedRoute>
-          <ProtectedRoute
-            path="/users/:userId"
-            exact={true}
-            
-          >
+          <ProtectedRoute path="/users/:userId" exact={true}>
             <User />
           </ProtectedRoute>
           <Route path="/feed" exact={true}>
