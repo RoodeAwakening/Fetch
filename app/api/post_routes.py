@@ -24,10 +24,12 @@ def post():
         return jsonify(posts)
     elif m == 'POST':  # Create a new post
         form = UploadForm()
+        form['csrf_token'].data = request.cookies['csrf_token']
+        post = ''
         if form.validate_on_submit():
             post = Post(
                 userId=1,
-                photo=form.file.data,
+                photo=form.data['photo'],
                 caption=form.data['caption']
             )
             db.session.add(post)

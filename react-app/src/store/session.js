@@ -26,7 +26,6 @@ export const signup = user => async dispatch => {
 	let { profilePhoto, userName, email, password } = user
 	//fetch to image route
 	const formData = new FormData()
-	console.log('----pic---3----', profilePhoto)
 	formData.append('image', profilePhoto)
 	const responseImageUrl = await fetch('/api/images', {
 		method: 'POST',
