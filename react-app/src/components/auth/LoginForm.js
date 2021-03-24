@@ -2,9 +2,11 @@ import React, { useState } from "react";
 
 import * as sessionActions from "../../store/session";
 import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router";
 import './auth.css'
 
 const LoginForm = () => {
+  let history = useHistory()
   const [errors, setErrors] = useState([]);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -19,6 +21,8 @@ const LoginForm = () => {
     const user =  await dispatch(sessionActions.loginThunk({ email, password }))
     if (user.errors) {
       setErrors(user.errors)
+    }else{
+      history.push("/feed")
     }
     
     return user

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
+import { useHistory } from "react-router";
 import { signup } from "../../store/session";
 
 const SignUpForm = ({ authenticated, setAuthenticated }) => {
@@ -14,6 +15,7 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
   const [imageLoading, setImageLoading] = useState(false);
 
   
+  let history = useHistory()
   const dispatch = useDispatch();
 
   const sessionUser = useSelector((state) => state.session.user);
@@ -26,6 +28,9 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
       );
       if (user.errors) {
         setErrors(user.errors);
+      }else{
+
+        history.push("/feed")
       }
       return user;
     }
