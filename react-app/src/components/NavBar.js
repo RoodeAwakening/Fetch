@@ -1,6 +1,6 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
-import LogoutButton from './auth/LogoutButton';
+import React from "react";
+import { NavLink } from "react-router-dom";
+import LogoutButton from "./auth/LogoutButton";
 
 const NavBar = () => {
   return (
@@ -22,11 +22,11 @@ const NavBar = () => {
           </NavLink>
         </li>
         <li>
-          <LogoutButton  />
+          <LogoutButton />
         </li>
       </ul>
     </nav>
   );
-}
+};
 
 export default NavBar;
