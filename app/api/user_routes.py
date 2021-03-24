@@ -76,27 +76,24 @@ def followsByUserId(id):
     m = request.method
     if m == 'GET':
         follows = []
-        followers = []
+        followersLst = []
         for follow in db.session.query(followers).all():
             print('---------',follow.followerId	)
-            if follow.userId == id:
-                followers.append({
-                'followerId':follow.followerId,
-                'userId':follow.userId
-                })
-            elif follow.followerId == id:
+            if follow.followerId == id:
                 follows.append({
                 'followerId':follow.followerId,
                 'userId':follow.userId
                 })
+            elif follow.userId == id:
+                followersLst.append({
+                'followerId':follow.followerId,
+                'userId':follow.userId
+                })
 
-            print('follows',follows, 'followers',followers)
-        return 'test'
-        
-        # return jsonify({
-        #     "follows":follows,
-        #     "followers":followers
-        # })
+        return jsonify({
+            "follows":follows,
+            "followers":followersLst
+        })
         
     elif m == 'POST':
         return 'POST FOLLOWer BY USER'
