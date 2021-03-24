@@ -12,6 +12,7 @@ post_routes = Blueprint('posts', __name__)
 @post_routes.route('/', methods=['GET', 'POST'])
 # @login_required()
 def post():
+    print("BACKEND")
     m = request.method
     if m == 'GET':  # Get a list of posts
         posts = db.session.query(Post, Comment).join(Comment).all()

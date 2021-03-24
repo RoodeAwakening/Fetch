@@ -7,7 +7,7 @@ import Post from "../Post/Post";
 export default function FeedPage() {
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(posts());
+    dispatch(posts)
   }, [dispatch]);
 
   return (

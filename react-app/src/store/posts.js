@@ -18,6 +18,7 @@ const getPost = (id) => {
 export const posts = () => async (dispatch) => {
   const response = await fetch(`/api/posts/`);
   const data = await response.json();
+  console.log("DATA", data);
   dispatch(getPosts(data.posts));
   return posts;
 };
