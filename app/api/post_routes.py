@@ -34,7 +34,7 @@ def post():
             )
             db.session.add(post)
             db.session.commit()
-        return post.to_dict() if post else 'Invalid operation'
+        return {"post": post.to_dict()} if post else 'Invalid operation'
 
 
 @ post_routes.route('/<int:id>', methods=['GET', 'DELETE'])
