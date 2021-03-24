@@ -12,12 +12,12 @@
 
 # `Followers`
 
-| Column Name  | Data Type | Details               | Description       |
-| ------------ | --------- | --------------------- | ----------------- |
-| `id`         | integer   | not null, primary key | follower table id |
-| `followerId` | integer   | not null              | id of a follower  |
-| `userId`     | integer   | not null              | Users unique id   |
-| `unique`     | uniqueTag | not null              | unique identifier |
+| Column Name  | Data Type | Details               | Description           |
+| ------------ | --------- | --------------------- | --------------------- |
+| `id`         | integer   | not null, primary key | follower table id     |
+| `followerId` | integer   | not null              | id of a follower      |
+| `userId`     | integer   | not null              | Users that follow you |
+| `unique`     | uniqueTag | not null              | unique identifier     |
 
 # `Likes`
 
