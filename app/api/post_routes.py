@@ -12,7 +12,6 @@ post_routes = Blueprint('posts', __name__)
 @post_routes.route('/', methods=['GET', 'POST'])
 # @login_required()
 def post():
-    print("BACKEND")
     m = request.method
     if m == 'GET':  # Get a list of posts
         posts = []
@@ -22,7 +21,8 @@ def post():
                 'post': post[0].to_dict(),
                 'comments': post[1].to_dict()
             })
-        return jsonify(posts)
+        print (posts)
+        return jsonify(posts[0])
     elif m == 'POST':  # Create a new post
         form = UploadForm()
         if form.validate_on_submit():
