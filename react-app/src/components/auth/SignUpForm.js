@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
+import { useHistory } from "react-router";
 import { signup } from "../../store/session";
 
 const SignUpForm = ({ authenticated, setAuthenticated }) => {
@@ -10,7 +11,11 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
   const [repeatPassword, setRepeatPassword] = useState("");
   const [profilePhoto, setProfilePhoto] = useState("");
   const [errors, setErrors] = useState([]);
+  const [image, setImage] = useState(null);
+  const [imageLoading, setImageLoading] = useState(false);
 
+  
+  let history = useHistory()
   const dispatch = useDispatch();
 
   const sessionUser = useSelector((state) => state.session.user);
@@ -23,6 +28,9 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
       );
       if (user.errors) {
         setErrors(user.errors);
+      }else{
+
+        history.push("/feed")
       }
       return user;
     }
@@ -45,7 +53,7 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
   };
 
   const updateProfilePhoto = (e) => {
-    setProfilePhoto(e.target.value);
+    setProfilePhoto(e.target.files[0]);
   };
 
   if (authenticated) {
@@ -97,7 +105,7 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
           type="file"
           name="profile_photo"
           onChange={updateProfilePhoto}
-          value={profilePhoto}
+          // value={profilePhoto}
           required={true}
         ></input>
       </div>

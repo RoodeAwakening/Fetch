@@ -19,14 +19,30 @@ const removeUser = () => {
 
 
 export const restoreUser = () => async (dispatch) => {
-  const response = await fetch("/api/session");
+  const response = await fetch("/api/session/");
   const data = await response.json();
   dispatch(setUser(data.user));
   return response;
 };
 
+
+
+
 export const signup = (user) => async (dispatch) => {
-  const {profilePhoto, userName, email, password } = user;
+  let {profilePhoto, userName, email, password } = user;
+//fetch to image route
+  const formData = new FormData();
+  console.log('----pic---3----', profilePhoto);
+  formData.append("image", profilePhoto);
+  const responseImageUrl = await fetch('/api/images',{
+    method: "POST",
+    body: formData,
+    
+  })
+  const photoData = await responseImageUrl.json();
+  profilePhoto = photoData.url
+
+
   const response = await fetch("/api/users/", {
     method: "POST",
     headers: {
@@ -40,7 +56,6 @@ export const signup = (user) => async (dispatch) => {
     }),
   });
   const data = await response.json();
-  console.log('-----------', data);
   dispatch(setUser(data.user));
   return response;
 };

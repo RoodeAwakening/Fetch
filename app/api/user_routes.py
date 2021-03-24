@@ -4,6 +4,8 @@ from flask_login import login_required, login_user
 from app.models import db, User
 from app.forms import SignUpForm
 
+
+
 user_routes = Blueprint('users', __name__)
 
 
@@ -27,7 +29,6 @@ def users():
         return {"users": [user.to_dict() for user in users]}
     elif m == 'POST':
         form = SignUpForm()
-        print('userPOST------', form)
         form['csrf_token'].data = request.cookies['csrf_token']
         if form.validate_on_submit():
             user = User(

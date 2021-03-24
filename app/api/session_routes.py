@@ -23,7 +23,7 @@ def authenticate():
     m = request.method
     if m == 'GET':
         if current_user.is_authenticated:
-            return current_user.to_dict()
+            return jsonify({'user': current_user.to_dict()})
         return {'errors': ['Unauthorized']}, 401
     elif m == 'POST':
         form = LoginForm()
