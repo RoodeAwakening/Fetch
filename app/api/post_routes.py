@@ -14,11 +14,14 @@ post_routes = Blueprint('posts', __name__)
 def post():
     m = request.method
     if m == 'GET':  # Get a list of posts
-        posts = db.session.query(Post, Comment).join(Comment).all()
-        for post in posts:
-            print(post['Post'].to_dict())
-            print(post['Comment'].to_dict(), )
-        return 'GET POSTS'
+        posts = []
+        query = db.session.query(Post, Comment).join(Comment).all()
+        for post in query:
+            posts.append({
+                'post': post[0].to_dict(),
+                'comments': post[1].to_dict()
+            })
+        return jsonify(posts)
     elif m == 'POST':  # Create a new post
         form = UploadForm()
         if form.validate_on_submit():
