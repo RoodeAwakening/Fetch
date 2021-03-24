@@ -4,6 +4,7 @@ import { Redirect } from "react-router-dom";
 import { useHistory } from "react-router";
 import { signup } from "../../store/session";
 
+
 const SignUpForm = ({ authenticated, setAuthenticated }) => {
   const [userName, setUsername] = useState("");
   const [email, setEmail] = useState("");
@@ -60,11 +61,20 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
     return <Redirect to="/" />;
   }
 
+  const emailAndPassword = ()=>{
+    if (email.length >= 3 && password.length >= 3 && userName.length >=3 && repeatPassword.length >= 3) {
+      return true
+    }
+      return false
+  }
+
   return (
-    <form onSubmit={onSignUp}>
+    
+    <form onSubmit={onSignUp} >
       <div>
-        <label>User Name</label>
+        <label></label>
         <input
+        placeholder="User Name"
           type="text"
           name="userName"
           onChange={updateUsername}
@@ -72,8 +82,9 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
         ></input>
       </div>
       <div>
-        <label>Email</label>
+        <label></label>
         <input
+        placeholder="Email"
           type="text"
           name="email"
           onChange={updateEmail}
@@ -81,8 +92,9 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
         ></input>
       </div>
       <div>
-        <label>Password</label>
+        <label></label>
         <input
+        placeholder="Password"
           type="password"
           name="password"
           onChange={updatePassword}
@@ -90,8 +102,9 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
         ></input>
       </div>
       <div>
-        <label>Repeat Password</label>
+        <label></label>
         <input
+        placeholder="Repeat Password"
           type="password"
           name="repeat_password"
           onChange={updateRepeatPassword}
@@ -99,9 +112,10 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
           required={true}
         ></input>
       </div>
-      <div>
+      <div id='profileUpload'>
         <label>Profile Picture</label>
-        <input
+        <input 
+          
           type="file"
           name="profile_photo"
           onChange={updateProfilePhoto}
@@ -109,8 +123,10 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
           required={true}
         ></input>
       </div>
-      <button type="submit">Sign Up</button>
+      <button id='SignupButton' id={emailAndPassword()? 'SignupButtonTrue':'SignupButtonFalse'} type="submit">Sign Up</button>
+      {/* <button type="submit">Sign Up</button> */}
     </form>
+    
   );
 };
 

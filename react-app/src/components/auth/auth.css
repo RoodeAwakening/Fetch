@@ -2,7 +2,8 @@
 #loginButton {
 }
 
-#loginButtonFalse {
+#loginButtonFalse,
+#SignupButtonFalse {
   background-color: #b2dffc;
   width: -webkit-fill-available;
   margin-top: 5px;
@@ -13,7 +14,8 @@
   
 }
 
-#loginButtonTrue {
+#loginButtonTrue,
+#SignupButtonTrue {
   background-color: #0095f6;
   width: -webkit-fill-available;
   margin-top: 5px;

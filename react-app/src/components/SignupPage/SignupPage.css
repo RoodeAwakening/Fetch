@@ -1,0 +1,68 @@
+.Signup_Page-body {
+  padding-top: 40px;
+  display: flex;
+  justify-content: center;
+}
+
+.Signup_Page-body-right {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 345px;
+  background-color: #FFFFFF;
+  border: 1px solid rgba(var(--b6a,219,219,219),1);
+}
+.Signup_Page-body-container {
+
+  
+}
+
+#profileUpload{
+  padding: 0px;
+  margin: 0px;
+  text-align: center;
+  background-color: red;
+}
+.Signup_Page-loginForm{
+  display: flex;
+justify-content: center;
+text-align: center;
+  width: 75%;
+}
+
+.Signup_Page-demo-user{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-size: 14px;
+  width: 75%;
+}
+.Signup_Page-demo-user h4{
+  text-align: center;
+
+}
+
+.Splash_Page-body-right-bottom {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+}
+
+
+.Splash_Page-body-right-bottom h1{
+  font-size: 14px;
+  
+}
+
+
+/* footer */
+.Signup_Page-body-footer {
+  text-align: center;
+  padding-top: 40px;
+}
+
+.Signup_Page-body-footer a{
+  color: gray;
+  padding-right: 5px;
+}

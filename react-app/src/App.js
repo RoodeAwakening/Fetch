@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom";
 import LoginPage from "./components/LoginPage";
 import SplashPage from "./components/SplashPage/SplashPage";
-import SignupPage from "./components/SignupPage";
+import SignupPage from "./components//SignupPage/SignupPage";
 import FeedPage from "./components/FeedPage/FeedPage";
 import NavBar from "./components/NavBar";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
@@ -22,7 +22,7 @@ function App() {
     dispatch(sessionActions.restoreUser()).then(() => setLoaded(true));
   }, [dispatch, loaded]);
 
-  console.log("---------sessionuser", sessionUser, loaded);
+
 
   
     return (
@@ -34,11 +34,11 @@ function App() {
         <Route path="/" exact={true}>
           <SplashPage />
         </Route>
-        <div>
-        <NavBar />
         <Route path="/signup" exact={true}>
           <SignupPage />
         </Route>
+        <div>
+        <NavBar />
           <ProtectedRoute path="/feed" exact={true}>
             <FeedPage />
           </ProtectedRoute>
