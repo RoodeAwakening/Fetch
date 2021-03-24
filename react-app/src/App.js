@@ -20,42 +20,38 @@ function App() {
 
   useEffect(() => {
     dispatch(sessionActions.restoreUser()).then(() => setLoaded(true));
-  }, []);;
+  }, [dispatch, loaded]);
 
- 
-console.log('---------sessionuser',sessionUser, loaded);
-  if (!sessionUser ) {
+  console.log("---------sessionuser", sessionUser, loaded);
+
+  
     return (
-      <Switch>
+      <>
+      {loaded && (
+      <BrowserRouter>
+        <NavBar />
+        <Switch>
         <Route path="/" exact={true}>
           <SplashPage />
         </Route>
         <Route path="/signup" exact={true}>
           <SignupPage />
         </Route>
-        <Redirect to="/" />
-      </Switch>
-    );
-  } else {
-    return (
-      <BrowserRouter>
-        <NavBar />
-        <Switch>
-          <Route path="/feed" exact={true}>
+          <ProtectedRoute path="/feed" exact={true}>
             <FeedPage />
-          </Route>
-          <ProtectedRoute path="/users" exact={true}>
+          </ProtectedRoute>
+          <Route path="/users" exact={true}>
             <UsersList />
-          </ProtectedRoute>
-          <ProtectedRoute path="/users/:userId" exact={true}>
+          </Route>
+          <Route path="/users/:userId" exact={true}>
             <User />
-          </ProtectedRoute>
-
-          
+          </Route>
         </Switch>
       </BrowserRouter>
+      )}
+    </>
     );
   }
-}
+// }
 
 export default App;

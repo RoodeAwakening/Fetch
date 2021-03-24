@@ -21,7 +21,8 @@ const LoginForm = () => {
     e.preventDefault();
     const email = "demo@aa.io";
     const password = "password";
-    return dispatch(sessionActions.loginThunk({ email, password }));
+    dispatch(sessionActions.loginThunk({ email, password }));
+    history.push("/feed")
   };
 
 
