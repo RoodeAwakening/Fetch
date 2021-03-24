@@ -1,5 +1,6 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required, login_user
+from sqlalchemy import insert
 
 from app.models import db, User, Post, followers
 from app.forms import SignUpForm
@@ -78,7 +79,7 @@ def followsByUserId(id):
         follows = []
         followersLst = []
         for follow in db.session.query(followers).all():
-            print('---------',follow.followerId	)
+            
             if follow.followerId == id:
                 follows.append({
                 'followerId':follow.followerId,
@@ -96,7 +97,15 @@ def followsByUserId(id):
         })
         
     elif m == 'POST':
-        return 'POST FOLLOWer BY USER'
+        followsNew = request.json['follow']
+        follower = User.query.get(id)
+        following = User.query.get(followsNew)
+        ins = followers.insert().values(followerId=follower.id, userId=following.id)
+        db.session.execute(ins)
+        db.session.commit()
+        return (f'Now Following user {following.userName}!')
+        
+        
 
 @user_routes.route('/<int:id>/posts', methods=['GET'])
 def userPostsById(id):
