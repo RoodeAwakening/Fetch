@@ -4,22 +4,22 @@ const GET_POST = "posts/getPostId";
 const getPosts = (posts) => {
   return {
     type: GET_POSTS,
-    posts,
+    payload: posts,
   };
 };
 
 const getPost = (id) => {
   return {
     type: GET_POST,
-    id,
+    payload: id,
   };
 };
 
 export const posts = () => async (dispatch) => {
   const response = await fetch(`/api/posts/`);
-  const data = await response.json();
-  console.log("DATA", data);
-  dispatch(getPosts(data.posts));
+  const posts = await response.json();
+  dispatch(getPosts(posts));
+  console.log(posts);
   return posts;
 };
 
@@ -32,7 +32,6 @@ export const post = (id) => async (dispatch) => {
 
 const initialState = {
   posts: {},
-  id: null,
 };
 
 const postsReducer = (state = initialState, action) => {
@@ -40,11 +39,11 @@ const postsReducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_POSTS:
       newState = Object.assign({}, state);
-      newState.id = action.payload;
+      newState.posts = action.payload;
       return newState;
     case GET_POST:
       newState = Object.assign({}, state);
-      newState.id = action.payload;
+      newState.posts = action.payload;
       return newState;
     default:
       return state;

@@ -21,8 +21,7 @@ def post():
                 'post': post[0].to_dict(),
                 'comments': post[1].to_dict()
             })
-        print (posts)
-        return jsonify(posts[0])
+        return jsonify(posts)
     elif m == 'POST':  # Create a new post
         form = UploadForm()
         if form.validate_on_submit():
