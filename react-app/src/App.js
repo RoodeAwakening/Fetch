@@ -29,11 +29,13 @@ function App() {
       <>
       {loaded && (
       <BrowserRouter>
-        <NavBar />
+      
         <Switch>
         <Route path="/" exact={true}>
           <SplashPage />
         </Route>
+        <div>
+        <NavBar />
         <Route path="/signup" exact={true}>
           <SignupPage />
         </Route>
@@ -46,6 +48,7 @@ function App() {
           <Route path="/users/:userId" exact={true}>
             <User />
           </Route>
+          </div>
         </Switch>
       </BrowserRouter>
       )}
