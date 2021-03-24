@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required, login_user
 
-from app.models import db, User
+from app.models import db, User, Post, followers
 from app.forms import SignUpForm
 
 
@@ -51,16 +51,58 @@ def user(id):
     if m == 'GET':  # Get data for a given user
         user = User.query.get(id)
         return user.to_dict()
-    elif m == 'PATCH':
-        return 'PATCH USER'
+    elif m == 'PATCH': # Update the user info
+        #query the user
+        user = User.query.get(id)
+        #look at the request coming in
+        userName = request.json['userName']
+        email = request.json['email']
+        if userName:
+            user.userName = userName
+        if email:
+            user.email = email
+        db.session.commit()
+        return jsonify(user.to_dict() if user else 'Invalid operation.')
     elif m == 'DELETE':
-        return 'DELETE USER'
+        success = User.query.filter(User.id == id).delete()
+        db.session.commit()
+        return jsonify('Successfully deleted.' if success else 'Invalid operation.')
 
 
-@user_routes.route('/<int:id>/follows')
+
+
+@user_routes.route('/<int:id>/follows', methods=['GET', 'POST'])
 def followsByUserId(id):
     m = request.method
     if m == 'GET':
-        return 'GET FOLLOWS BY USER'
+        follows = []
+        followersLst = []
+        for follow in db.session.query(followers).all():
+            print('---------',follow.followerId	)
+            if follow.followerId == id:
+                follows.append({
+                'followerId':follow.followerId,
+                'userId':follow.userId
+                })
+            elif follow.userId == id:
+                followersLst.append({
+                'followerId':follow.followerId,
+                'userId':follow.userId
+                })
+
+        return jsonify({
+            "follows":follows,
+            "followers":followersLst
+        })
+        
     elif m == 'POST':
-        return 'POST FOLLOW BY USER'
+        return 'POST FOLLOWer BY USER'
+
+@user_routes.route('/<int:id>/posts', methods=['GET'])
+def userPostsById(id):
+    userPosts = []
+    query = Post.query.filter(Post.userId == id).all()
+    for post in query:
+        userPosts.append(post.to_dict())
+    return jsonify(userPosts)
+
