@@ -15,9 +15,7 @@ export default function Post() {
           // src={user.profilePhoto}
           src="https://pbs.twimg.com/profile_images/1237550450/mstom_400x400.jpg"
         ></img>
-        <Link className="Post_user-link">
-          <h4>Tom</h4>
-        </Link>
+        <h4>Tom</h4>
         {/* <h4>{userName}</h4> */}
       </div>
       {/* <img className="Post_photo" alt="post-photo" src={post.photo}></img> */}
