@@ -1,8 +1,7 @@
-import React from "react";
-import { logout } from "../../services/auth";
-import { useDispatch } from "react-redux";
-import * as sessionActions from "../../store/session";
-import { useHistory } from "react-router";
+import React from 'react'
+import { useDispatch } from 'react-redux'
+import * as sessionActions from '../../store/session'
+import { useHistory } from 'react-router'
 
 const LogoutButton =  (e) => {
   let history = useHistory()
@@ -26,8 +25,4 @@ const LogoutButton =  (e) => {
 //   return <button onClick={onLogout}>Logout</button>;
 // };
 
-
-
-
-
-export default LogoutButton;
+export default LogoutButton

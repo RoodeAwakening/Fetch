@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState } from 'react'
 
 import * as sessionActions from "../../store/session";
 import { useDispatch, useSelector } from "react-redux";
@@ -11,7 +11,7 @@ const LoginForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const dispatch = useDispatch();
+	const dispatch = useDispatch()
 
   const sessionUser = useSelector((state) => state.session.user);
 
@@ -36,25 +36,21 @@ const LoginForm = () => {
   //   if (!user.errors) {
   //     // setAuthenticated(true);
 
-  //   } else {
-  //     setErrors(user.errors);
-  //   }
-  // };
+	const updateEmail = e => {
+		setEmail(e.target.value)
+	}
 
-  const updateEmail = (e) => {
-    setEmail(e.target.value);
-  };
+	const updatePassword = e => {
+		setPassword(e.target.value)
+	}
 
-  const updatePassword = (e) => {
-    setPassword(e.target.value);
-  };
+	const emailAndPassword = () => {
+		if (email.length >= 3 && password.length >= 3) {
+			return true
+		}
+		return false
+	}
 
-  const emailAndPassword = () => {
-    if (email.length >= 3 && password.length >= 3) {
-      return true;
-    }
-    return false;
-  };
 
   return (
     <form onSubmit={onLogin}>

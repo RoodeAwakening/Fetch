@@ -1,8 +1,9 @@
 from flask_wtf import FlaskForm
-from flask_wtf.file import FileField
-from wtforms import StringField
+from wtforms import StringField, IntegerField
+from wtforms.validators import DataRequired
 
 
 class UploadForm(FlaskForm):
-    caption = StringField('caption',)
-    photo = FileField()
+    userId = IntegerField('userId')
+    caption = StringField('caption')
+    photo = StringField('photo', [DataRequired()])

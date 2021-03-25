@@ -6,6 +6,7 @@ import SplashPage from "./components/SplashPage/SplashPage";
 import SignupPage from "./components//SignupPage/SignupPage";
 import FeedPage from "./components/FeedPage/FeedPage";
 import ComingSoon from "./components/ComingSoon";
+import PostPage from './components/Post/Post'
 import NavBar from "./components/NavBar/NavBar";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import UsersList from "./components/UsersList";
@@ -15,13 +16,13 @@ import { authenticate } from "./services/auth";
 import * as sessionActions from "./store/session";
 
 function App() {
-  const dispatch = useDispatch();
-  const [loaded, setLoaded] = useState(false);
-  const sessionUser = useSelector((state) => state.session.user);
+	const dispatch = useDispatch()
+	const [loaded, setLoaded] = useState(false)
+	const sessionUser = useSelector(state => state.session.user)
 
-  useEffect(() => {
-    dispatch(sessionActions.restoreUser()).then(() => setLoaded(true));
-  }, [dispatch, loaded]);
+	useEffect(() => {
+		dispatch(sessionActions.restoreUser()).then(() => setLoaded(true))
+	}, [dispatch])
 
   return (
     <>
@@ -42,6 +43,9 @@ function App() {
               <ProtectedRoute path="/feed" exact={true}>
                 <FeedPage />
               </ProtectedRoute>
+              <ProtectedRoute path="/posts/:postId" exact={true}>
+							<PostPage />
+						</ProtectedRoute>
               <Route path="/users" exact={true}>
                 <UsersList />
               </Route>

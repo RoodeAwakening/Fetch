@@ -14,22 +14,35 @@ post_routes = Blueprint('posts', __name__)
 def post():
     m = request.method
     if m == 'GET':  # Get a list of posts
-        posts = db.session.query(Post, Comment).join(Comment).all()
-        for post in posts:
-            print(post['Post'].to_dict())
-            print(post['Comment'].to_dict(), )
-        return 'GET POSTS'
+        posts = []
+        postQuery = db.session.query(Post, User).join(User, User.id == Post.userId).all()
+        # .join(Like, Like.postId == Post.id)
+        # .join(Comment, Comment.postId == Post.id)
+        for post in postQuery:
+            likeQuery = db.session.query(Like).filter(Like.postId == post[0].id).all()
+            commentQuery = db.session.query(Comment).filter(Comment.postId == post[0].id).all()
+            likes = [like.to_dict() for like in likeQuery]
+            comments = [comment.to_dict() for comment in commentQuery]
+            posts.append({
+                'post': post[0].to_dict(),
+                'user': post[1].to_dict(),
+                'likeData': {'count':len(likes), 'likes': likes},
+                'comments': comments,
+            })
+        return jsonify(posts)
     elif m == 'POST':  # Create a new post
         form = UploadForm()
+        form['csrf_token'].data = request.cookies['csrf_token']
+        post = ''
         if form.validate_on_submit():
             post = Post(
                 userId=1,
-                photo=form.file.data,
+                photo=form.data['photo'],
                 caption=form.data['caption']
             )
             db.session.add(post)
             db.session.commit()
-        return post.to_dict() if post else 'Invalid operation'
+        return {"post": post.to_dict()} if post else 'Invalid operation'
 
 
 @ post_routes.route('/<int:id>', methods=['GET', 'DELETE'])
@@ -37,8 +50,16 @@ def post():
 def postById(id):
     m = request.method
     if m == 'GET':  # Get a data for a given post
-        post = Post.query.get(id)
-        return post.to_dict()
+
+        query = db.session.query(Post, Comment, User).join(
+            User, User.id == Post.userId).filter(Post.id == id).first()
+        post = {
+            'post': query[0].to_dict(),
+            'comments': query[1].to_dict(),
+            'user': query[2].to_dict()
+        }
+
+        return jsonify(post)
     elif m == 'DELETE':  # Delete a given post
         success = Post.query.filter(Post.id == id).delete()
         db.session.commit()
