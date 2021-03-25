@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Link, useHistory, useParams } from "react-router-dom";
+import { Link, useHistory, useParams, Redirect } from "react-router-dom";
 import "./Post.css";
 
 import { post } from "../../store/posts";
@@ -9,7 +9,6 @@ export default function Post({ postInfo }) {
   const dispatch = useDispatch();
   const history = useHistory();
   const { postId } = useParams();
-  console.log("POSTINFO", postInfo);
   useEffect(async () => {
     dispatch(post(postId));
   });
@@ -20,13 +19,10 @@ export default function Post({ postInfo }) {
         <img
           className="Post_avatar"
           alt="post-photo"
-          // src={user.profilePhoto}
-          src="https://pbs.twimg.com/profile_images/1237550450/mstom_400x400.jpg"
+          src={postInfo.user.profilePhoto}
         ></img>
-        <h4>Tom</h4>
-        {/* <h4>{userName}</h4> */}
+        <h4>{postInfo.user.username}</h4>
       </div>
-      {/* <img className="Post_photo" alt="post-photo" src={post.photo}></img> */}
       <img
         className="Post_photo"
         alt="post-photo"
@@ -34,16 +30,15 @@ export default function Post({ postInfo }) {
       ></img>
       <div className="Post_photo-footer">
         <span className="Post_likes">
-          <i className="far fa-heart" id="Post_heart"></i>
+          <i className="far fa-heart" id="Post_heart" />
         </span>
         <span className="Post_comment-icon">
-          <Link className="Post_comment-icon" to="/post">
+          <Link className="Post_comment-icon" to={`/posts/${postInfo.post.id}`}>
             <i className="far fa-comment" id="Post_comment-bubble"></i>
           </Link>
         </span>
         <p className="Post_caption">
-          {/* <strong>{userName}</strong> {caption} */}
-          <strong>Tom</strong> {postInfo.post.caption}
+          <strong>{postInfo.user.username}</strong> {postInfo.post.caption}
         </p>
       </div>
       <div className="Post_comment-container">
