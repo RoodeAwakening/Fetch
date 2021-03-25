@@ -22,6 +22,7 @@ const LoginForm = () => {
     const email = "demo@aa.io";
     const password = "password";
     dispatch(sessionActions.loginThunk({ email, password }));
+    // return <Redirect to="/feed" />
     history.push("/feed")
   };
 
@@ -48,7 +49,7 @@ const LoginForm = () => {
   return (
     <form onSubmit={setDemoLogin}>
       
-    <button type="submit" id="loginButtonTrue">
+    <button type="submit" id="loginButtonTrue" >
       Demo Login
     </button>
    

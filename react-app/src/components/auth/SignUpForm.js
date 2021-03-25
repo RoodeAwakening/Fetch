@@ -69,7 +69,7 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
   }
 
   return (
-    
+    <div className='SignupForm'>
     <form onSubmit={onSignUp} >
       <div>
         <label></label>
@@ -112,10 +112,10 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
           required={true}
         ></input>
       </div>
-      <div id='profileUpload'>
+      <div >
         <label>Profile Picture</label>
         <input 
-          
+          id='profileUpload'
           type="file"
           name="profile_photo"
           onChange={updateProfilePhoto}
@@ -126,7 +126,7 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
       <button id='SignupButton' id={emailAndPassword()? 'SignupButtonTrue':'SignupButtonFalse'} type="submit">Sign Up</button>
       {/* <button type="submit">Sign Up</button> */}
     </form>
-    
+    </div>
   );
 };
 

@@ -29,12 +29,10 @@ export default function SplashPage() {
               <div id='Splash_Page-right-or'></div>
             </div>
             <div className='Splash_Page-demo-user'>
-              <div>
+              <div id='demo-splash'>
 
               <h4>Log in as a Demo user</h4>
-              <DemoUser 
-              
-              />
+              <DemoUser />
               </div>
             </div>
           </div>

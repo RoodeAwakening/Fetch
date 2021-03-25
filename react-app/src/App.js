@@ -39,9 +39,9 @@ function App() {
         </Route>
         <div>
         <NavBar />
-          <ProtectedRoute path="/feed" exact={true}>
+          <Route path="/feed" exact={true}>
             <FeedPage />
-          </ProtectedRoute>
+          </Route>
           <Route path="/users" exact={true}>
             <UsersList />
           </Route>

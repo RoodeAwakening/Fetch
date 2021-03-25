@@ -68,6 +68,7 @@
   justify-content: center;
   font-size: 14px;
   width: 75%;
+  margin-bottom: 30px;
 }
 
 .Splash_Page-demo-user h4{
@@ -113,6 +114,9 @@
   
 }
 
+#demo-splash{
+  margin-bottom: 30px;
+}
 
 .Splash_Page-body-right-bottom h1{
   font-size: 14px;
@@ -150,7 +154,7 @@
 }
 
 /* PHONES */
-@media only screen and (min-width: 200px) and (max-width: 768px) { 
+@media only screen and (min-width: 200px) and (max-width: 875px) { 
  
 
   .Splash_Page-body-right-top{
