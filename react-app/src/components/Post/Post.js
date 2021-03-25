@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
-import { post } from "../../store/posts";
+import { post, createLike } from "../../store/posts";
 import "./Post.css";
 
 export default function Post({ postInfo }) {
@@ -15,6 +15,8 @@ export default function Post({ postInfo }) {
       dispatch(post(postId));
     }
   }
+
+  const like = () => dispatch(createLike(postInfo.post.id));
 
   return (
     <div className="Post">
@@ -35,7 +37,7 @@ export default function Post({ postInfo }) {
       </div>
       <div className="Post_photo-footer">
         <span className="Post_like-icon">
-          <i className="far fa-heart" id="Post_heart" />
+          <i className="far fa-heart" id="Post_heart" onClick={like} />
           <span className="Post_like-count">{postInfo?.likeData?.count}</span>
         </span>
         <span className="Post_comment-icon">

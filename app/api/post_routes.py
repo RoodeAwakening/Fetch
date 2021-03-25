@@ -86,11 +86,11 @@ def likesByPostId(id):
         return jsonify(res)
     elif m == 'POST':  # Create a new like for the given post
         # userId should come from currentUser
-        # userId = current_user.id???
-        like = Like(postId=id, userId=2)
+        print(current_user.to_dict())
+        like = Like(postId=id, userId=current_user.id)
         db.session.add(like)
         db.session.commit()
-        return jsonify(like.to_dict())
+        return jsonify({'like': like.to_dict()})
     elif m == 'DELETE':  # Delete a like for the given post
         db.session.commit()
         return jsonify()
