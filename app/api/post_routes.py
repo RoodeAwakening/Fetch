@@ -37,7 +37,7 @@ def post():
         return {"post": post.to_dict()} if post else 'Invalid operation'
 
 
-@ post_routes.route('/<int:id>', methods=['GET', 'DELETE'])
+@post_routes.route('/<int:id>', methods=['GET', 'DELETE'])
 # @login_required
 def postById(id):
     m = request.method
@@ -50,7 +50,7 @@ def postById(id):
         return jsonify('Successfully deleted.' if success else 'Invalid operation.')
 
 
-@ post_routes.route('/<int:id>/likes', methods=['GET', 'POST', 'DELETE'])
+@post_routes.route('/<int:id>/likes', methods=['GET', 'POST', 'DELETE'])
 # @login_required
 def likesByPostId(id):
     m = request.method
@@ -75,7 +75,7 @@ def likesByPostId(id):
         return jsonify()
 
 
-@ post_routes.route('/<int:id>/comments', methods=['GET', 'POST'])
+@post_routes.route('/<int:id>/comments', methods=['GET', 'POST'])
 # @login_required
 def commentsByPostId(id):
     m = request.method
@@ -94,7 +94,7 @@ def commentsByPostId(id):
         return jsonify(comment.to_dict())
 
 
-@ post_routes.route('/<int:id>/tags', methods=['GET', 'POST', 'DELETE'])
+@post_routes.route('/<int:id>/tags', methods=['GET', 'POST', 'DELETE'])
 # @login_required
 def tagsByPostId(id):
     m = request.method
