@@ -9,6 +9,7 @@ export default function FeedPage() {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(posts());
+    console.log("DISPATCH FEED");
   }, [dispatch]);
 
   const postInfo = [];
@@ -18,7 +19,6 @@ export default function FeedPage() {
 
   return (
     <div className="FeedPage_posts">
-      {/* {postData.map((post) => console.log(post))} */}
       {postInfo.map((post) => {
         return <Post postInfo={post} />;
       })}

@@ -19,15 +19,15 @@ export default function Post({ postInfo }) {
         <img
           className="Post_avatar"
           alt="post-photo"
-          src={postInfo.user.profilePhoto}
+          src={postInfo?.user?.profilePhoto}
         ></img>
-        <h4>{postInfo.user.username}</h4>
+        <h4>{postInfo?.user?.username}</h4>
       </div>
       <div className="Post_photo-container">
         <img
           className="Post_photo"
           alt="post-photo"
-          src={postInfo.post.photo}
+          src={postInfo?.post?.photo}
         ></img>
       </div>
       <div className="Post_photo-footer">
@@ -35,17 +35,19 @@ export default function Post({ postInfo }) {
           <i className="far fa-heart" id="Post_heart" />
         </span>
         <span className="Post_comment-icon">
-          <Link className="Post_comment-icon" to={`/posts/${postInfo.post.id}`}>
+          <Link
+            className="Post_comment-icon"
+            to={`/posts/${postInfo?.post?.id}`}
+          >
             <i className="far fa-comment" id="Post_comment-bubble"></i>
           </Link>
         </span>
         <p className="Post_caption">
-          <strong>{postInfo.user.username}</strong> {postInfo.post.caption}
+          <strong>{postInfo?.user?.username}</strong> {postInfo?.post?.caption}
         </p>
       </div>
       <div className="Post_comment-container">
         <ul className="Post_comments-list">
-          <li className="Post_comment">Comment list...</li>
           <li className="Post_comment">Comment list...</li>
           <li className="Post_comment">Comment list...</li>
           <li className="Post_comment">Comment list...</li>
