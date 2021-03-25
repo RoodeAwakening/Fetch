@@ -2,25 +2,35 @@
 #loginButton {
 }
 
-#loginButtonFalse {
+#loginButtonFalse,
+#SignupButtonFalse {
   background-color: #b2dffc;
   width: -webkit-fill-available;
   margin-top: 5px;
-  margin-bottom: 30px;
+  /* margin-bottom: 30px; */
   border-radius: 5px;
   height: 30px;
   border-style: none;
   
 }
-
-#loginButtonTrue {
+#loginButtonTrueDemo,
+#loginButtonTrue,
+#SignupButtonTrue {
   background-color: #0095f6;
   width: -webkit-fill-available;
   margin-top: 5px;
-  margin-bottom: 30px;
+  /* margin-bottom: 30px; */
+ 
   border-radius: 5px;
   height: 30px;
   border-style: none;
+}
+
+#loginButtonTrueDemo,
+#SignupButtonTrue,
+#SignupButtonFalse{
+  margin-bottom: 0px;
+  margin-top: 5px;
 }
 .login_form-email input,
 .login_form-password input{
@@ -46,3 +56,4 @@ height: 30px;
 
   width: -webkit-fill-available;
 }
+

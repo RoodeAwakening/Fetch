@@ -1,0 +1,45 @@
+.NavBar{
+  
+  margin-top: 0;
+  padding-top: 0;
+  height: 54px;
+  background-color: red;
+  border: 1px solid rgba(var(--b6a,219,219,219),1);
+  
+}
+
+nav {
+  display: flex;
+  height: 54px;
+  display: flex;
+  justify-content: space-between;
+  padding: 0px 20px;
+  background-color: green;
+}
+
+#navbar-logo img{
+  width: 103px;
+  height: auto;
+}
+
+.navbar-left{
+
+}
+
+.navbar-middle{
+
+}
+.navbar-right{
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  width: 222px;
+  padding-left: 24px;
+}
+
+.NavBar i{
+  font-size: 30px;
+  color: black;
+  height: 21.04px;
+  width: 22.02px;
+}

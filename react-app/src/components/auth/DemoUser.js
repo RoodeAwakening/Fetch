@@ -1,40 +1,54 @@
-import React from 'react'
-import { useHistory } from 'react-router-dom'
-import * as sessionActions from '../../store/session'
-import { useDispatch } from 'react-redux'
-import './auth.css'
+import React, { useState } from "react";
+import { Redirect } from "react-router-dom";
+import { login } from "../../services/auth";
+import * as sessionActions from "../../store/session";
+
+import { useHistory } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import "./auth.css";
 
 const LoginForm = () => {
-	let history = useHistory()
-	const dispatch = useDispatch()
+  let history = useHistory();
+  const [errors, setErrors] = useState([]);
 
-	const setDemoLogin = e => {
-		e.preventDefault()
-		const email = 'demo@aa.io'
-		const password = 'password'
-		dispatch(sessionActions.loginThunk({ email, password }))
-		history.push('/feed')
-	}
+  const dispatch = useDispatch();
 
-	// THIS IS OLD CODE THAT USES THE SETAUTHENTICATE
-	// const setDemoLogin = async (e) => {
-	//   e.preventDefault();
-	//   const email = "demo@aa.io";
-	//   const password = "password";
-	//   const user = await login(email, password);
-	//   setAuthenticated(true);
-	//   console.log('auth',setAuthenticated);
-	//   history.push('/feed')
+  const sessionUser = useSelector((state) => state.session.user);
 
-	// };
+  const setDemoLogin = async (e) => {
+    e.preventDefault();
+    setErrors([]);
+    const email = "demo@aa.io";
+    const password = "password";
+    const user = await dispatch(sessionActions.loginThunk({ email, password }));
+    if (user.errors) {
+      setErrors(user.errors);
+    } else {
+      history.push("/feed");
+    }
 
-	return (
-		<form onSubmit={setDemoLogin}>
-			<button type="submit" id="loginButtonTrue">
-				Demo Login
-			</button>
-		</form>
-	)
-}
+    return user;
+  };
 
-export default LoginForm
+  // THIS IS OLD CODE THAT USES THE SETAUTHENTICATE
+  // const setDemoLogin = async (e) => {
+  //   e.preventDefault();
+  //   const email = "demo@aa.io";
+  //   const password = "password";
+  //   const user = await login(email, password);
+  //   setAuthenticated(true);
+  //   console.log('auth',setAuthenticated);
+  //   history.push('/feed')
+
+  // };
+
+  return (
+    <form onSubmit={setDemoLogin}>
+      <button type="submit" id="loginButtonTrue">
+        Demo Login
+      </button>
+    </form>
+  );
+};
+
+export default LoginForm;

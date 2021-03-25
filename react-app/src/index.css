@@ -1,8 +1,21 @@
 /* TODO Add site wide styles */
+*{
+  
+}
+
 body{
- background-color: #FAFAFA;
- margin: 0;
- padding: 0;
+  background-color: #FAFAFA;
+  margin: 0;
+  padding: 0;
+  
+}
+
+button{
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
 }
 
 
