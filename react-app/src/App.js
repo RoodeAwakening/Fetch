@@ -5,6 +5,7 @@ import LoginPage from "./components/LoginPage";
 import SplashPage from "./components/SplashPage/SplashPage";
 import SignupPage from "./components//SignupPage/SignupPage";
 import FeedPage from "./components/FeedPage/FeedPage";
+import ComingSoon from "./components/ComingSoon";
 import NavBar from "./components/NavBar/NavBar";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import UsersList from "./components/UsersList";
@@ -33,6 +34,9 @@ function App() {
             <Route path="/signup" exact={true}>
               <SignupPage />
             </Route>
+            <Route path="/comingsoon" exact={true}>
+              <ComingSoon />
+              </Route>
             <div>
               <NavBar />
               <ProtectedRoute path="/feed" exact={true}>
@@ -45,6 +49,7 @@ function App() {
                 <User />
               </Route>
             </div>
+              
           </Switch>
         </BrowserRouter>
       )}

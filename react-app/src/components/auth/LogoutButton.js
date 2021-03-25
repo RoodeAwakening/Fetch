@@ -13,7 +13,7 @@ const LogoutButton =  (e) => {
     history.push("/")
   }
   
-  return <button onClick={onLogout}>Logout</button>;
+  return <button id='nav-logout' onClick={onLogout}>Logout</button>;
 };
 
 // OLD CODE USED WITH SETAUTHENTICATED
