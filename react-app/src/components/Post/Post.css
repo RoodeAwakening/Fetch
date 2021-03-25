@@ -39,6 +39,7 @@
 
 .Post_photo-footer {
   padding-top: 10px;
+  border-bottom: 1px solid lightgray;
 }
 
 .Post_caption {

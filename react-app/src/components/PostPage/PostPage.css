@@ -2,11 +2,8 @@
     Photo and comments for desktop
     Comments only for mobile
 */
-
-.PostPage_post-container {
+.Post {
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
 }
-

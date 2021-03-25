@@ -12,7 +12,6 @@ export default function Post({ postInfo }) {
     if (postData) {
       postInfo = postData;
     } else {
-      console.log("NO POST DATA");
       dispatch(post(postId));
     }
   }
@@ -57,7 +56,11 @@ export default function Post({ postInfo }) {
       <div className="Post_comment-container">
         <ul className="Post_comments-list">
           {postInfo?.commentData?.comments?.map((comment) => {
-            return <li className="Post_comment">{comment.content}</li>;
+            return (
+              <li key={comment.id} className="Post_comment">
+                {comment.content}
+              </li>
+            );
           })}
         </ul>
       </div>
