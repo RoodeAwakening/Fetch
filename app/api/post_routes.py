@@ -21,12 +21,13 @@ def post():
         for post in postQuery:
             likeQuery = db.session.query(Like).filter(Like.postId == post[0].id).all()
             commentQuery = db.session.query(Comment).filter(Comment.postId == post[0].id).all()
-            likes = { {like} for like in likeQuery}
-            print(likes)
-            print(commentQuery)
+            likes = [like.to_dict() for like in likeQuery]
+            comments = [comment.to_dict() for comment in commentQuery]
             posts.append({
                 'post': post[0].to_dict(),
                 'user': post[1].to_dict(),
+                'likes': likes,
+                'comments': comments,
             })
         return jsonify(posts)
     elif m == 'POST':  # Create a new post
