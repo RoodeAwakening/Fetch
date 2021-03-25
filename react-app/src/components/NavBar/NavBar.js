@@ -1,32 +1,37 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
-import LogoutButton from '../auth/LogoutButton';
+import React from "react";
+import { NavLink } from "react-router-dom";
+import "./NavBar.css";
+import LogoutButton from "../auth/LogoutButton";
+import ProfileButton from "./ProfileButton"
 
 const NavBar = () => {
   return (
-    <nav>
-      <ul>
-        <li>
+    <div className="NavBar">
+      <nav>
+        <div>
           <NavLink to="/feed" exact={true} activeClassName="active">
             Home
           </NavLink>
-        </li>
-        <li>
+        </div>
+        <div>
           <NavLink to="/sign-up" exact={true} activeClassName="active">
             Sign Up
           </NavLink>
-        </li>
-        <li>
+        </div>
+        <div>
           <NavLink to="/users" exact={true} activeClassName="active">
             Users
           </NavLink>
-        </li>
-        <li>
-          <LogoutButton  />
-        </li>
-      </ul>
-    </nav>
+        </div>
+        {/* <div>
+          <LogoutButton />
+        </div> */}
+        <div>
+          <ProfileButton/>
+        </div>
+      </nav>
+    </div>
   );
-}
+};
 
 export default NavBar;

@@ -1,0 +1,13 @@
+#profile_button{
+  color: white;
+  position: absolute;
+  top: 20px;
+  /* padding-right: 10px; */
+}
+
+.profile-dropdown{
+  text-align: left;
+  padding: 0px;
+  background-color: rgba(0, 0, 0, 0.623);
+
+}

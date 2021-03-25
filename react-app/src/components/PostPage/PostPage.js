@@ -1,5 +1,7 @@
 import { useSelector } from "react-redux";
 import Post from "../Post/Post";
+import "./PostPage.css";
+
 export default function PostPage() {
   return (
     <>

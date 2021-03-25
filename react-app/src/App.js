@@ -22,39 +22,35 @@ function App() {
     dispatch(sessionActions.restoreUser()).then(() => setLoaded(true));
   }, [dispatch, loaded]);
 
-
-
-  
-    return (
-      <>
+  return (
+    <>
       {loaded && (
-      <BrowserRouter>
-      
-        <Switch>
-        <Route path="/" exact={true}>
-          <SplashPage />
-        </Route>
-        <Route path="/signup" exact={true}>
-          <SignupPage />
-        </Route>
-        <div>
-        <NavBar />
-          <Route path="/feed" exact={true}>
-            <FeedPage />
-          </Route>
-          <Route path="/users" exact={true}>
-            <UsersList />
-          </Route>
-          <Route path="/users/:userId" exact={true}>
-            <User />
-          </Route>
-          </div>
-        </Switch>
-      </BrowserRouter>
+        <BrowserRouter>
+          <Switch>
+            <Route path="/" exact={true}>
+              <SplashPage />
+            </Route>
+            <Route path="/signup" exact={true}>
+              <SignupPage />
+            </Route>
+            <div>
+              <NavBar />
+              <ProtectedRoute path="/feed" exact={true}>
+                <FeedPage />
+              </ProtectedRoute>
+              <Route path="/users" exact={true}>
+                <UsersList />
+              </Route>
+              <Route path="/users/:userId" exact={true}>
+                <User />
+              </Route>
+            </div>
+          </Switch>
+        </BrowserRouter>
       )}
     </>
-    );
-  }
+  );
+}
 // }
 
 export default App;
