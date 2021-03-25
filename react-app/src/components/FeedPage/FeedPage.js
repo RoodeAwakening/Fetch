@@ -6,7 +6,6 @@ import Post from "../Post/Post";
 
 export default function FeedPage() {
   const postData = useSelector((state) => state.posts);
-  console.log("POST_DATA:", postData);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(posts());

@@ -12,10 +12,10 @@
 
 .Post_avatar {
   border-radius: 50px;
-  max-width: 40px;
-  max-height: 40px;
-  padding: 5px;
-  object-fit: contain;
+  max-width: 50px;
+  max-height: 50px;
+  margin: 5px;
+  object-fit: cover;
   margin-right: 5px;
 }
 
@@ -24,11 +24,21 @@
   color: black;
 }
 
+.Post_photo-container {
+  width: 500px;
+  height: 500px;
+}
+
 .Post_photo {
-  border-top: 1px solid #e0e0e0;
-  border-bottom: 1px solid #e0e0e0;
-  object-fit: contain;
+  border-top: 1px solid lightgray;
+  border-bottom: 1px solid lightgray;
+  object-fit: cover;
   width: 100%;
+  height: 100%;
+}
+
+.Post_photo-footer {
+  padding-top: 10px;
 }
 
 .Post_caption {

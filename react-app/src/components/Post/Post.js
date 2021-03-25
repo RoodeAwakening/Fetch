@@ -23,11 +23,13 @@ export default function Post({ postInfo }) {
         ></img>
         <h4>{postInfo.user.username}</h4>
       </div>
-      <img
-        className="Post_photo"
-        alt="post-photo"
-        src={postInfo.post.photo}
-      ></img>
+      <div className="Post_photo-container">
+        <img
+          className="Post_photo"
+          alt="post-photo"
+          src={postInfo.post.photo}
+        ></img>
+      </div>
       <div className="Post_photo-footer">
         <span className="Post_likes">
           <i className="far fa-heart" id="Post_heart" />
