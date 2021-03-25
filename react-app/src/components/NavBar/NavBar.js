@@ -38,7 +38,7 @@ const NavBar = () => {
               <i class="far fa-heart"></i>
             </NavLink>
           </div>
-          <div>
+          <div className='nav-right-button'>
               <ProfileButton />
           </div>
         </div>

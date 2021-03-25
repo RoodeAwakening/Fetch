@@ -9,7 +9,7 @@ export default function SplashPage() {
     <div className="Splash_Page-body">
       <div className="Splash_Page-body-container">
         <div className="Splash_Page-body-left">
-          <img src="../images/splash/splash_title.png" />
+          <img src="../images/splash/spash_phone.png" />
         </div>
         <div className="Splash_Page-body-right">
           <div className="Splash_Page-body-right-top">
