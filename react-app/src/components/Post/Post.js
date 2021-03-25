@@ -47,16 +47,18 @@ export default function Post({ postInfo }) {
             <i className="far fa-comment" id="Post_comment-bubble"></i>
           </Link>
         </span>
-				<span className="Post_comment-count">{postInfo?.commentData?.count}</span>
+        <span className="Post_comment-count">
+          {postInfo?.commentData?.count}
+        </span>
         <p className="Post_caption">
           <strong>{postInfo?.user?.username}</strong> {postInfo?.post?.caption}
         </p>
       </div>
       <div className="Post_comment-container">
         <ul className="Post_comments-list">
-          <li className="Post_comment">{postInfo?.likeData?.count}</li>
-          <li className="Post_comment">Comment list...</li>
-          <li className="Post_comment">Comment list...</li>
+          {postInfo?.commentData?.comments?.map((comment) => {
+            return <li className="Post_comment">{comment.content}</li>;
+          })}
         </ul>
       </div>
     </div>

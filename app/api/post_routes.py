@@ -51,12 +51,17 @@ def postById(id):
     m = request.method
     if m == 'GET':  # Get a data for a given post
 
-        query = db.session.query(Post, Comment, User).join(
-            User, User.id == Post.userId).filter(Post.id == id).first()
+        postQuery = db.session.query(Post, User).join(User, User.id == Post.userId).first()
+
+        likeQuery = db.session.query(Like).filter(Like.postId == Post.id).all()
+        commentQuery = db.session.query(Comment).filter(Comment.postId == Post.id).all()
+        likes = [like.to_dict() for like in likeQuery]
+        comments = [comment.to_dict() for comment in commentQuery]
         post = {
-            'post': query[0].to_dict(),
-            'comments': query[1].to_dict(),
-            'user': query[2].to_dict()
+            'post': postQuery[0].to_dict(),
+            'user': postQuery[1].to_dict(),
+            'likeData': {'count':len(likes), 'likes': likes},
+            'commentData': {'count':len(comments), 'comments': comments},
         }
 
         return jsonify(post)
