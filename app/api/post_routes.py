@@ -15,12 +15,18 @@ def post():
     m = request.method
     if m == 'GET':  # Get a list of posts
         posts = []
-        query = db.session.query(Post, Comment, User).join(User, User.id == Post.userId).all()
-        for post in query:
+        postQuery = db.session.query(Post, User).join(User, User.id == Post.userId).all()
+        # .join(Like, Like.postId == Post.id)
+        # .join(Comment, Comment.postId == Post.id)
+        for post in postQuery:
+            likeQuery = db.session.query(Like).filter(Like.postId == post[0].id).all()
+            commentQuery = db.session.query(Comment).filter(Comment.postId == post[0].id).all()
+            likes = { {like} for like in likeQuery}
+            print(likes)
+            print(commentQuery)
             posts.append({
                 'post': post[0].to_dict(),
-                'comments': post[1].to_dict(),
-                'user': post[2].to_dict()
+                'user': post[1].to_dict(),
             })
         return jsonify(posts)
     elif m == 'POST':  # Create a new post
