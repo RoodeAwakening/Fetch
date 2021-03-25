@@ -2,32 +2,45 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import "./NavBar.css";
 import LogoutButton from "../auth/LogoutButton";
-import ProfileButton from "./ProfileButton"
+import ProfileButton from "./ProfileButton";
 
 const NavBar = () => {
   return (
     <div className="NavBar">
       <nav>
-        <div>
-          <NavLink to="/feed" exact={true} activeClassName="active">
-            Home
-          </NavLink>
+        <div className="navbar-left">
+          <div id="navbar-logo">
+            <img src="/images/splash/splash_title.png" />
+          </div>
         </div>
-        <div>
-          <NavLink to="/sign-up" exact={true} activeClassName="active">
-            Sign Up
-          </NavLink>
+        <div className="navbar-middle">
+          <h1>SEARCH BAR</h1>
         </div>
-        <div>
-          <NavLink to="/users" exact={true} activeClassName="active">
-            Users
-          </NavLink>
-        </div>
-        {/* <div>
-          <LogoutButton />
-        </div> */}
-        <div>
-          <ProfileButton/>
+
+        <div className="navbar-right">
+          <div>
+            <NavLink to="/feed" exact={true} activeClassName="active">
+              <i class="fas fa-home"></i>
+            </NavLink>
+          </div>
+          <div>
+            <NavLink to="/comingsoon" exact={true} activeClassName="active">
+              <i class="fal fa-paper-plane"></i>
+            </NavLink>
+          </div>
+          <div>
+            <NavLink to="/comingsoon" exact={true} activeClassName="active">
+              <i class="far fa-compass"></i>
+            </NavLink>
+          </div>
+          <div>
+            <NavLink to="/comingsoon" exact={true} activeClassName="active">
+              <i class="far fa-heart"></i>
+            </NavLink>
+          </div>
+          <div>
+              <ProfileButton />
+          </div>
         </div>
       </nav>
     </div>

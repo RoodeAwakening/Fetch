@@ -4,18 +4,15 @@ import * as sessionActions from "../../store/session";
 import LogoutButton from "../auth/LogoutButton";
 import { useParams } from "react-router-dom";
 
-
-
-
 import "./ProfileButton.css";
 
 function ProfileButton() {
   const user = useSelector((state) => state.session.user);
 
   const dispatch = useDispatch();
-  
+
   const [showMenu, setShowmenu] = useState(false);
-  const { userId }  = useParams();
+  const { userId } = useParams();
   const openMenu = () => {
     if (showMenu) return;
     setShowmenu(true);
@@ -40,15 +37,19 @@ function ProfileButton() {
 
   return (
     <div id="profile_button">
-      <button onClick={openMenu}>
-      <img className='user-profile-picture' src={user.profilePhoto}/>
-      </button>
+      <input type="image" src={user.profilePhoto} onClick={openMenu} className="user-profile-picture-nav"></input>
+      {/* <button onClick={openMenu}>
+        <img className="user-profile-picture-nav" src={user.profilePhoto} />
+      </button> */}
       {showMenu && (
         <ul className="profile-dropdown">
-          <li>{user.username}</li>
-          <li>{user.email}</li>
-          <li>
-          <LogoutButton />
+          <li><i class="far fa-user-circle"><a href='/comingsoon' >Profile</a></i></li>
+          <li><i class="far fa-bookmark"><a href='/comingsoon' >Saved</a></i></li>
+          <li><i class="fal fa-cog"><a href='/comingsoon' >Settings</a></i></li>
+          <li><i class="far fa-repeat-alt"><a href='/comingsoon' >Switch Accounts</a></i></li>
+          <hr></hr>
+          <li >
+            <LogoutButton />
           </li>
         </ul>
       )}
