@@ -3,9 +3,9 @@ import { useDispatch } from "react-redux";
 import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom";
 import LoginPage from "./components/LoginPage";
 import SplashPage from "./components/SplashPage/SplashPage";
-import SignupPage from "./components/SignupPage";
+import SignupPage from "./components//SignupPage/SignupPage";
 import FeedPage from "./components/FeedPage/FeedPage";
-import NavBar from "./components/NavBar";
+import NavBar from "./components/NavBar/NavBar";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import UsersList from "./components/UsersList";
 import User from "./components/User";
@@ -22,39 +22,35 @@ function App() {
     dispatch(sessionActions.restoreUser()).then(() => setLoaded(true));
   }, [dispatch, loaded]);
 
-  console.log("---------sessionuser", sessionUser, loaded);
-
-  
-    return (
-      <>
+  return (
+    <>
       {loaded && (
-      <BrowserRouter>
-      
-        <Switch>
-        <Route path="/" exact={true}>
-          <SplashPage />
-        </Route>
-        <div>
-        <NavBar />
-        <Route path="/signup" exact={true}>
-          <SignupPage />
-        </Route>
-          <ProtectedRoute path="/feed" exact={true}>
-            <FeedPage />
-          </ProtectedRoute>
-          <Route path="/users" exact={true}>
-            <UsersList />
-          </Route>
-          <Route path="/users/:userId" exact={true}>
-            <User />
-          </Route>
-          </div>
-        </Switch>
-      </BrowserRouter>
+        <BrowserRouter>
+          <Switch>
+            <Route path="/" exact={true}>
+              <SplashPage />
+            </Route>
+            <Route path="/signup" exact={true}>
+              <SignupPage />
+            </Route>
+            <div>
+              <NavBar />
+              <ProtectedRoute path="/feed" exact={true}>
+                <FeedPage />
+              </ProtectedRoute>
+              <Route path="/users" exact={true}>
+                <UsersList />
+              </Route>
+              <Route path="/users/:userId" exact={true}>
+                <User />
+              </Route>
+            </div>
+          </Switch>
+        </BrowserRouter>
       )}
     </>
-    );
-  }
+  );
+}
 // }
 
 export default App;

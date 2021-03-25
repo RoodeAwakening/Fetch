@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { Redirect } from "react-router-dom";
 import { login } from "../../services/auth";
-import { useHistory } from "react-router-dom";
 import * as sessionActions from "../../store/session";
-import { useDispatch, useSelector } from "react-redux";
-import './auth.css'
 
+import { useHistory } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import "./auth.css";
 
 const LoginForm = () => {
   let history = useHistory();
@@ -15,16 +15,20 @@ const LoginForm = () => {
 
   const sessionUser = useSelector((state) => state.session.user);
 
-  // if (sessionUser) return <Redirect to="/feed" />;
-
-  const setDemoLogin = (e) => {
+  const setDemoLogin = async (e) => {
     e.preventDefault();
+    setErrors([]);
     const email = "demo@aa.io";
     const password = "password";
-    dispatch(sessionActions.loginThunk({ email, password }));
-    history.push("/feed")
-  };
+    const user = await dispatch(sessionActions.loginThunk({ email, password }));
+    if (user.errors) {
+      setErrors(user.errors);
+    } else {
+      history.push("/feed");
+    }
 
+    return user;
+  };
 
   // THIS IS OLD CODE THAT USES THE SETAUTHENTICATE
   // const setDemoLogin = async (e) => {
@@ -35,26 +39,15 @@ const LoginForm = () => {
   //   setAuthenticated(true);
   //   console.log('auth',setAuthenticated);
   //   history.push('/feed')
-  
-  // };
-  
-  
 
-  
-  
-  
- 
+  // };
 
   return (
     <form onSubmit={setDemoLogin}>
-      
-    <button type="submit" id="loginButtonTrue">
-      Demo Login
-    </button>
-   
-  </form>
-
-    
+      <button type="submit" id="loginButtonTrue">
+        Demo Login
+      </button>
+    </form>
   );
 };
 

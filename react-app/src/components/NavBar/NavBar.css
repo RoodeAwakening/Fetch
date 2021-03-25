@@ -1,0 +1,14 @@
+.NavBar{
+  margin-top: 0;
+  padding-top: 0;
+  height: 54px;
+  background-color: red;
+  border: 1px solid rgba(var(--b6a,219,219,219),1);
+}
+
+nav {
+  display: flex;
+  height: 54px;
+  
+  background-color: green;
+}
