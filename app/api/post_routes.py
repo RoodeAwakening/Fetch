@@ -26,7 +26,7 @@ def post():
             posts.append({
                 'post': post[0].to_dict(),
                 'user': post[1].to_dict(),
-                'likes': likes,
+                'likeData': {'count':len(likes), 'likes': likes},
                 'comments': comments,
             })
         return jsonify(posts)
