@@ -73,10 +73,16 @@ def likesByPostId(id):
     if m == 'GET':  # Get number of likes for a given post
         likes = []
         for like in Like.query.filter(Like.postId == id).all():
-            likes.append(like.to_dict())
+            user = User.query.get(like.userId)
+            
+            likes.append({
+                "like":like.to_dict(),
+                "user":user.to_dict()
+            })
         res = {
             'count': len(likes),
             'likes': likes
+            
         }
         return jsonify(res)
     elif m == 'POST':  # Create a new like for the given post
