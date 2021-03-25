@@ -45,8 +45,12 @@
   margin-left: 25px;
 }
 
-.Post_likes {
+.Post_like-icon {
   margin-left: 25px;
+}
+
+.Post_like-count {
+  margin-left: 5px;
 }
 
 #Post_heart:hover {

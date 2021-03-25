@@ -27,7 +27,7 @@ def post():
                 'post': post[0].to_dict(),
                 'user': post[1].to_dict(),
                 'likeData': {'count':len(likes), 'likes': likes},
-                'comments': comments,
+                'commentData': {'count':len(comments), 'comments': comments},
             })
         return jsonify(posts)
     elif m == 'POST':  # Create a new post
