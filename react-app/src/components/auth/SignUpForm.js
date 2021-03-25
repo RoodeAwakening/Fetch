@@ -57,8 +57,8 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
     setProfilePhoto(e.target.files[0]);
   };
 
-  if (authenticated) {
-    return <Redirect to="/" />;
+  if (sessionUser) {
+    return <Redirect to="/feed" />;
   }
 
   const emailAndPassword = ()=>{
