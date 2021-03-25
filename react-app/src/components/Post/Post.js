@@ -8,6 +8,7 @@ export default function Post({ postInfo }) {
 	const dispatch = useDispatch()
 	const { postId } = useParams()
 	const { [postId]: postData } = useSelector(state => state.posts)
+	console.log('llll',postInfo?.likeData);
 	if (!postInfo) {
 		if (postData) {
 			postInfo = postData
@@ -16,6 +17,7 @@ export default function Post({ postInfo }) {
 			dispatch(post(postId))
 		}
 	}
+
 
 	return (
 		<div className="Post">

@@ -1,5 +1,6 @@
 .Post {
-  max-width: 500px;
+
+  max-width: 614px;
   margin-bottom: 5px;
   border: 1px solid lightgray;
   background-color: white;
@@ -8,6 +9,8 @@
 .Post_header {
   padding: 10px;
   display: flex;
+  width: 614px;
+  height: 60px;
 }
 
 .Post_avatar {
@@ -25,8 +28,8 @@
 }
 
 .Post_photo-container {
-  width: 500px;
-  height: 500px;
+  width: 614px;
+  height: 767.08px;
 }
 
 .Post_photo {
@@ -47,6 +50,10 @@
 
 .Post_likes {
   margin-left: 25px;
+}
+
+#Post_heart-red{
+  color: red;
 }
 
 #Post_heart:hover {
