@@ -3,9 +3,9 @@
   margin-top: 0;
   padding-top: 0;
   height: 54px;
-  background-color: red;
+  background-color: #FFFFFF;
   border: 1px solid rgba(var(--b6a,219,219,219),1);
-  
+  margin-bottom: 15px;
 }
 
 nav {
@@ -14,7 +14,8 @@ nav {
   display: flex;
   justify-content: space-between;
   padding: 0px 20px;
-  background-color: green;
+  background-color: #FFFFFF;
+  border: 1px solid rgba(black);
 }
 
 #navbar-logo img{
@@ -23,15 +24,29 @@ nav {
 }
 
 .navbar-left{
-
+display: flex;
+justify-content: center;
+align-items: center;
 }
 
 .navbar-middle{
-
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+
+.navbar-middle input{
+  text-align: center;
+  font-family: FontAwesome;
+}
+
+
+
 .navbar-right{
   display: flex;
+justify-content: center;
   justify-content: space-between;
+  align-items: center;
   flex-direction: row;
   width: 222px;
   padding-left: 24px;

@@ -10,11 +10,16 @@ const NavBar = () => {
       <nav>
         <div className="navbar-left">
           <div id="navbar-logo">
+          <NavLink to="/feed" exact={true} activeClassName="active">
             <img src="/images/splash/splash_title.png" />
+            </NavLink>
           </div>
         </div>
         <div className="navbar-middle">
-          <h1>SEARCH BAR</h1>
+          <input type='text' 
+          placeholder='&#xf002; Search'
+          
+          />
         </div>
 
         <div className="navbar-right">
