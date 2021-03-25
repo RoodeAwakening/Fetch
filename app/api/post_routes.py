@@ -15,7 +15,8 @@ def post():
     m = request.method
     if m == 'GET':  # Get a list of posts
         posts = []
-        query = db.session.query(Post, Comment, User).join(User, User.id == Post.userId).all()
+        query = db.session.query(Post, Comment, User).join(
+            User, User.id == Post.userId).all()
         for post in query:
             posts.append({
                 'post': post[0].to_dict(),
@@ -43,8 +44,16 @@ def post():
 def postById(id):
     m = request.method
     if m == 'GET':  # Get a data for a given post
-        post = Post.query.get(id)
-        return post.to_dict()
+
+        query = db.session.query(Post, Comment, User).join(
+            User, User.id == Post.userId).filter(Post.id == id).first()
+        post = {
+            'post': query[0].to_dict(),
+            'comments': query[1].to_dict(),
+            'user': query[2].to_dict()
+        }
+
+        return jsonify(post)
     elif m == 'DELETE':  # Delete a given post
         success = Post.query.filter(Post.id == id).delete()
         db.session.commit()
