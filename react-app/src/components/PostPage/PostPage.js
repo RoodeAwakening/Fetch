@@ -8,10 +8,10 @@ import React, { useEffect } from "react";
 export default function PostPage() {
 	const dispatch = useDispatch()
   const { postId } = useParams();
-	
+
 	useEffect(()=>{
 		dispatch(post(postId))
-		
+
 	},[dispatch])
 	//grabs all the posts and gets the key value by post id and destructures
 	const {[postId]:postData} = useSelector((state) => state.posts);

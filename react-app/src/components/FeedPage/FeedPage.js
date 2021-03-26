@@ -9,7 +9,6 @@ export default function FeedPage() {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(posts());
-    console.log("DISPATCH FEED");
   }, [dispatch]);
 
   const postInfo = [];

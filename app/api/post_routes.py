@@ -51,20 +51,20 @@ def postById(id):
     m = request.method
     if m == 'GET':  # Get a data for a given post
 
-        postQuery = db.session.query(Post, User).join(User, User.id == id).first()
+        postQuery = db.session.query(Post, User).join(User, User.id == id).filter(Post.id == id).first()
         likeQuery = db.session.query(Like).filter(Like.postId == id).all()
-        commentQuery = db.session.query(Comment).filter(Comment.postId == Post.id).all()
+        commentQuery = db.session.query(Comment).filter(Comment.postId == id).all()
         likes = [like.to_dict() for like in likeQuery]
         comments = [comment.to_dict() for comment in commentQuery]
-
+        print(postQuery)
         post = {
             'post': postQuery[0].to_dict(),
             'user': postQuery[1].to_dict(),
             'likeData': {'count':len(likes), 'likes': likes},
             'commentData': {'count':len(comments), 'comments': comments},
         }
-
         return jsonify(post)
+
     elif m == 'DELETE':  # Delete a given post
         success = Post.query.filter(Post.id == id).delete()
         db.session.commit()

@@ -41,7 +41,7 @@ export default function Post({ postInfo }) {
           <i className="far fa-heart" id="Post_heart" />
         </span>
         <span className="Post_like-count">
-          {/* {postInfo?.likeData.count} */}
+          {postInfo?.likeData.count}
         </span>
         <span className="Post_comment-icon">
           <Link
@@ -52,7 +52,7 @@ export default function Post({ postInfo }) {
           </Link>
         </span>
         <span className="Post_comment-count">
-          {/* {postInfo?.comments.length} */}
+          {postInfo?.commentData.count}
         </span>
         <p className="Post_caption">
           <strong>{postInfo?.user?.username}</strong> {postInfo?.post?.caption}
@@ -60,7 +60,9 @@ export default function Post({ postInfo }) {
       </div>
       <div className="Post_comment-container">
         <ul className="Post_comments-list">
-          <li className="Post_comment">Comment list...</li>
+          {postInfo?.commentData?.comments && postInfo?.commentData?.comments.map(comment => {
+            return <li className="Post_comment">{comment.content}</li>
+          })}
         </ul>
       </div>
     </div>
