@@ -91,7 +91,7 @@ const postsReducer = (state = initialState, action) => {
 		case ADD_POST:
 			return {
 				...state,
-				posts[action.id]: action.post,
+				[action.id]: action.post,
 			}
 		default:
 			return state
