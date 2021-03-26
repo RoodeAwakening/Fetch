@@ -31,7 +31,7 @@ def post():
 
             for comment in commentQuery:
                 comments.append({
-                    "comments": comment[0].to_dict(),
+                    "comment": comment[0].to_dict(),
                     "comment_by": comment[1].to_dict(),
                 })
 
@@ -77,7 +77,7 @@ def postById(id):
 
         for comment in commentQuery:
             comments.append({
-                "comments": comment[0].to_dict(),
+                "comment": comment[0].to_dict(),
                 "comment_by": comment[1].to_dict(),
             })
 
