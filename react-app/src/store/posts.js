@@ -70,9 +70,8 @@ export const createLike = (postId) => async (dispatch) => {
   const response = await fetch(`/api/posts/${postId}/likes`, {
     method: "POST",
   });
-  const data = await response.json();
-
-  dispatch(addLike(data.like.id, data.like));
+  const like = await response.json();
+  dispatch(addLike(like.id, like));
 };
 
 const initialState = {};
@@ -92,6 +91,11 @@ const postsReducer = (state = initialState, action) => {
       return {
         ...state,
         [action.id]: action.post,
+      };
+    case ADD_LIKE:
+      return {
+        ...state,
+        [posts.likeData]: action.like,
       };
     default:
       return state;

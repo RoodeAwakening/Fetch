@@ -9,9 +9,7 @@ export default function Post({ postInfo }) {
   const [liked, setLiked] = useState();
   const { postId } = useParams();
   const { [postId]: postData } = useSelector((state) => state.posts);
-
-  const like = () => dispatch(createLike(postId));
-
+  const like = () => dispatch(createLike(postInfo.post.id));
   return (
     <div className="Post">
       <div className="Post_header">
