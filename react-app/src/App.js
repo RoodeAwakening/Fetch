@@ -6,7 +6,6 @@ import SplashPage from "./components/SplashPage/SplashPage";
 import SignupPage from "./components//SignupPage/SignupPage";
 import FeedPage from "./components/FeedPage/FeedPage";
 import ComingSoon from "./components/ComingSoon";
-import PostPage from './components/Post/Post'
 import NavBar from "./components/NavBar/NavBar";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import UsersList from "./components/UsersList";
@@ -14,6 +13,7 @@ import User from "./components/User";
 import { useSelector } from "react-redux";
 import { authenticate } from "./services/auth";
 import * as sessionActions from "./store/session";
+import PostPage from './components/PostPage/PostPage'
 
 function App() {
 	const dispatch = useDispatch()
@@ -44,7 +44,7 @@ function App() {
                 <FeedPage />
               </ProtectedRoute>
               <ProtectedRoute path="/posts/:postId" exact={true}>
-							<PostPage />
+              <PostPage />
 						</ProtectedRoute>
               <Route path="/users" exact={true}>
                 <UsersList />
