@@ -87,8 +87,8 @@ def likesByPostId(id):
         return jsonify(res)
     elif m == 'POST':  # Create a new like for the given post
         # userId should come from currentUser
-        # userId = current_user.id???
-        like = Like(postId=id, userId=2)
+        userId = current_user.id
+        like = Like(postId=id, userId=userId)
         db.session.add(like)
         db.session.commit()
         return jsonify(like.to_dict())
@@ -107,13 +107,14 @@ def commentsByPostId(id):
             comments.append(comment.to_dict())
         return jsonify(comments)
     elif m == 'POST':  # Create new comment for given post
-        content = request.json['content']
+        print('----------',request.json)
+        content = request.json['commentInput']
         # userId should come from currentUser
-        # userId = current_user.id???
-        comment = Comment(postId=id, userId=2, content=content)
+        userId = current_user.id
+        comment = Comment(postId=id, userId=userId, content=content)
         db.session.add(comment)
         db.session.commit()
-        return jsonify(comment.to_dict())
+        return jsonify({"comment":comment.to_dict()})
 
 
 @ post_routes.route('/<int:id>/tags', methods=['GET', 'POST', 'DELETE'])

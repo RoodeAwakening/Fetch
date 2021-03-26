@@ -82,6 +82,41 @@
   list-style: none;
   padding: 5px;
   margin-right: 15px;
+  
+}
+
+.commentPost
+form {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  border: 1px solid rgba(var(--b6a, 219, 219, 219), 1);
+}
+
+.commentPost button{
+  padding-right: 10px;
+}
+
+#commentContainerInput{
+  width: 100%;
+  
+}
+
+#commentInput {
+  width: 95%;
+  height: 40px;
+  justify-content: space-between;
+  border: none;
+}
+
+#commentPostButtonFalse{
+  font-weight: 700;
+  color: #a9d9f8;
+}
+
+#commentPostButtonTrue{
+  font-weight: 700;
+  color: #45B2F8;
 }
 
 
@@ -92,7 +127,7 @@
     height: auto;
     padding: 0px;
     margin-bottom: 0px;
-    margin-top: 0px;
+    margin-top: 5px;
     
   }
 

@@ -4,6 +4,8 @@ const ADD_POST = "posts/addPost";
 
 const ADD_LIKE = "posts/getLikes";
 
+const ADD_COMMENT = 'posts/addComment';
+
 const getPosts = (posts) => {
   return {
     type: GET_POSTS,
@@ -26,6 +28,14 @@ const addLike = (id, like) => {
     like,
   };
 };
+
+const addComment = (postId, comment) => {
+  return {
+    type: ADD_COMMENT,
+    postId,
+    comment,
+  }
+}
 
 export const posts = () => async (dispatch) => {
   const response = await fetch(`/api/posts/`);
@@ -81,6 +91,25 @@ export const createLike = (like) => async (dispatch) => {
 
   dispatch(addLike(data.like.id, data.like));
 };
+//comment
+export const createComment = (commentObject) => async (dispatch) => {
+  const { commentInput, postId } = commentObject;
+  console.log('///',commentInput);
+
+  const response = await fetch(`/api/posts/${postId}/comments`, {
+    method: "POST",
+    headers:{
+      "Content-Type": "application/json",
+      
+    },
+    body:JSON.stringify( {
+      'commentInput':commentInput
+    }),
+  });
+  const data = await response.json();
+  dispatch(addComment(postId, data.comment));
+  return response
+};
 
 const initialState = {};
 
@@ -99,6 +128,17 @@ const postsReducer = (state = initialState, action) => {
       return {
         ...state,
         [action.id]: action.post,
+      };
+    case ADD_COMMENT:
+      return {
+        ...state,
+        [action.postId]: {
+          ...state[action.postId] ,
+          'comments': [
+            ...state[action.postId].comments,
+            action.comment
+          ]
+        },
       };
     default:
       return state;
