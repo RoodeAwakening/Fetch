@@ -307,6 +307,7 @@
     flex-direction: column;
     text-align: center;
     align-items: center;
+    padding-top: 15px;
 
     padding: 15px 4px;
   }
@@ -317,6 +318,9 @@
   }
 
   .Signup_Page-body-footer div {
-    padding-top: 10px;
+    padding-top: 15px;
+
+    padding-left: 15px;
+    padding-right: 15px;
   }
 }

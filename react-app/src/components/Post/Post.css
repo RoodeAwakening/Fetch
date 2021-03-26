@@ -1,9 +1,10 @@
 .Post {
-
   max-width: 614px;
   margin-bottom: 5px;
   border: 1px solid lightgray;
   background-color: white;
+  margin-top: 10px;
+
 }
 
 .Post_header {
@@ -81,4 +82,29 @@
   list-style: none;
   padding: 5px;
   margin-right: 15px;
+}
+
+
+@media only screen and (min-width: 200px) and (max-width: 875px) {
+
+  .Post{
+    width: 375px;
+    height: auto;
+    padding: 0px;
+    margin-bottom: 0px;
+    margin-top: 0px;
+    
+  }
+
+  .Post_photo {
+    width: 375px;
+    height: 375px;
+  }
+
+  .Post_photo-container{
+    height: 375px;
+
+  }
+
+
 }
