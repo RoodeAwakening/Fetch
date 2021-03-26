@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 import "./NavBar.css";
 import LogoutButton from "../auth/LogoutButton";
 import ProfileButton from "./ProfileButton";
+import logo from '../../images/splash/splash_title.png'
 
 const NavBar = () => {
   return (
@@ -11,7 +12,7 @@ const NavBar = () => {
         <div className="navbar-left">
           <div id="navbar-logo">
           <NavLink to="/feed" exact={true} activeClassName="active">
-            <img src="/images/splash/splash_title.png" />
+            <img src={logo} />
             </NavLink>
           </div>
         </div>

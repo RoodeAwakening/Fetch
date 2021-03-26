@@ -2,6 +2,9 @@ import React from "react";
 import { useSelector } from "react-redux";
 import SignUpForm from "../auth/SignUpForm";
 import DemoUser from "../auth/DemoUser";
+import logo from '../../images/splash/splash_title.png'
+import apple from '../../images/splash/splash_appStore_icon.png'
+import android from '../../images/splash/splash_playStore_icon.png'
 import "./SignupPage.css";
 
 export default function SignupPage() {
@@ -13,7 +16,7 @@ export default function SignupPage() {
             <img
               alt="Fetch Title"
               id="Signup_logo"
-              src="../images/splash/splash_title.png"
+              src={logo}
             ></img>
             <div className="Signup_Page-demo-user">
               <div >
@@ -52,12 +55,12 @@ export default function SignupPage() {
               <img
                 alt="Available on the App Store"
                 id="apple"
-                src="../images/splash/splash_appStore_icon.png"
+                src={apple}
               ></img>
               <img
                 alt="Available on the PlayStore"
                 id="android"
-                src="../images/splash/splash_playStore_icon.png"
+                src={android}
               ></img>
             </div>
           </div>
