@@ -16,18 +16,30 @@ def post():
     if m == 'GET':  # Get a list of posts
         posts = []
         postQuery = db.session.query(Post, User).join(User, User.id == Post.userId).all()
-        # .join(Like, Like.postId == Post.id)
-        # .join(Comment, Comment.postId == Post.id)
         for post in postQuery:
-            likeQuery = db.session.query(Like).filter(Like.postId == post[0].id).all()
-            commentQuery = db.session.query(Comment).filter(Comment.postId == post[0].id).all()
-            likes = [like.to_dict() for like in likeQuery]
-            comments = [comment.to_dict() for comment in commentQuery]
+            likeQuery = db.session.query(Like, User).join(User, User.id == Like.userId).filter(Like.postId == post[0].id).all()
+            commentQuery = db.session.query(Comment, User).join(User, User.id == Comment.userId).filter(Comment.postId == post[0].id).all()
+
+            likes = []
+            comments = []
+
+            for like in likeQuery:
+                likes.append({
+                    "likes": like[0].to_dict(),
+                    "liked_by": like[1].to_dict(),
+                })
+
+            for comment in commentQuery:
+                comments.append({
+                    "comment": comment[0].to_dict(),
+                    "comment_by": comment[1].to_dict(),
+                })
+
             posts.append({
                 'post': post[0].to_dict(),
                 'user': post[1].to_dict(),
-                'likeData': {'count':len(likes), 'likes': likes},
-                'comments': comments,
+                'likeData': likes,
+                'commentData': comments,
             })
         return jsonify(posts)
     elif m == 'POST':  # Create a new post
@@ -51,15 +63,32 @@ def postById(id):
     m = request.method
     if m == 'GET':  # Get a data for a given post
 
-        query = db.session.query(Post, Comment, User).join(
-            User, User.id == Post.userId).filter(Post.id == id).first()
-        post = {
-            'post': query[0].to_dict(),
-            'comments': query[1].to_dict(),
-            'user': query[2].to_dict()
-        }
+        postQuery = db.session.query(Post, User).join(User, User.id == id).filter(Post.id == id).first()
+        likeQuery = db.session.query(Like, User).join(User, User.id == Like.userId).filter(Like.postId == id).all()
+        commentQuery = db.session.query(Comment, User).join(User, User.id == Comment.userId).filter(Comment.postId == id).all()
 
+        likes = []
+        comments = []
+        for like in likeQuery:
+            likes.append({
+                "likes": like[0].to_dict(),
+                "liked_by": like[1].to_dict(),
+            })
+
+        for comment in commentQuery:
+            comments.append({
+                "comment": comment[0].to_dict(),
+                "comment_by": comment[1].to_dict(),
+            })
+
+        post = {
+            'post': postQuery[0].to_dict(),
+            'user': postQuery[1].to_dict(),
+            'likeData': likes,
+            'commentData': comments,
+        }
         return jsonify(post)
+
     elif m == 'DELETE':  # Delete a given post
         success = Post.query.filter(Post.id == id).delete()
         db.session.commit()

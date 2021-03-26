@@ -112,7 +112,7 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
           required={true}
         ></input>
       </div>
-      <div >
+      <div id='profileUpload'>
         <label>Profile Picture</label>
         <input 
           id='profileUpload'
