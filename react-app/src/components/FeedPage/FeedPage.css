@@ -1,4 +1,8 @@
+.FeedPage_container{
+  
+}
 .FeedPage_posts {
+  padding-top: 70px;
   display: flex;
   flex-direction: column;
   align-items: center;

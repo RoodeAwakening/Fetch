@@ -18,10 +18,13 @@ export default function FeedPage() {
   }
 
   return (
+    <div className="FeedPage_container">
+
     <div className="FeedPage_posts">
       {postInfo.map((post) => {
         return <Post postInfo={post} />;
       })}
     </div>
+      </div>
   );
 }

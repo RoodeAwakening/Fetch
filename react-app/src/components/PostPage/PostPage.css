@@ -4,6 +4,8 @@
 */
 
 .PostPage_post-container {
+  padding-top: 70px;
+
   background-color: red;
   display: flex;
   justify-content: center;

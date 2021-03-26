@@ -1,9 +1,10 @@
 .Post {
-
   max-width: 614px;
   margin-bottom: 5px;
   border: 1px solid lightgray;
   background-color: white;
+  margin-top: 10px;
+
 }
 
 .Post_header {

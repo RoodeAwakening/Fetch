@@ -8,15 +8,7 @@ export default function Post({ postInfo }) {
 	const dispatch = useDispatch()
 	const { postId } = useParams()
 	const { [postId]: postData } = useSelector(state => state.posts)
-	console.log('xx',postInfo);
-	// if (!postInfo) {
-	// 	if (postData) {
-	// 		postInfo = postData
-	// 	} else {
-	// 		console.log('NO POST DATA')
-	// 		dispatch(post(postId))
-	// 	}
-	// }
+
 
 
 	return (
