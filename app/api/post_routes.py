@@ -27,7 +27,7 @@ def post():
                 'post': post[0].to_dict(),
                 'user': post[1].to_dict(),
                 'likeData': {'count':len(likes), 'likes': likes},
-                'comments': comments,
+                'commentData': {'count':len(comments), 'comments': comments},
             })
         return jsonify(posts)
     elif m == 'POST':  # Create a new post
@@ -51,12 +51,17 @@ def postById(id):
     m = request.method
     if m == 'GET':  # Get a data for a given post
 
-        query = db.session.query(Post, Comment, User).join(
-            User, User.id == Post.userId).filter(Post.id == id).first()
+        postQuery = db.session.query(Post, User).join(User, User.id == id).first()
+        likeQuery = db.session.query(Like).filter(Like.postId == id).all()
+        commentQuery = db.session.query(Comment).filter(Comment.postId == Post.id).all()
+        likes = [like.to_dict() for like in likeQuery]
+        comments = [comment.to_dict() for comment in commentQuery]
+
         post = {
-            'post': query[0].to_dict(),
-            'comments': query[1].to_dict(),
-            'user': query[2].to_dict()
+            'post': postQuery[0].to_dict(),
+            'user': postQuery[1].to_dict(),
+            'likeData': {'count':len(likes), 'likes': likes},
+            'commentData': {'count':len(comments), 'comments': comments},
         }
 
         return jsonify(post)
@@ -74,7 +79,7 @@ def likesByPostId(id):
         likes = []
         for like in Like.query.filter(Like.postId == id).all():
             user = User.query.get(like.userId)
-            
+
             likes.append({
                 "like":like.to_dict(),
                 "user":user.to_dict()
@@ -82,7 +87,7 @@ def likesByPostId(id):
         res = {
             'count': len(likes),
             'likes': likes
-            
+
         }
         return jsonify(res)
     elif m == 'POST':  # Create a new like for the given post
