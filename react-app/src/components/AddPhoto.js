@@ -1,3 +1,5 @@
+import Webcam from "webcam-easy";
+
 
 const photoPage = () => {
 
