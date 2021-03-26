@@ -66,16 +66,9 @@ export const createPost = (post) => async (dispatch) => {
   dispatch(addPost(data.post.id, data.post));
 };
 
-export const createLike = (like) => async (dispatch) => {
-  const { userId, postId } = like;
-
+export const createLike = (postId) => async (dispatch) => {
   const response = await fetch(`/api/posts/${postId}/likes`, {
     method: "POST",
-    "Content-Type": "application/json",
-    body: {
-      userId,
-      postId,
-    },
   });
   const data = await response.json();
 
@@ -106,4 +99,3 @@ const postsReducer = (state = initialState, action) => {
 };
 
 export default postsReducer;
-
