@@ -19,8 +19,8 @@ export default function SignupPage() {
               src={logo}
             ></img>
             <div className="Signup_Page-demo-user">
-              <div >
-                <h4>Sign up to see photos and videos from your friends.</h4>
+              <div id='signup-page-friends'>
+                <h4 >Sign up to see photos and videos from your friends.</h4>
                 <DemoUser />
               </div>
             </div>
