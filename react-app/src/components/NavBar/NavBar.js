@@ -38,7 +38,7 @@ const NavBar = () => {
               <i class="fal fa-camera-alt"></i>
             </button>
           </div>
-          <div>
+          <div className='mobile-hidden'>
             <NavLink to="/comingsoon" exact={true} activeClassName="active">
               <i class="fal fa-paper-plane"></i>
             </NavLink>
