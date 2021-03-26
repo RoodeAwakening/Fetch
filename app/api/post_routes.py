@@ -15,11 +15,19 @@ def post():
     m = request.method
     if m == 'GET':  # Get a list of posts
         posts = []
-        query = db.session.query(Post, Comment).join(Comment).all()
-        for post in query:
+        postQuery = db.session.query(Post, User).join(User, User.id == Post.userId).all()
+        # .join(Like, Like.postId == Post.id)
+        # .join(Comment, Comment.postId == Post.id)
+        for post in postQuery:
+            likeQuery = db.session.query(Like).filter(Like.postId == post[0].id).all()
+            commentQuery = db.session.query(Comment).filter(Comment.postId == post[0].id).all()
+            likes = [like.to_dict() for like in likeQuery]
+            comments = [comment.to_dict() for comment in commentQuery]
             posts.append({
                 'post': post[0].to_dict(),
-                'comments': post[1].to_dict()
+                'user': post[1].to_dict(),
+                'likeData': {'count':len(likes), 'likes': likes},
+                'comments': comments,
             })
         return jsonify(posts)
     elif m == 'POST':  # Create a new post
@@ -42,8 +50,16 @@ def post():
 def postById(id):
     m = request.method
     if m == 'GET':  # Get a data for a given post
-        post = Post.query.get(id)
-        return post.to_dict()
+
+        query = db.session.query(Post, Comment, User).join(
+            User, User.id == Post.userId).filter(Post.id == id).first()
+        post = {
+            'post': query[0].to_dict(),
+            'comments': query[1].to_dict(),
+            'user': query[2].to_dict()
+        }
+
+        return jsonify(post)
     elif m == 'DELETE':  # Delete a given post
         success = Post.query.filter(Post.id == id).delete()
         db.session.commit()
@@ -57,16 +73,23 @@ def likesByPostId(id):
     if m == 'GET':  # Get number of likes for a given post
         likes = []
         for like in Like.query.filter(Like.postId == id).all():
-            likes.append(like.to_dict())
+            user = User.query.get(like.userId)
+
+            likes.append({
+                "like":like.to_dict(),
+                "user":user.to_dict()
+            })
         res = {
             'count': len(likes),
             'likes': likes
+
         }
         return jsonify(res)
     elif m == 'POST':  # Create a new like for the given post
         # userId should come from currentUser
         # userId = current_user.id???
-        like = Like(postId=id, userId=2)
+        print(current_user.to_dict())
+        like = Like(postId=id, userId=current_user.id)
         db.session.add(like)
         db.session.commit()
         return jsonify(like.to_dict())

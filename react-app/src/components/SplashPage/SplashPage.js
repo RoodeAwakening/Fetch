@@ -2,39 +2,42 @@ import { useSelector } from "react-redux";
 import React from "react";
 import "./SplashPage.css";
 import LoginForm from "../auth/LoginForm";
-import DemoUser from "../auth/DemoUser"
+import DemoUser from "../auth/DemoUser";
+import logo from '../../images/splash/splash_title.png'
+import phone from '../../images/splash/spash_phone.png'
+import apple from '../../images/splash/splash_appStore_icon.png'
+import android from '../../images/splash/splash_playStore_icon.png'
+
+
 
 export default function SplashPage() {
   return (
     <div className="Splash_Page-body">
       <div className="Splash_Page-body-container">
         <div className="Splash_Page-body-left">
-          <img src="../images/splash/spash_phone.png" />
+          <img src={phone} />
         </div>
         <div className="Splash_Page-body-right">
           <div className="Splash_Page-body-right-top">
             <img
               alt="Fetch Title"
               id="splash_logo"
-              src="../images/splash/splash_title.png"
+              src={logo}
             ></img>
             <div className="Splash_Page-loginForm">
-              <LoginForm 
-              
-              />
+              <LoginForm />
             </div>
-            <div className='Splash_Page-or'>
-              <div id='Splash_Page-left-or'></div>
-              <div id='Splash_Page-middle-or'><h3>OR</h3></div>
-              <div id='Splash_Page-right-or'></div>
+            <div className="Splash_Page-or">
+              <div id="Splash_Page-left-or"></div>
+              <div id="Splash_Page-middle-or">
+                <h3>OR</h3>
+              </div>
+              <div id="Splash_Page-right-or"></div>
             </div>
-            <div className='Splash_Page-demo-user'>
-              <div>
-
-              <h4>Log in as a Demo user</h4>
-              <DemoUser 
-              
-              />
+            <div className="Splash_Page-demo-user">
+              <div id="demo-splash">
+                <h4>Log in as a Demo user</h4>
+                <DemoUser />
               </div>
             </div>
           </div>
@@ -49,12 +52,12 @@ export default function SplashPage() {
               <img
                 alt="Available on the App Store"
                 id="apple"
-                src="../images/splash/splash_appStore_icon.png"
+                src={apple}
               ></img>
               <img
                 alt="Available on the PlayStore"
                 id="android"
-                src="../images/splash/splash_playStore_icon.png"
+                src={android}
               ></img>
             </div>
           </div>

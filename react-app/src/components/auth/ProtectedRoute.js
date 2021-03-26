@@ -1,15 +1,10 @@
-import React from 'react';
-import { Route, Redirect } from 'react-router-dom';
-import { useDispatch, useSelector } from "react-redux";
+import React from 'react'
+import { Route, Redirect } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 
 const ProtectedRoute = props => {
-  const sessionUser = useSelector((state) => state.session.user);
-  return (
-    <Route {...props}>
-      {(sessionUser)? props.children  : <Redirect to="/" />}
-    </Route>
-  )
-};
+	const sessionUser = useSelector(state => state.session.user)
+	return <Route {...props}>{sessionUser ? props.children : <Redirect to="/" />}</Route>
+}
 
-
-export default ProtectedRoute;
+export default ProtectedRoute

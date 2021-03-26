@@ -1,36 +1,34 @@
-import React, { useState } from "react";
+import React, { useState } from 'react'
 
 import * as sessionActions from "../../store/session";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router";
-import './auth.css'
+import "./auth.css";
 
 const LoginForm = () => {
-  let history = useHistory()
+  let history = useHistory();
   const [errors, setErrors] = useState([]);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const dispatch = useDispatch();
+	const dispatch = useDispatch()
 
   const sessionUser = useSelector((state) => state.session.user);
-  
-  const  onLogin = async (e) => {
+
+  const onLogin = async (e) => {
     e.preventDefault();
     setErrors([]);
-    const user =  await dispatch(sessionActions.loginThunk({ email, password }))
+    const user = await dispatch(sessionActions.loginThunk({ email, password }));
     if (user.errors) {
-      setErrors(user.errors)
-    }else{
-      history.push("/feed")
+      setErrors(user.errors);
+    } else {
+      history.push("/feed");
     }
-    
-    return user
+
+    return user;
   };
 
-
-
-// THIS IS OLD CODE THAT USES THE SETAUTHENTICATE
+  // THIS IS OLD CODE THAT USES THE SETAUTHENTICATE
   // const onLogin = async (e) => {
   //   e.preventDefault();
   //   const user = await login(email, password);
@@ -38,26 +36,20 @@ const LoginForm = () => {
   //   if (!user.errors) {
   //     // setAuthenticated(true);
 
-  //   } else {
-  //     setErrors(user.errors);
-  //   }
-  // };
+	const updateEmail = e => {
+		setEmail(e.target.value)
+	}
 
-  const updateEmail = (e) => {
-    setEmail(e.target.value);
-  };
+	const updatePassword = e => {
+		setPassword(e.target.value)
+	}
 
-  const updatePassword = (e) => {
-    setPassword(e.target.value);
-  };
-
- const emailAndPassword = ()=>{
-   if (email.length >= 3 && password.length >= 3) {
-     return true
-   }
-     return false
- }
-
+	const emailAndPassword = () => {
+		if (email.length >= 3 && password.length >= 3) {
+			return true
+		}
+		return false
+	}
 
 
   return (
@@ -87,7 +79,13 @@ const LoginForm = () => {
           onChange={updatePassword}
         />
       </div>
-        <button id='loginButton' id={emailAndPassword()? 'loginButtonTrue':'loginButtonFalse'} type="submit">Log In</button>
+      <button
+        id="loginButton"
+        id={emailAndPassword() ? "loginButtonTrue" : "loginButtonFalse"}
+        type="submit"
+      >
+        Log In
+      </button>
     </form>
   );
 };

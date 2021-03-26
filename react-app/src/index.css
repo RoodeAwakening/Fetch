@@ -1,8 +1,26 @@
 /* TODO Add site wide styles */
+*{
+  
+}
+
 body{
- background-color: #FAFAFA;
- margin: 0;
- padding: 0;
+  background-color: #FAFAFA;
+  margin: 0;
+  padding: 0;
+  
+}
+
+button{
+  cursor: pointer;
+  background: none;
+	border: none;
+	padding: 0;
+	cursor: pointer;
+	outline: inherit;
+}
+
+a {
+  text-decoration: none;
 }
 
 

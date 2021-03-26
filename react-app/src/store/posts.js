@@ -2,6 +2,8 @@ const GET_POSTS = 'posts/getPosts'
 
 const ADD_POST = 'posts/addPost'
 
+const ADD_LIKE = 'posts/getLikes'
+
 const getPosts = posts => {
 	return {
 		type: GET_POSTS,
@@ -14,6 +16,14 @@ const addPost = (id, post) => {
 		type: ADD_POST,
 		id,
 		post,
+	}
+}
+
+const addLike = (id, like) => {
+	return {
+		type: ADD_LIKE,
+		id,
+		like,
 	}
 }
 
@@ -54,6 +64,15 @@ export const createPost = post => async dispatch => {
 	const data = await response.json()
 
 	dispatch(addPost(data.post.id, data.post))
+}
+
+export const createLike = postId => async dispatch => {
+	const response = await fetch(`/api/posts/${postId}/likes`, {
+		method: 'POST',
+	})
+	const data = await response.json()
+
+	dispatch(addLike(data.like.id, data.like))
 }
 
 const initialState = {}

@@ -1,0 +1,70 @@
+.NavBar{
+  position: fixed;
+  width: 100vw;
+  margin-top: 0;
+  padding-top: 0;
+
+  height: 54px;
+  /* height: 200px; */
+  background-color: #FFFFFF;
+  border: 1px solid rgba(var(--b6a,219,219,219),1);
+  margin-bottom: 15px;
+}
+
+nav {
+  display: flex;
+  height: 54px;
+  display: flex;
+  justify-content: space-between;
+  padding: 0px 20px;
+  background-color: #FFFFFF;
+  border: 1px solid rgba(black);
+}
+
+#navbar-logo img{
+  width: 103px;
+  height: auto;
+}
+
+.navbar-left{
+display: flex;
+justify-content: center;
+align-items: center;
+}
+
+.navbar-middle{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.navbar-middle input{
+  text-align: center;
+  font-family: FontAwesome;
+}
+
+
+
+.navbar-right{
+  display: flex;
+justify-content: center;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  width: 252px;
+  padding-left: 24px;
+}
+
+
+
+.NavBar i{
+  font-size: 30px;
+  color: black;
+  height: 21.04px;
+  width: 22.02px;
+}
+
+
+@media only screen and (min-width: 200px) and (max-width: 875px) {
+  
+ }
