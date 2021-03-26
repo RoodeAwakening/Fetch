@@ -1,8 +1,11 @@
 .NavBar{
-  
+  position: fixed;
+  width: 100vw;
   margin-top: 0;
   padding-top: 0;
+
   height: 54px;
+  /* height: 200px; */
   background-color: #FFFFFF;
   border: 1px solid rgba(var(--b6a,219,219,219),1);
   margin-bottom: 15px;
@@ -48,9 +51,11 @@ justify-content: center;
   justify-content: space-between;
   align-items: center;
   flex-direction: row;
-  width: 222px;
+  width: 252px;
   padding-left: 24px;
 }
+
+
 
 .NavBar i{
   font-size: 30px;
@@ -58,3 +63,8 @@ justify-content: center;
   height: 21.04px;
   width: 22.02px;
 }
+
+
+@media only screen and (min-width: 200px) and (max-width: 875px) {
+  
+ }
