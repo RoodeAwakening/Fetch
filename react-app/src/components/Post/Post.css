@@ -53,7 +53,7 @@
   margin-left: 25px;
 }
 
-#Post_heart-red{
+#Post_heart-red {
   color: red;
 }
 
@@ -62,6 +62,9 @@
   cursor: pointer;
 }
 
+.Post_like-count {
+  margin-left: 5px;
+}
 .Post_comment-icon {
   color: black;
 }
@@ -69,6 +72,11 @@
 #Post_comment-bubble {
   margin-left: 15px;
 }
+
+.Post_comment-count {
+  margin-left: 5px;
+}
+
 #Post_comment-bubble:hover {
   color: #777777;
   cursor: pointer;
@@ -79,9 +87,30 @@
 }
 
 .Post_comment {
-  list-style: none;
-  padding: 5px;
-  margin-right: 15px;
+  padding: 10px;
+  display: flex;
+  align-self: center;
+  min-width: 50px;
+  min-height: 50px;
+}
+
+.Post_comment-avatar {
+  border-radius: 50px;
+  max-width: 30px;
+  max-height: 30px;
+  margin: 5px;
+  object-fit: cover;
+  margin-left: -25px;
+}
+
+.Post_comment-username {
+  margin-left: 5px;
+  margin-top: 10px;
+}
+
+.Post_comment-content {
+  margin-left: 15px;
+  margin-top: 10px;
 }
 
 
