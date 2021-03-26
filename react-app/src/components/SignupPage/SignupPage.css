@@ -1,23 +1,20 @@
 /* DESKTOP VERSION */
 @media only screen and (min-width: 768px) {
-
   /* body */
   .Signup_Page-body {
     padding-top: 40px;
   }
-  
+
   .Signup_Page-body-container {
     display: flex;
     justify-content: center;
-    
   }
 
-  #Signup_logo{
+  #Signup_logo {
     padding-top: 22px;
     padding-bottom: 5px;
     max-width: 175px;
   }
-
 
   .Signup_Page-body-right {
     display: flex;
@@ -26,60 +23,57 @@
     margin-left: 25px;
     width: 348px;
   }
-  
+
   .Signup_Page-body-right-top {
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 100%;
-    border: 1px solid rgba(var(--b6a,219,219,219),1);
-    background-color: #FFFFFF;
+    border: 1px solid rgba(var(--b6a, 219, 219, 219), 1);
+    background-color: #ffffff;
   }
-  
-  .SignupForm{
+
+  .SignupForm {
     text-align: center;
   }
 
-  .SignupForm div{
+  .SignupForm div {
     padding-top: 5px;
   }
 
-  .SignupForm input{
-    width: 258px ;
+  .SignupForm input {
+    width: 258px;
     height: 36px;
-    }
-  
-  #profileUpload{
+  }
+
+  #profileUpload {
     width: 258px;
   }
 
-  .Signup_Page-or{
+  .Signup_Page-or {
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
     width: 75%;
-    color: #8E8E8E;
+    color: #8e8e8e;
     font-size: 13px;
   }
-  
-  
+
   #Signup_Page-left-or,
-  #Signup_Page-right-or{
+  #Signup_Page-right-or {
     width: 45%;
-    background-color: rgba(var(--b38,219,219,219),1);
+    background-color: rgba(var(--b38, 219, 219, 219), 1);
     height: 1px;
-    top: .45em;
+    top: 0.45em;
     margin: 5px 10px;
-    
   }
 
-  #demo-no-margin{
+  #demo-no-margin {
     margin-bottom: 0px;
-
   }
-  
-  .Signup_Page-demo-user{
+
+  .Signup_Page-demo-user {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -87,95 +81,82 @@
     font-size: 17px;
     font-weight: 600;
     line-height: 20px;
-    color: rgba(var(--f52,142,142,142),1);
+    color: rgba(var(--f52, 142, 142, 142), 1);
     width: 75%;
   }
-  
-  .Signup_Page-demo-user h4{
+
+  .Signup_Page-demo-user h4 {
     padding: 0px;
     margin: 10px;
-
     text-align: center;
-  
   }
-  
-  
-  
+
   .Signup_Page-body-right-middle {
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 100%;
-    border: 1px solid rgba(var(--b6a,219,219,219),1);
-    background-color: #FFFFFF;
+    border: 1px solid rgba(var(--b6a, 219, 219, 219), 1);
+    background-color: #ffffff;
     margin-top: 10px;
   }
-  
-  .Signup_Page-body-right-middle h1{
+
+  .Signup_Page-body-right-middle h1 {
     padding: 10px 0;
-    }
-    
-  .Signup_Page-body-right-middle a{
-    color: rgba(var(--d69,0,149,246),1);
+  }
+
+  .Signup_Page-body-right-middle a {
+    color: rgba(var(--d69, 0, 149, 246), 1);
     text-decoration: none;
     cursor: pointer;
-    }
-  
+  }
 
-  
-  #splash-signup{
+  #splash-signup {
     font-weight: 500;
     font-size: 14px;
   }
-  
-  .signupDetails{
-    
+
+  .signupDetails {
     font-size: 12px;
     line-height: 16px;
-    
+
     margin: 10px 40px;
     text-align: center;
   }
 
-  .signupDetails h3{
-    color: rgba(var(--f52,142,142,142),1);
+  .signupDetails h3 {
+    color: rgba(var(--f52, 142, 142, 142), 1);
     font-weight: 500;
   }
 
-  .signupDetails a{
-    color: rgba(var(--f52,142,142,142),1);
+  .signupDetails a {
+    color: rgba(var(--f52, 142, 142, 142), 1);
 
     font-weight: 700;
   }
 
-
   .Signup_Page-body-right-bottom {
-    
     display: flex;
     flex-direction: column;
     align-items: center;
-    
   }
-  
-  
-  .Signup_Page-body-right-bottom h1{
+
+  .Signup_Page-body-right-bottom h1 {
     font-weight: 500;
     font-size: 14px;
-    
   }
-  
-  
-  #apple{
+
+  #apple {
     max-width: 136px;
     max-height: 40.8px;
     margin-right: 5px;
   }
-  
-  #android{
+
+  #android {
     max-width: 136px;
     margin-left: 5px;
   }
-  
+
   /* footer */
   .Signup_Page-body-footer {
     display: flex;
@@ -183,16 +164,163 @@
     align-items: center;
     padding-top: 40px;
   }
-  
-  .Signup_Page-body-footer a{
+
+  .Signup_Page-body-footer a {
     font-weight: 500;
     color: gray;
-    padding-right: 5px;
+    padding-right: 10px;
   }
-  
-  .Signup_Page-body-footer div{
+
+  .Signup_Page-body-footer div {
     padding-top: 10px;
   }
+}
+
+/* PHONES */
+@media only screen and (min-width: 200px) and (max-width: 875px) {
+  .Signup_Page-body {
   }
-  
-  
+  .Signup_Page-body-right-top {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+  }
+  #Signup_logo {
+    width: 45%;
+    padding: 30px 0;
+  }
+
+  .Signup_Page-demo-user h4 {
+    padding: 0px;
+    margin: 10px;
+    text-align: center;
+    font-weight: 600;
+  }
+
+  #signup-page-friends {
+    width: 270px;
+  }
+
+  #signup-page-friends h4 {
+    padding: 0px;
+    margin: 10px;
+    color: #8e8e8e;
+    text-align: center;
+  }
+
+  .signupDetails {
+    font-size: 12px;
+    line-height: 16px;
+    color: #8e8e8e;
+
+    margin: 10px 40px;
+    text-align: center;
+  }
+
+  .signupDetails h3 {
+    color: rgba(var(--f52, 142, 142, 142), 1);
+    font-weight: 500;
+  }
+
+  .signupDetails a {
+    color: rgba(var(--f52, 142, 142, 142), 1);
+
+    font-weight: 700;
+  }
+
+  .Signup_Page-or {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 75%;
+    color: #8e8e8e;
+    font-size: 13px;
+  }
+
+  .Splash_Page-loginForm {
+    text-align: center;
+    width: 75%;
+    padding-top: 5px;
+  }
+
+  .Splash_Page-loginForm input {
+    margin-top: 10px;
+  }
+
+  .Splash_Page-loginForm input {
+    margin-top: 5px;
+    height: 36px;
+    width: 100%;
+  }
+
+  #profileUpload {
+    margin-top: 10px;
+  }
+
+  .Signup_Page-body-right-middle {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  #Signup_Page-left-or,
+  #Signup_Page-right-or {
+    width: 45%;
+    background-color: rgba(var(--b38, 219, 219, 219), 1);
+    height: 1px;
+    top: 0.45em;
+    margin: 5px 10px;
+  }
+
+  #Signup-signup {
+    font-size: 14px;
+  }
+
+  .Signup_Page-body-right-bottom {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .Signup_Page-body-right-bottom h1 {
+    padding-top: 25px;
+    font-size: 14px;
+  }
+
+  #apple {
+    max-width: 136px;
+    max-height: 40.8px;
+    margin-right: 5px;
+  }
+  #android {
+    max-width: 136px;
+    margin-left: 5px;
+  }
+
+  .Signup_Page-body-footer {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    padding-top: 15px;
+
+    padding: 15px 4px;
+  }
+
+  .Signup_Page-body-footer a {
+    color: gray;
+    padding-right: 10px;
+  }
+
+  .Signup_Page-body-footer div {
+    padding-top: 15px;
+
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+}

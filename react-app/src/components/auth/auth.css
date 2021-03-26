@@ -11,6 +11,7 @@
   border-radius: 5px;
   height: 30px;
   border-style: none;
+  color: white;
   
 }
 #loginButtonTrueDemo,
@@ -19,6 +20,7 @@
   background-color: #0095f6;
   width: -webkit-fill-available;
   margin-top: 5px;
+  color: white;
   /* margin-bottom: 30px; */
  
   border-radius: 5px;
@@ -29,6 +31,8 @@
 #loginButtonTrueDemo,
 #SignupButtonTrue,
 #SignupButtonFalse{
+  color: white;
+
   margin-bottom: 0px;
   margin-top: 5px;
 }
