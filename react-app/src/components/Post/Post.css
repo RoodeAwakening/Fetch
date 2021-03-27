@@ -27,10 +27,7 @@
 	color: black;
 }
 
-.Post_photo-container {
-	width: 614px;
-	height: 767.08px;
-}
+
 
 .Post_photo {
 	border-top: 1px solid lightgray;
@@ -160,8 +157,11 @@
 }
 
 .Post_photo-container {
-	/* display: flex;
-	justify-content: space-around; */
+	
+}
+.Post_photo-container {
+	
+	width: 614px;
 	height: 100%;
 }
 
