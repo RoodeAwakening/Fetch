@@ -21,7 +21,7 @@ export default function FeedPage() {
 		<div className="FeedPage_container">
 			<div className="FeedPage_posts">
 				{postInfo.map(post => {
-					return <Post key={post.post.id} postInfo={post} />
+					return <Post key={post.post.id} postInfo={post} maxComments={3} />
 				})}
 			</div>
 		</div>
