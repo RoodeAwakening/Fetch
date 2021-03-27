@@ -144,7 +144,7 @@ def commentsByPostId(id):
         comment = Comment(postId=id, userId=userId, content=content)
         db.session.add(comment)
         db.session.commit()
-        return jsonify({"comment":comment.to_dict()})
+        return jsonify({"comment":comment.to_dict(), "comment_by": current_user.to_dict()})
 
 
 @ post_routes.route('/<int:id>/tags', methods=['GET', 'POST', 'DELETE'])
