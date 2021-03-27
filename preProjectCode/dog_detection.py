@@ -11,10 +11,24 @@ client = vision.ImageAnnotatorClient()
 
 
 #set this thumbnail as the url
-current_image = 'https://i.insider.com/5e417f6edf2f660a5e129e42?width=700'
+# Faces of presidents
+# current_image = 'https://i.insider.com/5e417f6edf2f660a5e129e42?width=700'
+# Pic of dog
+current_image = 'https://img.webmd.com/dtmcms/live/webmd/consumer_assets/site_images/article_thumbnails/other/dog_cool_summer_slideshow/1800x1200_dog_cool_summer_other.jpg'
 image = types.Image()
 image.source.image_uri = current_image
 
+#### LABEL DETECTION ######
+
+response_label = client.label_detection(image=image)
+
+for label in response_label.label_annotations:
+    print({'label': label.description, 'score': label.score})
+
+for label in response_label.label_annotations:
+  if 'Dog' in label.description and label.score > 0.90:
+    print(True, label.description)
+  else: print(False)
 
 # #### FACE DETECTION ######
 
@@ -33,14 +47,3 @@ image.source.image_uri = current_image
 #     print(d)
 
 
-#### LABEL DETECTION ######
-
-response_label = client.label_detection(image=image)
-
-for label in response_label.label_annotations:
-    print({'label': label.description, 'score': label.score})
-
-for label in response_label.label_annotations:
-  if 'Dog' in label.description and label.score > 0.90:
-    print(True, label.description)
-  else: print(False)

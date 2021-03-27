@@ -58,6 +58,8 @@ export const createPost = post => async dispatch => {
 	let { caption, photo } = post
 	const formData = new FormData()
 	formData.append('image', photo)
+
+	//add to aws
 	const responseImageUrl = await fetch('/api/images', {
 		method: 'POST',
 		body: formData,
@@ -66,6 +68,9 @@ export const createPost = post => async dispatch => {
 	photo = photoData.url
 	console.log('--------', photo)
 
+	//check if valid
+
+	// add to database
 	const response = await fetch('/api/posts/', {
 		method: 'POST',
 		'Content-Type': 'application/json',
