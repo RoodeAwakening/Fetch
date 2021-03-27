@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { Link, useParams } from "react-router-dom";
-import { post } from "../../store/posts";
+import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
+import { createLike } from "../../store/posts";
 import { createComment } from "../../store/posts";
 import "./Post.css";
 
@@ -33,6 +33,8 @@ export default function Post({ postInfo }) {
     return false;
   };
 
+  const like = () => dispatch(createLike(postInfo.post.id));
+
   return (
     <div className="Post">
       <div className="Post_header">
@@ -52,7 +54,7 @@ export default function Post({ postInfo }) {
       </div>
       <div className="Post_photo-footer">
         <span className="Post_likes">
-          <i className="far fa-heart" id="Post_heart" />
+          <i className="far fa-heart" id="Post_heart" onClick={like} />
         </span>
         <span className="Post_like-count">{postInfo?.likeData.length}</span>
         <span className="Post_comment-icon">
