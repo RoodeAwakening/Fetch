@@ -27,10 +27,7 @@
 	color: black;
 }
 
-.Post_photo-container {
-	width: 614px;
-	height: 767.08px;
-}
+
 
 .Post_photo {
 	border-top: 1px solid lightgray;
@@ -85,6 +82,18 @@
 	margin-top: 10px;
 }
 
+::-webkit-scrollbar {
+	width: 0px;
+	background: transparent; /* make scrollbar transparent */
+}
+
+.Post_comments-list{
+	
+
+	max-height: 67px;
+	overflow-y: scroll;
+}
+
 .Post_comment {
 	list-style: none;
 	padding: 5px;
@@ -95,7 +104,7 @@
 	width: 100%;
 	display: flex;
 	flex-direction: row;
-	border: 1px solid rgba(var(--b6a, 219, 219, 219), 1);
+	border-top: 1px solid rgba(var(--b6a, 219, 219, 219), 1);
 }
 
 .commentPost button {
@@ -147,6 +156,20 @@
 	margin-top: 10px;
 }
 
+.Post_photo-container {
+	
+}
+.Post_photo-container {
+	
+	width: 614px;
+	height: 100%;
+}
+
+.Post_photo-container img{
+	max-width: 614px;
+	max-height: auto;
+}
+
 @media only screen and (min-width: 200px) and (max-width: 875px) {
 	.Post {
 		width: 375px;
@@ -162,6 +185,16 @@
 	}
 
 	.Post_photo-container {
-		height: 375px;
+		/* display: flex;
+		justify-content: space-around; */
+		height: 100%;
+	}
+
+	.Post_photo-container img{
+		max-width: 375px;
+		max-height: auto;
+
+		/* height: 375px;
+		width: auto; */
 	}
 }
