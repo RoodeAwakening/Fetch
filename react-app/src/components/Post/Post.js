@@ -66,26 +66,6 @@ export default function Post({ postInfo }) {
 			</div>
 			<div className="Post_comment-container">
 				<ul className="Post_comments-list">
-					{/* <li className="Post_comment">Comment list...</li>
-          <li className="Post_comment">Comment list...</li>
-          <li className="Post_comment">Comment list...</li>
-        </ul>
-      </div>
-      <div className='commentPost'>
-        <form onSubmit={addComment}>
-          <div id='commentContainerInput'>
-            <input
-              id='commentInput'
-              placeholder="Add a comment..."
-              type="text"
-              name="comment"
-              onChange={updateComment}
-              value={commentInput}
-            ></input>
-          </div>
-          <button type='submit' id={commentLength()? 'commentPostButtonTrue': 'commentPostButtonFalse'}>Post</button>
-        </form>
-      </div> */}
 					{postInfo?.commentData &&
 						postInfo?.commentData?.map(comment => {
 							return (
@@ -99,6 +79,16 @@ export default function Post({ postInfo }) {
 							)
 						})}
 				</ul>
+				<div className="commentPost">
+					<form onSubmit={addComment}>
+						<div id="commentContainerInput">
+							<input id="commentInput" placeholder="Add a comment..." type="text" name="comment" onChange={updateComment} value={commentInput}></input>
+						</div>
+						<button type="submit" id={commentLength() ? 'commentPostButtonTrue' : 'commentPostButtonFalse'}>
+							Post
+						</button>
+					</form>
+				</div>
 			</div>
 		</div>
 	)
