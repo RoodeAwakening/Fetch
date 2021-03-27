@@ -15,12 +15,13 @@ export default function FeedPage() {
 	for (const post in postData) {
 		postInfo.push(postData[post])
 	}
+	postInfo.reverse()
 
 	return (
 		<div className="FeedPage_container">
 			<div className="FeedPage_posts">
 				{postInfo.map(post => {
-					return <Post key={post.post.id} postInfo={post} />
+					return <Post key={post.post.id} postInfo={post} maxComments={3} />
 				})}
 			</div>
 		</div>

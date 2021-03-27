@@ -1,18 +1,14 @@
 import React, { useState, useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import * as sessionActions from '../../store/session'
+import { useSelector } from 'react-redux'
 import LogoutButton from '../auth/LogoutButton'
-import { useParams } from 'react-router-dom'
 
 import './ProfileButton.css'
 
 function ProfileButton() {
 	const user = useSelector(state => state.session.user)
 
-	const dispatch = useDispatch()
-
 	const [showMenu, setShowmenu] = useState(false)
-	const { userId } = useParams()
+
 	const openMenu = () => {
 		if (showMenu) return
 		setShowmenu(true)
@@ -30,14 +26,9 @@ function ProfileButton() {
 		return () => document.removeEventListener('click', closeMenu)
 	}, [showMenu])
 
-	const logout = e => {
-		e.preventDefault()
-		dispatch(sessionActions.logoutThunk())
-	}
-
 	return (
 		<div id="profile_button">
-			<input type="image" src={user.profilePhoto} onClick={openMenu} className="user-profile-picture-nav"></input>
+			<input type="image" alt="profile" src={user.profilePhoto} onClick={openMenu} className="user-profile-picture-nav"></input>
 			{/* <button onClick={openMenu}>
         <img className="user-profile-picture-nav" src={user.profilePhoto} />
       </button> */}

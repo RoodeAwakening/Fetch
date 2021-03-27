@@ -5,20 +5,20 @@ import { createLike, removeLike } from '../../store/posts'
 import { createComment } from '../../store/posts'
 import './Post.css'
 
-export default function Post({ postInfo }) {
+export default function Post({ postInfo, maxComments }) {
 	const dispatch = useDispatch()
 	const postData = useSelector(state => state.posts)
-	const [errors, setErrors] = useState([])
+	// const [errors, setErrors] = useState([]) //!not being used
 	const [commentInput, setCommentInput] = useState('')
 	const [liked, setLiked] = useState()
 
 	const addComment = async e => {
 		e.preventDefault()
 		const comment = await dispatch(createComment({ commentInput, postId: postInfo.post.id }))
-		if (comment.errors) {
-			setErrors(comment.errors)
-		}
 		setCommentInput('')
+		// if (comment.errors) {
+		// 	setErrors(comment.errors)
+		// }
 		return comment
 	}
 
@@ -45,11 +45,11 @@ export default function Post({ postInfo }) {
 	return (
 		<div className="Post">
 			<div className="Post_header">
-				<img className="Post_avatar" alt="post-photo" src={postInfo?.user?.profilePhoto}></img>
+				<img className="Post_avatar" alt="avatar" src={postInfo?.user?.profilePhoto}></img>
 				<h4>{postInfo?.user?.username}</h4>
 			</div>
 			<div className="Post_photo-container">
-				<img className="Post_photo" alt="post-photo" src={postInfo?.post?.photo}></img>
+				<img className="Post_photo" alt="post" src={postInfo?.post?.photo}></img>
 			</div>
 			<div className="Post_photo-footer">
 				<span className="Post_likes">
@@ -69,10 +69,10 @@ export default function Post({ postInfo }) {
 			<div className="Post_comment-container">
 				<ul className="Post_comments-list">
 					{postInfo?.commentData &&
-						postInfo?.commentData?.map(comment => {
+						postInfo?.commentData?.map((comment, i) => {
 							return (
-								<li key={comment.comment.id} className="Post_comment">
-									<img className="Post_comment-avatar" src={comment.comment_by.profilePhoto} />
+								<li key={comment.comment.id} className={`Post_comment ${i >= maxComments ? 'hidden' : ''}`}>
+									<img alt="comment-avatar" className="Post_comment-avatar" src={comment.comment_by.profilePhoto} />
 									<span className="Post_comment-username">
 										<strong>{comment.comment_by.username}</strong>
 									</span>
@@ -84,9 +84,9 @@ export default function Post({ postInfo }) {
 				<div className="commentPost">
 					<form onSubmit={addComment}>
 						<div id="commentContainerInput">
-							<input id="commentInput" placeholder="Add a comment..." type="text" name="comment" onChange={updateComment} value={commentInput}></input>
+							<input className="commentInput" placeholder="Add a comment..." type="text" name="comment" onChange={updateComment} value={commentInput}></input>
 						</div>
-						<button type="submit" id={commentLength() ? 'commentPostButtonTrue' : 'commentPostButtonFalse'}>
+						<button type="submit" className={commentLength() ? 'commentPostButtonTrue' : 'commentPostButtonFalse'}>
 							Post
 						</button>
 					</form>

@@ -1,5 +1,4 @@
 from flask import Blueprint, jsonify, request
-from flask_login import login_required
 
 from app.models import db, Comment
 
@@ -7,7 +6,6 @@ comment_routes = Blueprint('comments',  __name__)
 
 
 @comment_routes.route('/<int:id>', methods=['GET', 'PATCH', 'DELETE'])
-# @login_required
 def comment(id):
     m = request.method
     if m == 'GET':  # Get data for a given comment
