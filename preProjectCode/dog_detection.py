@@ -14,7 +14,9 @@ client = vision.ImageAnnotatorClient()
 # Faces of presidents
 # current_image = 'https://i.insider.com/5e417f6edf2f660a5e129e42?width=700'
 # Pic of dog
-current_image = 'https://img.webmd.com/dtmcms/live/webmd/consumer_assets/site_images/article_thumbnails/other/dog_cool_summer_slideshow/1800x1200_dog_cool_summer_other.jpg'
+# current_image = 'https://img.webmd.com/dtmcms/live/webmd/consumer_assets/site_images/article_thumbnails/other/dog_cool_summer_slideshow/1800x1200_dog_cool_summer_other.jpg'
+# pic of wolf
+current_image='https://upload.wikimedia.org/wikipedia/commons/5/5f/Kolm%C3%A5rden_Wolf.jpg'
 image = types.Image()
 image.source.image_uri = current_image
 

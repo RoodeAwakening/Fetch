@@ -37,7 +37,8 @@ def upload_image():
 
 @image_routes.route("/dog-detect")
 def isValid():
-    os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = 'dog-instagram-aa-project-a065f808e7b8.json'
+
+    os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = 'app/api/dog-instagram-aa-project-a065f808e7b8.json'
 
     image = types.Image()
     image.source.image_uri = request.args.get('url')
