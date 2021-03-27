@@ -10,7 +10,7 @@ import ModalPopUp from '../Modal/Modal'
 const NavBar = () => {
 const [modalIsOpen, setModalIsOpen] = useState(false)
 const postData = useSelector(state => state.posts)
-console.log(postData);
+// console.log(postData);
 
 
 

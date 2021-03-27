@@ -31,7 +31,7 @@ const customStyles = {
 //   return modalStatus
 // }
 
-console.log('3333',{modalStatus});
+
 Modal.setAppElement('#root')
 // MODAL PROPERTIES
 
@@ -41,15 +41,26 @@ Modal.setAppElement('#root')
 export default function ModalPopUp({modalIsOpen, setModalIsOpen}) {
 	const [photo, setPhoto] = useState('')
 	const [caption, setCaption] = useState('')
+  const [errors, setErrors] = useState('')
+
   let history = useHistory();
 
 	const dispatch = useDispatch()
-
+  
 	const onPost = async e => {
-		e.preventDefault()
-
+    e.preventDefault()
+    
 		const post = await dispatch(createPost({ photo, caption }))
-    setModalIsOpen(false)
+    console.log('test',post);
+    if (post) {
+      console.log('test return ',post);
+      setCaption('')
+      setModalIsOpen(false)
+      setErrors('')
+    }
+    if(post === false){
+      setErrors('Please provide a photo containing a dog.')
+    }
 		return post
 	}
 
@@ -80,6 +91,7 @@ return(
 			
 			<form onSubmit={onPost}>
 					<h2>Add a photo!</h2>
+          <h3>{errors}</h3>
 				<div id="photoUpload-caption">
 					<input placeholder="Caption" type="text" namne="caption" onChange={updateCaption} value={caption}></input>
 				</div>

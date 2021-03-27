@@ -66,12 +66,10 @@ export const createPost = post => async dispatch => {
 	})
 	const photoData = await responseImageUrl.json()
 	photo = photoData.url
-	console.log('--------', photo)
 
 	//check if valid
 	const dogCheck = await fetch(`/api/images/dog-detect?url=${photo}`)
 	const data = await dogCheck.json()
-
 	// add to database
 	if (data.dogFound) {
 		const response = await fetch('/api/posts/', {
@@ -97,7 +95,6 @@ export const createLike = postId => async dispatch => {
 		method: 'POST',
 	})
 	const data = await response.json()
-	console.log(data)
 	dispatch(addLike(data.like.id, data.like))
 }
 
@@ -113,7 +110,6 @@ export const createComment = commentObject => async dispatch => {
 		}),
 	})
 	const data = await response.json()
-	console.log(data)
 	dispatch(addComment(postId, data.comment, data.comment_by))
 	return response
 }

@@ -9,13 +9,13 @@ const photoPage = () => {
 		webcam
 			.start()
 			.then(result => {
-				console.log('webcam started')
+				// console.log('webcam started')
 			})
 			.catch(err => {
-				console.log(err)
+				// console.log(err)
 			})
 		if ('mediaDevices' in navigator && 'getUserMedia' in navigator.mediaDevices) {
-			console.log("Let's get this party started")
+			// console.log("Let's get this party started")
 		}
 		navigator.mediaDevices.getUserMedia({ video: true, audio: false })
 		var picture = webcam.snap()
