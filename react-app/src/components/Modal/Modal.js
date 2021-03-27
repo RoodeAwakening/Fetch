@@ -6,6 +6,7 @@ import { modalStatus } from '../../store/modal'
 import { createPost } from '../../store/posts'
 import { useDispatch } from 'react-redux'
 import Modal from 'react-modal'
+import './Modal.css'
 // MODAL PROPERTIES
 
 const customStyles = {
@@ -59,6 +60,9 @@ export default function ModalPopUp({modalIsOpen, setModalIsOpen}) {
 		setPhoto(e.target.files[0])
 	}
 
+  const closeModal = e => {
+    setModalIsOpen(false)
+  }
 
 
 
@@ -66,14 +70,20 @@ return(
   <Modal 
   isOpen={modalIsOpen}
   style={customStyles} >
-  	<div>
+      <div>
+<button onClick={closeModal}>
+
+    <i class="fal fa-times"></i>
+</button>
+      </div>
+  	<div className='addPost'>
 			
 			<form onSubmit={onPost}>
-				<div>
+					<h2>Add a photo!</h2>
+				<div id="photoUpload-caption">
 					<input placeholder="Caption" type="text" namne="caption" onChange={updateCaption} value={caption}></input>
 				</div>
 				<div id="photoUpload">
-					<label>Profile Picture</label>
 					<input
 						id="profileUpload"
 						type="file"
