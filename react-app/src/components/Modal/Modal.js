@@ -3,8 +3,8 @@ import { createPost } from "../../store/posts";
 import { useDispatch, useSelector } from "react-redux";
 
 export default function Modal() {
-  const [postPhoto, setPostPhoto] = useState("");
-  const [postCaption, setPostCaption] = useState("");
+  const [photo, setPhoto] = useState("");
+  const [caption, setCaption] = useState("");
   const [errors, setErrors] = useState([]);
 
   const dispatch = useDispatch();
@@ -13,11 +13,11 @@ export default function Modal() {
     e.preventDefault();
     
       const post = await dispatch(
-        createPost({postPhoto, postCaption})
+        createPost({photo, caption})
       );
-      if (post.errors) {
-        setErrors(post.errors);
-      }
+      // if (post.errors) {
+      //   setErrors(post.errors);
+      // }
       return post;
   
   };
@@ -26,11 +26,11 @@ export default function Modal() {
 
 
 
-  const updatePostCaption = (e) => {
-    setPostCaption(e.target.value);
+  const updateCaption = (e) => {
+    setCaption(e.target.value);
   };
-  const uploadPostPhoto = (e) => {
-    setPostPhoto(e.target.files[0]);
+  const uploadPhoto = (e) => {
+    setPhoto(e.target.files[0]);
   };
 
   return (
@@ -43,18 +43,18 @@ export default function Modal() {
           <input 
           placeholder='Caption'
           type='text'
-          namne='postCaption'
-          onChange={updatePostCaption}
-          value={postCaption}
+          namne='caption'
+          onChange={updateCaption}
+          value={caption}
           ></input>
         </div>
-        <div id="postPhotoUpload">
+        <div id="photoUpload">
           <label>Profile Picture</label>
           <input
             id="profileUpload"
             type="file"
-            name="profile_photo"
-            onChange={uploadPostPhoto}
+            name="post_Photo"
+            onChange={uploadPhoto}
             // value={profilePhoto}
             required={true}
           ></input>
