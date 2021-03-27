@@ -106,19 +106,19 @@
 	width: 100%;
 }
 
-#commentInput {
+.commentInput {
 	width: 95%;
 	height: 40px;
 	justify-content: space-between;
 	border: none;
 }
 
-#commentPostButtonFalse {
+.commentPostButtonFalse {
 	font-weight: 700;
 	color: #a9d9f8;
 }
 
-#commentPostButtonTrue {
+.commentPostButtonTrue {
 	font-weight: 700;
 	color: #45b2f8;
 	padding: 10px;

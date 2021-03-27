@@ -31,7 +31,7 @@ const photoPage = () => {
 				</button>
 			</div>
 			<video id="webcam" autoplay playsinline width="640" height="480"></video>
-			<canvas id="canvas" class="d-none"></canvas>
+			<canvas id="canvas" className="d-none"></canvas>
 			<audio id="snapSound" src="audio/snap.wav" preload="auto"></audio>
 			<div id="snapShot"></div>
 		</div>

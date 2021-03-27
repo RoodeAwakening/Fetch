@@ -8,12 +8,12 @@ import React, { useEffect } from 'react'
 export default function PostPage() {
 	const dispatch = useDispatch()
 	const { postId } = useParams()
+	//grabs the post store and gets the key value by post id and destructures
 	const { [postId]: postData } = useSelector(state => state.posts)
 
 	useEffect(() => {
-		dispatch(post(postId))
-	}, [dispatch])
-	//grabs all the posts and gets the key value by post id and destructures
+		if (!postData) dispatch(post(postId))
+	}, [dispatch, postId])
 
 	return (
 		<div className="PostPage_post-container">
