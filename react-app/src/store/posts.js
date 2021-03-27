@@ -69,22 +69,27 @@ export const createPost = post => async dispatch => {
 	console.log('--------', photo)
 
 	//check if valid
+	const dogCheck = await fetch(`/api/images/dog-detect?url=${photo}`)
+	const data = await dogCheck.json()
 
 	// add to database
-	const response = await fetch('/api/posts/', {
-		method: 'POST',
-		'Content-Type': 'application/json',
-		headers: {
+	if (data.dogFound) {
+		const response = await fetch('/api/posts/', {
+			method: 'POST',
 			'Content-Type': 'application/json',
-		},
-		body: JSON.stringify({
-			caption,
-			photo,
-		}),
-	})
-	const data = await response.json()
-	console.log(data)
-	dispatch(addPost(data.post.id, data))
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify({
+				caption,
+				photo,
+			}),
+		})
+		const data = await response.json()
+		dispatch(addPost(data.post.id, data))
+		return true
+	}
+	return false
 }
 
 export const createLike = postId => async dispatch => {
