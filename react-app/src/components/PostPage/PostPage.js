@@ -12,7 +12,7 @@ export default function PostPage() {
 
 	useEffect(() => {
 		dispatch(post(postId))
-	}, [dispatch])
+	}, [dispatch, postId])
 	//grabs all the posts and gets the key value by post id and destructures
 
 	return (

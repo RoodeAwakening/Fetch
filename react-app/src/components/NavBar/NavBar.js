@@ -1,15 +1,14 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 import './NavBar.css'
-import LogoutButton from '../auth/LogoutButton'
 import ProfileButton from './ProfileButton'
-import Webcam from 'webcam-easy'
+// import Webcam from 'webcam-easy'
 import logo from '../../images/splash/splash_title.png'
 
 const NavBar = () => {
-	const doSomething = () => {
-		console.log('Do Something')
-	}
+	// const doSomething = () => {
+	// 	console.log('Do Something')
+	// }
 
 	return (
 		<div className="NavBar">
@@ -17,7 +16,7 @@ const NavBar = () => {
 				<div className="navbar-left">
 					<div id="navbar-logo">
 						<NavLink to="/feed" exact={true} activeClassName="active">
-							<img src={logo} />
+							<img alt="logo" src={logo} />
 						</NavLink>
 					</div>
 				</div>

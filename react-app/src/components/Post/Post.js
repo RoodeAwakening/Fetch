@@ -1,22 +1,22 @@
 import React, { useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { Link, useParams } from 'react-router-dom'
-import { post } from '../../store/posts'
+import { useDispatch } from 'react-redux'
+import { Link } from 'react-router-dom'
+
 import { createComment } from '../../store/posts'
 import './Post.css'
 
 export default function Post({ postInfo }) {
 	const dispatch = useDispatch()
-	const [errors, setErrors] = useState([])
+	// const [errors, setErrors] = useState([]) //!not being used
 	const [commentInput, setCommentInput] = useState('')
 
 	const addComment = async e => {
 		e.preventDefault()
 		const comment = await dispatch(createComment({ commentInput, postId: postInfo.post.id }))
 		setCommentInput('')
-		if (comment.errors) {
-			setErrors(comment.errors)
-		}
+		// if (comment.errors) {
+		// 	setErrors(comment.errors)
+		// }
 		return comment
 	}
 
@@ -34,11 +34,11 @@ export default function Post({ postInfo }) {
 	return (
 		<div className="Post">
 			<div className="Post_header">
-				<img className="Post_avatar" alt="post-photo" src={postInfo?.user?.profilePhoto}></img>
+				<img className="Post_avatar" alt="avatar" src={postInfo?.user?.profilePhoto}></img>
 				<h4>{postInfo?.user?.username}</h4>
 			</div>
 			<div className="Post_photo-container">
-				<img className="Post_photo" alt="post-photo" src={postInfo?.post?.photo}></img>
+				<img className="Post_photo" alt="post" src={postInfo?.post?.photo}></img>
 			</div>
 			<div className="Post_photo-footer">
 				<span className="Post_likes">
@@ -61,7 +61,7 @@ export default function Post({ postInfo }) {
 						postInfo?.commentData?.map(comment => {
 							return (
 								<li key={comment.comment.id} className="Post_comment">
-									<img className="Post_comment-avatar" src={comment.comment_by.profilePhoto} />
+									<img alt="comment-avatar" className="Post_comment-avatar" src={comment.comment_by.profilePhoto} />
 									<span className="Post_comment-username">
 										<strong>{comment.comment_by.username}</strong>
 									</span>
@@ -73,9 +73,9 @@ export default function Post({ postInfo }) {
 				<div className="commentPost">
 					<form onSubmit={addComment}>
 						<div id="commentContainerInput">
-							<input id="commentInput" placeholder="Add a comment..." type="text" name="comment" onChange={updateComment} value={commentInput}></input>
+							<input className="commentInput" placeholder="Add a comment..." type="text" name="comment" onChange={updateComment} value={commentInput}></input>
 						</div>
-						<button type="submit" id={commentLength() ? 'commentPostButtonTrue' : 'commentPostButtonFalse'}>
+						<button type="submit" className={commentLength() ? 'commentPostButtonTrue' : 'commentPostButtonFalse'}>
 							Post
 						</button>
 					</form>
