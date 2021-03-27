@@ -117,7 +117,6 @@ def likesByPostId(id):
     elif m == 'POST':  # Create a new like for the given post
         # userId should come from currentUser
         # userId = current_user.id???
-        print(current_user.to_dict())
         like = Like(postId=id, userId=current_user.id)
         db.session.add(like)
         db.session.commit()
@@ -137,7 +136,6 @@ def commentsByPostId(id):
             comments.append(comment.to_dict())
         return jsonify(comments)
     elif m == 'POST':  # Create new comment for given post
-        print('----------',request.json)
         content = request.json['commentInput']
         # userId should come from currentUser
         userId = current_user.id
