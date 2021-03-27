@@ -46,10 +46,6 @@ def isValid():
     client = vision.ImageAnnotatorClient()
     response_label = client.label_detection(image=image)
 
-    #Testing
-    # for label in response_label.label_annotations:
-    #     print({'label': label.description, 'score': label.score})
-
     for label in response_label.label_annotations:
        if 'Dog' in label.description and label.score > 0.90:
             return jsonify({'dogFound': True})
