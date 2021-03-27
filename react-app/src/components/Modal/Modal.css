@@ -1,0 +1,26 @@
+.addPost{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.photoUpload-caption{
+  width: 255px;
+}
+
+.addPost input {
+  margin-bottom: 20px;
+  border: 1px solid rgba(var(--b6a, 219, 219, 219), 1);
+    width: 95%;
+    height: 36px;
+  
+}
+
+
+#profileUpload{
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
