@@ -56,7 +56,6 @@ export const post = id => async dispatch => {
 
 export const createPost = post => async dispatch => {
 	let { caption, photo } = post
-
 	const formData = new FormData()
 	formData.append('image', photo)
 	const responseImageUrl = await fetch('/api/images', {
@@ -65,14 +64,18 @@ export const createPost = post => async dispatch => {
 	})
 	const photoData = await responseImageUrl.json()
 	photo = photoData.url
+	console.log('--------',photo);
 
-	const response = await fetch('/api/posts', {
+	const response = await fetch('/api/posts/', {
 		method: 'POST',
 		'Content-Type': 'application/json',
-		body: {
+		headers: {
+			'Content-Type': 'application/json',
+		},
+		body: JSON.stringify({
 			caption,
 			photo,
-		},
+		}),
 	})
 	const data = await response.json()
 

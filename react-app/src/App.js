@@ -10,6 +10,7 @@ import NavBar from "./components/NavBar/NavBar";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import UsersList from "./components/UsersList";
 import User from "./components/User";
+import Modal from "./components/Modal/Modal";
 import { useSelector } from "react-redux";
 import { authenticate } from "./services/auth";
 import * as sessionActions from "./store/session";
@@ -51,6 +52,9 @@ function App() {
               </Route>
               <Route path="/users/:userId" exact={true}>
                 <User />
+              </Route>
+              <Route path="/modal" exact={true}>
+                <Modal />
               </Route>
             </div>
               
