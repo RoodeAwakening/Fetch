@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 import { createComment } from '../../store/posts'
 import './Post.css'
 
-export default function Post({ postInfo }) {
+export default function Post({ postInfo, maxComments }) {
 	const dispatch = useDispatch()
 	// const [errors, setErrors] = useState([]) //!not being used
 	const [commentInput, setCommentInput] = useState('')
@@ -58,9 +58,9 @@ export default function Post({ postInfo }) {
 			<div className="Post_comment-container">
 				<ul className="Post_comments-list">
 					{postInfo?.commentData &&
-						postInfo?.commentData?.map(comment => {
+						postInfo?.commentData?.map((comment, i) => {
 							return (
-								<li key={comment.comment.id} className="Post_comment">
+								<li key={comment.comment.id} className={`Post_comment ${i >= maxComments ? 'hidden' : ''}`}>
 									<img alt="comment-avatar" className="Post_comment-avatar" src={comment.comment_by.profilePhoto} />
 									<span className="Post_comment-username">
 										<strong>{comment.comment_by.username}</strong>
