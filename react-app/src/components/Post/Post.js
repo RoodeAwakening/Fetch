@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import { createLike } from "../../store/posts";
+import { createLike, removeLike } from "../../store/posts";
 import { createComment } from "../../store/posts";
 import "./Post.css";
 
@@ -9,6 +9,7 @@ export default function Post({ postInfo }) {
   const dispatch = useDispatch();
   const [errors, setErrors] = useState([]);
   const [commentInput, setCommentInput] = useState("");
+  const [liked, setLiked] = useState();
 
   const addComment = async (e) => {
     e.preventDefault();
@@ -33,8 +34,15 @@ export default function Post({ postInfo }) {
     return false;
   };
 
-  const like = () => dispatch(createLike(postInfo.post.id));
-
+  const like = () => {
+    if (!liked) {
+      dispatch(createLike(postInfo.post.id));
+      setLiked(true);
+    } else {
+      dispatch(removeLike(postInfo.post.id));
+      setLiked(false);
+    }
+  };
   return (
     <div className="Post">
       <div className="Post_header">

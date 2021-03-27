@@ -93,6 +93,18 @@ export const createLike = (postId) => async (dispatch) => {
   dispatch(addLike(postId, data.like, data.liked_by));
 };
 
+export const removeLike = (postId) => async (dispatch) => {
+  const response = await fetch(`/api/posts/${postId}/likes`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+  const data = await response.json();
+
+  dispatch(addLike(postId, data.like, data.liked_by));
+};
+
 //comment
 export const createComment = (commentObject) => async (dispatch) => {
   const { commentInput, postId } = commentObject;

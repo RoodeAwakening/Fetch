@@ -122,6 +122,9 @@ def likesByPostId(id):
         db.session.commit()
         return jsonify(like.to_dict())
     elif m == 'DELETE':  # Delete a like for the given post
+        like = Like.query.filter(Like.userId == current_user.id).first()
+        print("LIKE:", like)
+        db.session.delete(like)
         db.session.commit()
         return jsonify()
 
