@@ -53,7 +53,6 @@ export default function ModalPopUp({modalIsOpen, setModalIsOpen}) {
 		const post = await dispatch(createPost({ photo, caption }))
     console.log('test',post);
     if (post) {
-      console.log('test return ',post);
       setCaption('')
       setModalIsOpen(false)
       setErrors('')
