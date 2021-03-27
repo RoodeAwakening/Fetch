@@ -15,6 +15,7 @@ export default function FeedPage() {
 	for (const post in postData) {
 		postInfo.push(postData[post])
 	}
+	postInfo.reverse()
 
 	return (
 		<div className="FeedPage_container">

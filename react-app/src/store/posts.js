@@ -64,7 +64,7 @@ export const createPost = post => async dispatch => {
 	})
 	const photoData = await responseImageUrl.json()
 	photo = photoData.url
-	console.log('--------',photo);
+	console.log('--------', photo)
 
 	const response = await fetch('/api/posts/', {
 		method: 'POST',
@@ -78,8 +78,8 @@ export const createPost = post => async dispatch => {
 		}),
 	})
 	const data = await response.json()
-
-	dispatch(addPost(data.post.id, data.post))
+	console.log(data)
+	dispatch(addPost(data.post.id, data))
 }
 
 export const createLike = postId => async dispatch => {
@@ -87,11 +87,10 @@ export const createLike = postId => async dispatch => {
 		method: 'POST',
 	})
 	const data = await response.json()
-
+	console.log(data)
 	dispatch(addLike(data.like.id, data.like))
 }
 
-//comment
 export const createComment = commentObject => async dispatch => {
 	const { commentInput, postId } = commentObject
 	const response = await fetch(`/api/posts/${postId}/comments`, {

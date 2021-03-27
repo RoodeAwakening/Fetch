@@ -48,13 +48,13 @@ def post():
         post = ''
         if form.validate_on_submit():
             post = Post(
-                userId=1,
+                userId=current_user.id,
                 photo=form.data['photo'],
                 caption=form.data['caption']
             )
             db.session.add(post)
             db.session.commit()
-        return {"post": post.to_dict()} if post else 'Invalid operation'
+        return jsonify({'post': post.to_dict(), 'user':current_user.to_dict(), 'likeData':[], 'commentData':[]} if post else 'Invalid operation')
 
 
 @ post_routes.route('/<int:id>', methods=['GET', 'DELETE'])
