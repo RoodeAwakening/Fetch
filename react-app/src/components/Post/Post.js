@@ -13,6 +13,7 @@ export default function Post({ postInfo }) {
 	const addComment = async e => {
 		e.preventDefault()
 		const comment = await dispatch(createComment({ commentInput, postId: postInfo.post.id }))
+		setCommentInput('')
 		if (comment.errors) {
 			setErrors(comment.errors)
 		}
