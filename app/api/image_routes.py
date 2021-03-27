@@ -4,8 +4,7 @@ from .s3_helpers import (
     upload_file_to_s3, allowed_file, get_unique_filename)
 from google.cloud import vision
 from google.cloud.vision_v1 import types
-
-# os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = 'dog-instagram-aa-project-a065f808e7b8.json'
+import os
 
 image_routes = Blueprint("images", __name__)
 
@@ -38,15 +37,14 @@ def upload_image():
 
 @image_routes.route("/dog-detect")
 def isValid():
+
+    os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = 'app/api/dog-instagram-aa-project-a065f808e7b8.json'
+
     image = types.Image()
     image.source.image_uri = request.args.get('url')
 
     client = vision.ImageAnnotatorClient()
     response_label = client.label_detection(image=image)
-
-    #Testing
-    # for label in response_label.label_annotations:
-    #     print({'label': label.description, 'score': label.score})
 
     for label in response_label.label_annotations:
        if 'Dog' in label.description and label.score > 0.90:
