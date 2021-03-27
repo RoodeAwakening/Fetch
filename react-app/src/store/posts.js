@@ -29,11 +29,14 @@ const addLike = (id, like) => {
 	}
 }
 
-const addComment = (postId, comment) => {
+const addComment = (postId, comment, comment_by) => {
 	return {
 		type: ADD_COMMENT,
 		postId,
-		comment,
+		comment: {
+			comment,
+			comment_by,
+		},
 	}
 }
 
@@ -91,8 +94,6 @@ export const createLike = postId => async dispatch => {
 //comment
 export const createComment = commentObject => async dispatch => {
 	const { commentInput, postId } = commentObject
-	console.log('///', commentInput)
-
 	const response = await fetch(`/api/posts/${postId}/comments`, {
 		method: 'POST',
 		headers: {
@@ -103,13 +104,14 @@ export const createComment = commentObject => async dispatch => {
 		}),
 	})
 	const data = await response.json()
-	dispatch(addComment(postId, data.comment))
+	console.log(data)
+	dispatch(addComment(postId, data.comment, data.comment_by))
 	return response
 }
 
 const initialState = {}
 
-const postsReducer = (state = initialState, action) => {
+export default function postsReducer(state = initialState, action) {
 	switch (action.type) {
 		case GET_POSTS:
 			const posts = {}
@@ -130,12 +132,10 @@ const postsReducer = (state = initialState, action) => {
 				...state,
 				[action.postId]: {
 					...state[action.postId],
-					comments: [...state[action.postId].comments, action.comment],
+					commentData: [...state[action.postId].commentData, action.comment],
 				},
 			}
 		default:
 			return state
 	}
 }
-
-export default postsReducer

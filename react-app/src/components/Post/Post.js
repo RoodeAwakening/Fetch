@@ -7,18 +7,8 @@ import './Post.css'
 
 export default function Post({ postInfo }) {
 	const dispatch = useDispatch()
-	const { postId } = useParams()
-	const { [postId]: postData } = useSelector(state => state.posts)
 	const [errors, setErrors] = useState([])
 	const [commentInput, setCommentInput] = useState('')
-
-	if (!postInfo) {
-		if (postData) {
-			postInfo = postData
-		} else {
-			dispatch(post(postId))
-		}
-	}
 
 	const addComment = async e => {
 		e.preventDefault()
@@ -69,7 +59,7 @@ export default function Post({ postInfo }) {
 					{postInfo?.commentData &&
 						postInfo?.commentData?.map(comment => {
 							return (
-								<li className="Post_comment">
+								<li key={comment.comment.id} className="Post_comment">
 									<img className="Post_comment-avatar" src={comment.comment_by.profilePhoto} />
 									<span className="Post_comment-username">
 										<strong>{comment.comment_by.username}</strong>
