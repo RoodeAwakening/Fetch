@@ -28,29 +28,29 @@ const NavBar = () => {
 				<div className="navbar-right">
 					<div>
 						<NavLink to="/feed" exact={true} activeClassName="active">
-							<i class="fas fa-home"></i>
+							<i className="fas fa-home"></i>
 						</NavLink>
 					</div>
 					<div>
 						<NavLink to="/modal" exact={true} activeClassName="active">
 							{/* <button id="add-photo" onClick={doSomething}> */}
-							<i class="fal fa-camera-alt"></i>
+							<i className="fal fa-camera-alt"></i>
 							{/* </button> */}
 						</NavLink>
 					</div>
 					<div className="mobile-hidden">
 						<NavLink to="/comingsoon" exact={true} activeClassName="active">
-							<i class="fal fa-paper-plane"></i>
+							<i className="fal fa-paper-plane"></i>
 						</NavLink>
 					</div>
 					<div>
 						<NavLink to="/comingsoon" exact={true} activeClassName="active">
-							<i class="far fa-compass"></i>
+							<i className="far fa-compass"></i>
 						</NavLink>
 					</div>
 					<div>
 						<NavLink to="/comingsoon" exact={true} activeClassName="active">
-							<i class="far fa-heart"></i>
+							<i className="far fa-heart"></i>
 						</NavLink>
 					</div>
 					<div className="nav-right-button">
