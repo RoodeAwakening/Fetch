@@ -34,9 +34,13 @@ const NavBar = () => {
             </NavLink>
           </div>
           <div>
-            <button id="add-photo" onClick={doSomething}>
+          <NavLink to="/modal" exact={true} activeClassName="active">
+
+            {/* <button id="add-photo" onClick={doSomething}> */}
               <i class="fal fa-camera-alt"></i>
-            </button>
+            {/* </button> */}
+            </NavLink>
+
           </div>
           <div className='mobile-hidden'>
             <NavLink to="/comingsoon" exact={true} activeClassName="active">
