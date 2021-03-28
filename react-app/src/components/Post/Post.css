@@ -170,10 +170,12 @@
 @media only screen and (min-width: 200px) and (max-width: 875px) {
 	#root{
 		width: 100%;
+		
 	}
 	.Post {
-		width: 100%;
+		width: 98%;
 		height: auto;
+	
 		
 		padding: 0px;
 		margin-bottom: 0px;
@@ -187,7 +189,7 @@
 	}
 
 	.Post_photo {
-		width: 375px;
+		width: 100%;
 		height: 375px;
 	}
 
