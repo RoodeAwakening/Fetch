@@ -1,25 +1,19 @@
-from app.models import db, Like
-
+from app.models import db, Like, Post, User
+import random
 
 def seed_likes():
 
-    # Everyone follows Tom
-    like1 = Like(userId=1, postId=1)
-    like2 = Like(userId=1, postId=2)
-    like3 = Like(userId=1, postId=3)
-    like4 = Like(userId=2, postId=1)
-    like5 = Like(userId=2, postId=2)
-    like6 = Like(userId=2, postId=3)
-    like7 = Like(userId=3, postId=1)
-    like8 = Like(userId=3, postId=2)
-    like9 = Like(userId=3, postId=3)
-
-    likes = [like1, like2, like3, like4, like5, like6, like7, like8, like9]
-    for like in likes:
-        db.session.add(like)
-
+    users = User.query.all()
+    posts = Post.query.all()
+    c = 0
+    for user in users:
+        for post in posts:
+            if random.randrange(0, 100) > 60:
+                like = Like(postId=post.id, userId=user.id)
+                db.session.add(like)
+                c += 1
+                print('----- Count: %s%% -- New Like: %s' % ((c, like.to_dict())))
     db.session.commit()
-
 
 def undo_likes():
     db.session.execute('TRUNCATE likes;')

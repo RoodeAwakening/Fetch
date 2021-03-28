@@ -1,27 +1,42 @@
-from app.models import db, Comment
+from app.models import db, Comment, Post, User
+import random
 
+commentList = [
+    "pups.pups.pups.pups.pups.pups.",
+    "Nice dog!!!!!!!.",
+    "zoomies......",
+    "DERP",
+    "My name is TOM",
+    "10/10!!",
+    "Cute dog!!!",
+    "DOGGGO!!!",
+    "I have the same breed!",
+    "You should post more often!!",
+    "What a handsome boy",
+    "What is their name??",
+    "Where's your other puppy?",
+    "Where did you get that collar ?",
+    "Does this dodge get along well with other dodges?",
+    "the best dodge",
+    "cutest pupper in the world ",
+    "My date for the night is looking so handsome",
+    "Date night with this cutie",
+    "Any recommendations for a dog park that this cutie can poop in",
+    "She's cute, but her poops are not."
+]
 
-# Adds a demo user, you can add other users here if you want
 def seed_comments():
-
-    comment1 = Comment(postId=1, userId=1,
-                       content="pups.pups.pups.pups.pups.pups.")
-    comment2 = Comment(postId=2, userId=2, content="Nice dog!!!!!!!.")
-    comment3 = Comment(postId=3, userId=3, content="zoomies......")
-    comment4 = Comment(postId=3, userId=1, content="DERP")
-    comment5 = Comment(postId=3, userId=2, content="My name is TOM")
-
-    comments = [comment1, comment2, comment3]
-    for comment in comments:
-        db.session.add(comment)
-
+    users = User.query.all()
+    posts = Post.query.all()
+    c = 0
+    for user in users:
+        for post in posts:
+            if random.randrange(0, 100) > 85:
+                comment = Comment(postId=post.id, userId=user.id, content=commentList[random.randrange(0, len(commentList))])
+                db.session.add(comment)
+                c += 1
+                print('----- Count: %s%% -- New Comment: %s' % ((c, comment.to_dict())))
     db.session.commit()
-
-# Uses a raw SQL query to TRUNCATE the users table.
-# SQLAlchemy doesn't have a built in function to do this
-# TRUNCATE Removes all the data from the table, and resets
-# the auto incrementing primary key
-
 
 def undo_comments():
     db.session.execute('TRUNCATE comments;')

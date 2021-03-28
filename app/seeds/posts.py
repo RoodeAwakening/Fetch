@@ -1,26 +1,35 @@
-from app.models import db, Post
+from app.models import db, Post, User
+import urllib.request as request
+import json, random
 
-
-# Adds a demo user, you can add other users here if you want
 def seed_posts():
+    captionList = [
+        "",
+        "Thanks fur the memories.",
+        "Dogs are not our whole life, but they make our lives whole.",
+        "My best friend has a fur and a tail.",
+        "pupperz for the win",
+        "look at this dog!",
+        "rate my dog !!",
+        "bark bark!"
+    ]
 
-    post1 = Post(userId=1, photo='https://img.webmd.com/dtmcms/live/webmd/consumer_assets/site_images/article_thumbnails/other/dog_cool_summer_slideshow/1800x1200_dog_cool_summer_other.jpg', caption="Thanks fur the memories.")
-    post2 = Post(userId=2, photo='https://images-na.ssl-images-amazon.com/images/I/614L0OOYSeL._SX331_BO1,204,203,200_.jpg',
-                 caption="Dogs are not our whole life, but they make our lives whole.")
-    post3 = Post(userId=3, photo='https://static.wixstatic.com/media/7ee089_2fc14eca5116493a9da03d999b81aa6d~mv2.jpg',
-                 caption="My best friend has a fur and a tail.")
-
-    posts = [post1, post2, post3]
-    for post in posts:
+    i = 1
+    quantity = 100
+    while i <= quantity:
+        url=''
+        with request.urlopen('https://dog.ceo/api/breeds/image/random') as res:
+            url = json.loads(res.read().decode('utf-8'))['message']
+        post = Post(
+            userId=random.randrange(1, (len(User.query.all())+1)),
+            photo=url,
+            caption=captionList[random.randrange(0, len(captionList))]
+        )
         db.session.add(post)
+        i+=1
+        print('----- Progress: %s%% -- New Post: %s' % ((str(round(i/quantity*100, 2))), post.to_dict()))
 
     db.session.commit()
-
-# Uses a raw SQL query to TRUNCATE the users table.
-# SQLAlchemy doesn't have a built in function to do this
-# TRUNCATE Removes all the data from the table, and resets
-# the auto incrementing primary key
-
 
 def undo_posts():
     db.session.execute('TRUNCATE posts;')
