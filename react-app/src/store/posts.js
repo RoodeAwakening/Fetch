@@ -106,7 +106,7 @@ export const createLike = postId => async dispatch => {
 		method: 'POST',
 	})
 	const data = await response.json()
-	console.log('CREATEA A LIKE !!!____', data)
+	// console.log('CREATEA A LIKE !!!____', data)
 	dispatch(addLike(postId, data.like, data.liked_by))
 }
 

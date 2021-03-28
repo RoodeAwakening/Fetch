@@ -46,7 +46,6 @@ export default function ModalPopUp({ modalIsOpen, setModalIsOpen }) {
 		e.preventDefault()
 
 		const post = await dispatch(createPost({ photo, caption }))
-		console.log('test', post)
 		if (post) {
 			setCaption('')
 			setModalIsOpen(false)
@@ -78,6 +77,7 @@ export default function ModalPopUp({ modalIsOpen, setModalIsOpen }) {
 			</div>
 			<div className="addPost">
 				<form onSubmit={onPost}>
+					<h3>{errors}</h3>
 					<h2>Add a photo!</h2>
 					<div id="photoUpload-caption">
 						<input placeholder="Caption" type="text" namne="caption" onChange={updateCaption} value={caption}></input>
