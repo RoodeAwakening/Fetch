@@ -2,7 +2,9 @@ const GET_POSTS = 'posts/getPosts'
 
 const ADD_POST = 'posts/addPost'
 
-const ADD_LIKE = 'posts/getLikes'
+const ADD_LIKE = 'posts/addLike'
+
+const REMOVE_LIKE = 'post/removeLike'
 
 const ADD_COMMENT = 'posts/addComment'
 
@@ -21,14 +23,23 @@ const addPost = (id, post) => {
 	}
 }
 
-const addLike = (id, like) => {
+const addLike = (id, like, liked_by) => {
 	return {
 		type: ADD_LIKE,
 		id,
-		like,
+		like: {
+			like,
+			liked_by,
+		},
 	}
 }
 
+const remove = like => {
+	return {
+		type: REMOVE_LIKE,
+		like,
+	}
+}
 const addComment = (postId, comment, comment_by) => {
 	return {
 		type: ADD_COMMENT,
@@ -95,9 +106,22 @@ export const createLike = postId => async dispatch => {
 		method: 'POST',
 	})
 	const data = await response.json()
-	dispatch(addLike(data.like.id, data.like))
+	// console.log('CREATEA A LIKE !!!____', data)
+	dispatch(addLike(postId, data.like, data.liked_by))
 }
 
+export const removeLike = postId => async dispatch => {
+	const response = await fetch(`/api/posts/${postId}/likes`, {
+		method: 'DELETE',
+		headers: {
+			'Content-Type': 'application/json',
+		},
+	})
+	const data = await response.json()
+	dispatch(remove(data.like))
+}
+
+//comment
 export const createComment = commentObject => async dispatch => {
 	const { commentInput, postId } = commentObject
 	const response = await fetch(`/api/posts/${postId}/comments`, {
@@ -140,6 +164,23 @@ export default function postsReducer(state = initialState, action) {
 					commentData: [...state[action.postId].commentData, action.comment],
 				},
 			}
+		case ADD_LIKE:
+			return {
+				...state,
+				[action.id]: {
+					...state[action.id],
+					likeData: [...state[action.id].likeData, { liked_by: action.like.liked_by, likes: action.like.like }],
+				},
+			}
+		case REMOVE_LIKE:
+			return {
+				...state,
+				[action.like.postId]: {
+					...state[action.like.postId],
+					likeData: state[action.like.postId].likeData.filter(like => like.likes.id !== action.like.id),
+				},
+			}
+
 		default:
 			return state
 	}

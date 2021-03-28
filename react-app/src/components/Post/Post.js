@@ -1,14 +1,26 @@
-import React, { useState } from 'react'
-import { useDispatch } from 'react-redux'
+import React, { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
-
+import { createLike, removeLike } from '../../store/posts'
 import { createComment } from '../../store/posts'
 import './Post.css'
 
 export default function Post({ postInfo, maxComments }) {
 	const dispatch = useDispatch()
+	const sessionUser = useSelector(state => state.session.user)
 	// const [errors, setErrors] = useState([]) //!not being used
 	const [commentInput, setCommentInput] = useState('')
+	const [liked, setLiked] = useState(false)
+
+	useEffect(() => {
+		for (let i = 0; i < postInfo.likeData.length; i++) {
+			if (sessionUser.id == postInfo.likeData[i].likes.userId) {
+				setLiked(true)
+				break
+			}
+		}
+		// console.log(sessionUser.id)
+	}, [])
 
 	const addComment = async e => {
 		e.preventDefault()
@@ -31,6 +43,15 @@ export default function Post({ postInfo, maxComments }) {
 		return false
 	}
 
+	const like = () => {
+		if (!liked) {
+			dispatch(createLike(postInfo.post.id))
+			setLiked(true)
+		} else {
+			dispatch(removeLike(postInfo.post.id))
+			setLiked(false)
+		}
+	}
 	return (
 		<div className="Post">
 			<div className="Post_header">
@@ -42,7 +63,7 @@ export default function Post({ postInfo, maxComments }) {
 			</div>
 			<div className="Post_photo-footer">
 				<span className="Post_likes">
-					<i className="far fa-heart" id="Post_heart" />
+					<i className={`fa-heart ${liked ? 'fas' : 'far'}`} id="Post_heart" onClick={like} style={{ color: liked ? '#ffa3a3' : '' }} />
 				</span>
 				<span className="Post_like-count">{postInfo?.likeData.length}</span>
 				<span className="Post_comment-icon">
