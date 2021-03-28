@@ -12,3 +12,44 @@
   flex-direction: column;
 }
 
+@media only screen and (min-width: 200px) and (max-width: 875px) {
+
+  .PostPage_post-container   {
+    display: flex;
+    justify-content: center;
+   
+    padding-top: 70px;
+    width: 98%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .PostPage_post{
+    align-content: center;
+    display: flex;
+    justify-content: center;
+    display: flex;
+    justify-content: center;
+    margin:0px;
+    width: 98%;
+  }
+
+  .Post {
+		height: auto;
+width: 98%;
+		
+		padding: 0px;
+		margin-bottom: 0px;
+		margin-top: 5px;
+	}
+
+
+  .Post_header {
+    padding: 0px;
+      width: 100%;
+  
+    }
+  
+}
