@@ -119,13 +119,12 @@ def likesByPostId(id):
         like = Like(postId=id, userId=current_user.id)
         db.session.add(like)
         db.session.commit()
-        return jsonify(like.to_dict())
+        return jsonify({"like":like.to_dict(), "liked_by":current_user.to_dict()})
     elif m == 'DELETE':  # Delete a like for the given post
-        like = Like.query.filter(Like.userId == current_user.id).first()
-        print("LIKE:", like)
+        like = Like.query.filter(Like.userId == current_user.id, Like.postId == id).first()
         db.session.delete(like)
         db.session.commit()
-        return jsonify()
+        return jsonify({"like":like.to_dict()})
 
 
 @ post_routes.route('/<int:id>/comments', methods=['GET', 'POST'])

@@ -2,7 +2,9 @@ const GET_POSTS = 'posts/getPosts'
 
 const ADD_POST = 'posts/addPost'
 
-const ADD_LIKE = 'posts/getLikes'
+const ADD_LIKE = 'posts/addLike'
+
+const REMOVE_LIKE = 'post/removeLike'
 
 const ADD_COMMENT = 'posts/addComment'
 
@@ -29,6 +31,13 @@ const addLike = (id, like, liked_by) => {
 			like,
 			liked_by,
 		},
+	}
+}
+
+const remove = like => {
+	return {
+		type: REMOVE_LIKE,
+		like,
 	}
 }
 const addComment = (postId, comment, comment_by) => {
@@ -99,7 +108,7 @@ export const createLike = postId => async dispatch => {
 		method: 'POST',
 	})
 	const data = await response.json()
-	console.log(data)
+	console.log('CREATEA A LIKE !!!____', data)
 	dispatch(addLike(postId, data.like, data.liked_by))
 }
 
@@ -111,8 +120,7 @@ export const removeLike = postId => async dispatch => {
 		},
 	})
 	const data = await response.json()
-
-	dispatch(addLike(postId, data.like, data.liked_by))
+	dispatch(remove(data.like))
 }
 
 //comment
@@ -163,9 +171,18 @@ export default function postsReducer(state = initialState, action) {
 				...state,
 				[action.id]: {
 					...state[action.id],
-					likeData: [...state[action.id].likeData, action.like],
+					likeData: [...state[action.id].likeData, { liked_by: action.like.liked_by, likes: action.like.like }],
 				},
 			}
+		case REMOVE_LIKE:
+			return {
+				...state,
+				[action.like.postId]: {
+					...state[action.like.postId],
+					likeData: state[action.like.postId].likeData.filter(like => like.likes.id !== action.like.id),
+				},
+			}
+
 		default:
 			return state
 	}
