@@ -4,6 +4,7 @@
 	border: 1px solid lightgray;
 	background-color: white;
 	margin-top: 10px;
+	
 }
 
 .Post_header {
@@ -80,6 +81,7 @@
 
 .Post_comment-container {
 	margin-top: 10px;
+	
 }
 
 ::-webkit-scrollbar {
@@ -90,7 +92,7 @@
 .Post_comments-list{
 	
 
-	max-height: 67px;
+	max-height: 182px;
 	overflow-y: scroll;
 }
 
