@@ -7,7 +7,6 @@ import './Post.css'
 
 export default function Post({ postInfo, maxComments }) {
 	const dispatch = useDispatch()
-	const postData = useSelector(state => state.posts)
 	const sessionUser = useSelector(state => state.session.user)
 	// const [errors, setErrors] = useState([]) //!not being used
 	const [commentInput, setCommentInput] = useState('')
@@ -64,7 +63,7 @@ export default function Post({ postInfo, maxComments }) {
 			</div>
 			<div className="Post_photo-footer">
 				<span className="Post_likes">
-					<i className="far fa-heart" id="Post_heart" onClick={like} />
+					<i className={`fa-heart ${liked ? 'fas' : 'far'}`} id="Post_heart" onClick={like} style={{ color: liked ? '#ffa3a3' : '' }} />
 				</span>
 				<span className="Post_like-count">{postInfo?.likeData.length}</span>
 				<span className="Post_comment-icon">
