@@ -77,12 +77,10 @@ export const createPost = post => async dispatch => {
 	})
 	const photoData = await responseImageUrl.json()
 	photo = photoData.url
-	console.log('--------', photo)
 
 	//check if valid
 	const dogCheck = await fetch(`/api/images/dog-detect?url=${photo}`)
 	const data = await dogCheck.json()
-
 	// add to database
 	if (data.dogFound) {
 		const response = await fetch('/api/posts/', {

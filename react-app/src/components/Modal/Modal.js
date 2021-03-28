@@ -36,6 +36,8 @@ Modal.setAppElement('#root')
 export default function ModalPopUp({ modalIsOpen, setModalIsOpen }) {
 	const [photo, setPhoto] = useState('')
 	const [caption, setCaption] = useState('')
+	const [errors, setErrors] = useState('')
+
 	let history = useHistory()
 
 	const dispatch = useDispatch()
@@ -44,7 +46,15 @@ export default function ModalPopUp({ modalIsOpen, setModalIsOpen }) {
 		e.preventDefault()
 
 		const post = await dispatch(createPost({ photo, caption }))
-		setModalIsOpen(false)
+		console.log('test', post)
+		if (post) {
+			setCaption('')
+			setModalIsOpen(false)
+			setErrors('')
+		}
+		if (post === false) {
+			setErrors('Please provide a photo containing a dog.')
+		}
 		return post
 	}
 
