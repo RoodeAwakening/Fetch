@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { createLike, removeLike } from '../../store/posts'
@@ -8,9 +8,20 @@ import './Post.css'
 export default function Post({ postInfo, maxComments }) {
 	const dispatch = useDispatch()
 	const postData = useSelector(state => state.posts)
+	const sessionUser = useSelector(state => state.session.user)
 	// const [errors, setErrors] = useState([]) //!not being used
 	const [commentInput, setCommentInput] = useState('')
-	const [liked, setLiked] = useState()
+	const [liked, setLiked] = useState(false)
+
+	useEffect(() => {
+		for (let i = 0; i < postInfo.likeData.length; i++) {
+			if (sessionUser.id == postInfo.likeData[i].likes.userId) {
+				setLiked(true)
+				break
+			}
+		}
+		console.log(sessionUser.id)
+	}, [])
 
 	const addComment = async e => {
 		e.preventDefault()
