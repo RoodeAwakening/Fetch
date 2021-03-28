@@ -17,7 +17,7 @@ export default function PostPage() {
 
 	return (
 		<div className="PostPage_post-container">
-			<div>
+			<div className="PostPage_post">
 				<Post postInfo={postData} />
 			</div>
 		</div>
