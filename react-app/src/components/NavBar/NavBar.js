@@ -1,6 +1,5 @@
-import React, { useState} from 'react'
+import React, { useState } from 'react'
 import { NavLink } from 'react-router-dom'
-import { useSelector } from 'react-redux'
 import './NavBar.css'
 import ProfileButton from './ProfileButton'
 // import Webcam from 'webcam-easy'
@@ -8,15 +7,11 @@ import logo from '../../images/splash/splash_title.png'
 import ModalPopUp from '../Modal/Modal'
 
 const NavBar = () => {
-const [modalIsOpen, setModalIsOpen] = useState(false)
-const postData = useSelector(state => state.posts)
-// console.log(postData);
-
-
+	const [modalIsOpen, setModalIsOpen] = useState(false)
 
 	const changeModal = () => {
 		setModalIsOpen(true)
-			}
+	}
 
 	return (
 		<div className="NavBar">
@@ -40,10 +35,10 @@ const postData = useSelector(state => state.posts)
 					</div>
 					<div>
 						{/* <NavLink to="/modal" exact={true} activeClassName="active"> */}
-							<button id="add-photo" onClick={changeModal}>
+						<button id="add-photo" onClick={changeModal}>
 							<i className="fal fa-camera-alt"></i>
-							</button>
-							<ModalPopUp modalIsOpen={modalIsOpen} setModalIsOpen={setModalIsOpen}/>
+						</button>
+						<ModalPopUp modalIsOpen={modalIsOpen} setModalIsOpen={setModalIsOpen} />
 						{/* </NavLink> */}
 					</div>
 					<div className="mobile-hidden">
@@ -64,13 +59,6 @@ const postData = useSelector(state => state.posts)
 					<div className="nav-right-button">
 						<ProfileButton />
 					</div>
-					
-
-
-
-
-
-
 				</div>
 			</nav>
 		</div>

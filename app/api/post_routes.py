@@ -116,14 +116,15 @@ def likesByPostId(id):
     elif m == 'POST':  # Create a new like for the given post
         # userId should come from currentUser
         # userId = current_user.id???
-        print(current_user.to_dict())
         like = Like(postId=id, userId=current_user.id)
         db.session.add(like)
         db.session.commit()
-        return jsonify(like.to_dict())
+        return jsonify({"like":like.to_dict(), "liked_by":current_user.to_dict()})
     elif m == 'DELETE':  # Delete a like for the given post
+        like = Like.query.filter(Like.userId == current_user.id, Like.postId == id).first()
+        db.session.delete(like)
         db.session.commit()
-        return jsonify()
+        return jsonify({"like":like.to_dict()})
 
 
 @ post_routes.route('/<int:id>/comments', methods=['GET', 'POST'])
@@ -136,7 +137,6 @@ def commentsByPostId(id):
             comments.append(comment.to_dict())
         return jsonify(comments)
     elif m == 'POST':  # Create new comment for given post
-        print('----------',request.json)
         content = request.json['commentInput']
         # userId should come from currentUser
         userId = current_user.id
