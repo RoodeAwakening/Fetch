@@ -14,7 +14,7 @@ export default function Post({ postInfo, maxComments }) {
 
 	useEffect(() => {
 		for (let i = 0; i < postInfo.likeData.length; i++) {
-			if (sessionUser.id == postInfo.likeData[i].likes.userId) {
+			if (sessionUser.id === postInfo.likeData[i].likes.userId) {
 				setLiked(true)
 				break
 			}
