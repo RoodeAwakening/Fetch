@@ -49,7 +49,7 @@ def seed_users():
         users = json.loads(res.read().decode('utf-8'))['data']
         i = 0
         for user in users:
-            password = generate_password_hash(user['password'], method='pbkdf2:sha256', salt_length=8)
+            password = generate_password_hash(user['password'], method='pbkdf2:sha256', salt_length=10)
             user = User(userName=user['username'], email=user['email'], hashedPassword=password, profilePhoto=getPhoto())
             db.session.add(user)
             i += 1
