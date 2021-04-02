@@ -10,11 +10,12 @@ export default function FeedPage() {
 	const [loading, setLoading] = useState(false)
 	
 
-	useEffect(() => {
-		dispatch(posts()).then(
-			setLoading(true),
+	useEffect(async() => {
+		const data = await dispatch(posts())
+			if(data){
+				setLoading(true)}
 			console.log(loading)
-		)
+		
 	}, [dispatch])
 
 	// useEffect(()=>{
