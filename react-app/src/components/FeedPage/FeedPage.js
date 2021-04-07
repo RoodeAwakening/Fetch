@@ -14,7 +14,6 @@ export default function FeedPage() {
 		const data = await dispatch(posts())
 			if(data){
 				setLoading(true)}
-			console.log(loading)
 		
 	}, [dispatch])
 

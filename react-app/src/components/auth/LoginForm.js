@@ -36,7 +36,7 @@ const LoginForm = () => {
 	//     // setAuthenticated(true);
 
 	const updateEmail = e => {
-		setEmail(e.target.value)
+		setEmail(e.target.value.toLowerCase())
 	}
 
 	const updatePassword = e => {
