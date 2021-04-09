@@ -140,16 +140,14 @@ This is an example of how to list things you need to use the software and how to
 We designed this app to be a pet friendly place. Making sure all the photos of your dog can be seen by the world! By implemeniting our dog verification system we can make sure that your seeing nothing but dogs!
 
 ### An easy to use login.
-![Login](https://media.tenor.com/images/53ed3f69d8af8e1fb7b0025a97452e38/tenor.gif)
+<img src="images/github/1.PNG" alt="login" >
 
 ### A dog filled feed page.
-![Feed](https://media.tenor.com/images/53ed3f69d8af8e1fb7b0025a97452e38/tenor.gif)
+<img src="images/github/2.PNG" alt="feed-page" >
 
-### An easy to read profile page.
-![Profile](https://media.tenor.com/images/53ed3f69d8af8e1fb7b0025a97452e38/tenor.gif)
 
 ### Check out a post.
-![Post](https://media.tenor.com/images/53ed3f69d8af8e1fb7b0025a97452e38/tenor.gif)
+<img src="images/github/3.PNG" alt="feed-page" >
 
 
 _For more examples, please refer to the [Documentation](https://github.com/RoodeAwakening/Fetch/wiki)_
