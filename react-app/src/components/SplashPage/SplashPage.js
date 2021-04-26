@@ -61,7 +61,7 @@ export default function SplashPage() {
 				<a href="/">Locations</a> */}
 				</div>
 				<div>
-				<a href="/">About</a>
+				<a href="/about">About</a>
 					{/* <a href="/">Beauty</a>
 					<a href="/">Dance & Performance</a>
 					<a href="/"> Fitness</a>

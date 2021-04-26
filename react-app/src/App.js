@@ -11,6 +11,7 @@ import ProtectedRoute from './components/auth/ProtectedRoute'
 import UsersList from './components/UsersList'
 import User from './components/User'
 import Modal from './components/Modal/Modal'
+import About from './components/About/About'
 
 import * as sessionActions from './store/session'
 import PostPage from './components/PostPage/PostPage'
@@ -33,6 +34,9 @@ function App() {
 					<Switch>
 						<Route path="/" exact={true}>
 							<SplashPage />
+						</Route>
+						<Route path="/about" exact={true}>
+							<About />
 						</Route>
 						<Route path="/signup" exact={true}>
 							<SignupPage />
