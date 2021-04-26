@@ -1,8 +1,13 @@
 .about-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 
 }
 
 .about-container-header{
+  text-align: center;
 
 }
 
@@ -11,11 +16,18 @@
 }
 
 .about-container-user-container{
+  display: flex;
+  justify-content: space-around;
+  border: 1px solid rgba(var(--b6a,219,219,219),1);
+  background-color: #FFFFFF;
+  width: 500px;
+  height: 200px;
+  
   
 }
 
 .about-container-user-container-each{
-
+  margin-right: 30px;
 }
 
 .about-container-user-container-each-img img{

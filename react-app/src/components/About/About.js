@@ -26,19 +26,19 @@ export default function About() {
       <div className='about-container-user-container-each'>
         <div className='about-container-user-container-each-img' ><img scr={derek} alt='derek image'/>  </div>
         <div><h4>Derek Roode</h4></div>
-        <div><h4>Link</h4></div>
+        <div><a href='https://github.com/RoodeAwakening'>Github</a>  </div>
       </div>
       
       <div className='about-container-user-container-each'>
         <div className='about-container-user-container-each-img'> <img scr={bryan} alt='bryan image'/> </div>
         <div><h4>Bryan Burns</h4></div>
-        <div><h4>Link</h4></div>
+        <div><a href='https://github.com/bryanlancy'>Github</a>  </div>
       </div>
       
       <div className='about-container-user-container-each'>
         <div className='about-container-user-container-each-img'> <img scr={justin} alt='justin image'/> </div>
         <div><h4>Justin Payne</h4></div>
-        <div><h4>Link</h4></div>
+        <div><a href='https://github.com/payne-j'>Github</a>  </div>
       </div>
       
 
