@@ -50,8 +50,7 @@ export default function SplashPage() {
 			</div>
 			<div className="Splash_Page-body-footer">
 				<div>
-					<a href="/">About</a>
-					<a href="/">Blog</a>
+					{/* <a href="/">Blog</a>
 					<a href="/">Jobs</a>
 					<a href="/">Help</a>
 					<a href="/">API</a>
@@ -59,16 +58,17 @@ export default function SplashPage() {
 					<a href="/">Terms</a>
 					<a href="/">Top Accounts</a>
 					<a href="/"> Hashtags</a>
-					<a href="/">Locations</a>
+				<a href="/">Locations</a> */}
 				</div>
 				<div>
-					<a href="/">Beauty</a>
+				<a href="/about">About</a>
+					{/* <a href="/">Beauty</a>
 					<a href="/">Dance & Performance</a>
 					<a href="/"> Fitness</a>
 					<a href="/">Food & Drink</a>
 					<a href="/">Home & Garden</a>
 					<a href="/">Music</a>
-					<a href="/">Visual Arts</a>
+					<a href="/">Visual Arts</a> */}
 				</div>
 				<div>
 					<h6>© 2021 Fetch from DJB</h6>

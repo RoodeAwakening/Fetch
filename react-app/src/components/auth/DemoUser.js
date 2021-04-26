@@ -25,7 +25,6 @@ const LoginForm = () => {
 	//   const password = "password";
 	//   const user = await login(email, password);
 	//   setAuthenticated(true);
-	//   console.log('auth',setAuthenticated);
 	//   history.push('/feed')
 
 	// };

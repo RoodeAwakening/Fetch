@@ -19,7 +19,6 @@ export default function Post({ postInfo, maxComments }) {
 				break
 			}
 		}
-		// console.log(sessionUser.id)
 	}, [])
 
 	const addComment = async e => {

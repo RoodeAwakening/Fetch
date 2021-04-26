@@ -11,6 +11,7 @@ import ProtectedRoute from './components/auth/ProtectedRoute'
 import UsersList from './components/UsersList'
 import User from './components/User'
 import Modal from './components/Modal/Modal'
+import About from './components/About/About'
 
 import * as sessionActions from './store/session'
 import PostPage from './components/PostPage/PostPage'
@@ -20,8 +21,11 @@ function App() {
 	const [loaded, setLoaded] = useState(false)
 
 	useEffect(() => {
-		dispatch(sessionActions.restoreUser()).then(() => setLoaded(true))
+		setLoaded(true)
 	}, [dispatch])
+	// useEffect(() => {
+	// 	dispatch(sessionActions.restoreUser()).then(() => setLoaded(true))
+	// }, [dispatch])
 
 	return (
 		<>
@@ -31,13 +35,16 @@ function App() {
 						<Route path="/" exact={true}>
 							<SplashPage />
 						</Route>
+						<Route path="/about" exact={true}>
+							<About />
+						</Route>
 						<Route path="/signup" exact={true}>
 							<SignupPage />
 						</Route>
 						<Route path="/comingsoon" exact={true}>
 							<ComingSoon />
 						</Route>
-						<div>
+						<>
 							<NavBar />
 							<ProtectedRoute path="/feed" exact={true}>
 								<FeedPage />
@@ -54,7 +61,7 @@ function App() {
 							<Route path="/modal" exact={true}>
 								<Modal />
 							</Route>
-						</div>
+						</>
 					</Switch>
 				</BrowserRouter>
 			)}

@@ -77,7 +77,6 @@ export const createPost = post => async dispatch => {
 	})
 	const photoData = await responseImageUrl.json()
 	photo = photoData.url
-	console.log('photo',photo);
 
 	//check if valid
 	const dogCheck = await fetch(`/api/images/dog-detect?url=${photo}`)
@@ -107,7 +106,6 @@ export const createLike = postId => async dispatch => {
 		method: 'POST',
 	})
 	const data = await response.json()
-	// console.log('CREATEA A LIKE !!!____', data)
 	dispatch(addLike(postId, data.like, data.liked_by))
 }
 

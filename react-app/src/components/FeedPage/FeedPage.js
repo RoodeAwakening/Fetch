@@ -28,7 +28,6 @@ export default function FeedPage() {
 		
 	}
 	postInfo.reverse()
-	console.log('--',[postData].length);
 	if(!loading){
 		return (
 			<div className="FeedPage_container">

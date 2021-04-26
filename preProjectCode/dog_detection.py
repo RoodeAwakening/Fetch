@@ -16,7 +16,7 @@ client = vision.ImageAnnotatorClient()
 # Pic of dog
 # current_image = 'https://img.webmd.com/dtmcms/live/webmd/consumer_assets/site_images/article_thumbnails/other/dog_cool_summer_slideshow/1800x1200_dog_cool_summer_other.jpg'
 # pic of wolf
-current_image='https://fetchinstigramapp.s3.amazonaws.com/e9214de152ad4d4194ec81a178fa0395.jpg'
+current_image='https://pbs.twimg.com/media/CgXz6HOXIAEP18r.jpg'
 image = types.Image()
 image.source.image_uri = current_image
 
