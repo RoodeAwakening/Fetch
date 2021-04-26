@@ -42,20 +42,20 @@ const NavBar = () => {
 						{/* </NavLink> */}
 					</div>
 					<div className="mobile-hidden">
-						<NavLink to="/comingsoon" exact={true} activeClassName="active">
+						<NavLink to="/about" exact={true} activeClassName="active">
 							<i className="fal fa-paper-plane"></i>
 						</NavLink>
 					</div>
-					<div>
+					{/* <div>
 						<NavLink to="/comingsoon" exact={true} activeClassName="active">
 							<i className="far fa-compass"></i>
 						</NavLink>
-					</div>
-					<div>
+					</div> */}
+					{/* <div>
 						<NavLink to="/comingsoon" exact={true} activeClassName="active">
 							<i className="far fa-heart"></i>
 						</NavLink>
-					</div>
+					</div> */}
 					<div className="nav-right-button">
 						<ProfileButton />
 					</div>

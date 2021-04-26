@@ -6,6 +6,7 @@ import './ProfileButton.css'
 
 function ProfileButton() {
 	const user = useSelector(state => state.session.user)
+	let profilePhoto = user?.profilePhoto
 
 	const [showMenu, setShowmenu] = useState(false)
 
@@ -28,7 +29,9 @@ function ProfileButton() {
 
 	return (
 		<div id="profile_button">
-			<input type="image" alt="profile" src={user.profilePhoto} onClick={openMenu} className="user-profile-picture-nav"></input>
+		
+			<input type="image" alt="profile" src={profilePhoto} onClick={openMenu} className="user-profile-picture-nav"></input>
+
 			{/* <button onClick={openMenu}>
         <img className="user-profile-picture-nav" src={user.profilePhoto} />
       </button> */}
