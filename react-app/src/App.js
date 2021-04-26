@@ -40,7 +40,7 @@ function App() {
 						<Route path="/comingsoon" exact={true}>
 							<ComingSoon />
 						</Route>
-						<div>
+						<>
 							<NavBar />
 							<ProtectedRoute path="/feed" exact={true}>
 								<FeedPage />
@@ -57,7 +57,7 @@ function App() {
 							<Route path="/modal" exact={true}>
 								<Modal />
 							</Route>
-						</div>
+						</>
 					</Switch>
 				</BrowserRouter>
 			)}
