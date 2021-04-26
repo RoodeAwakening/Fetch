@@ -20,8 +20,11 @@ function App() {
 	const [loaded, setLoaded] = useState(false)
 
 	useEffect(() => {
-		dispatch(sessionActions.restoreUser()).then(() => setLoaded(true))
+		setLoaded(true)
 	}, [dispatch])
+	// useEffect(() => {
+	// 	dispatch(sessionActions.restoreUser()).then(() => setLoaded(true))
+	// }, [dispatch])
 
 	return (
 		<>
