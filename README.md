@@ -192,12 +192,6 @@ Project Link: [https://github.com/RoodeAwakening/Fetch](https://github.com/Roode
 
 
 
-<!-- ACKNOWLEDGEMENTS -->
-## Acknowledgements
-
-* []()
-* []()
-* []()
 
 
 

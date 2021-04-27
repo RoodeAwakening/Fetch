@@ -81,6 +81,7 @@
 
 .Post_comment-container {
 	margin-top: 10px;
+
 	
 }
 
@@ -100,6 +101,8 @@
 	list-style: none;
 	padding: 5px;
 	margin-right: 15px;
+	display: flex;
+	
 }
 
 .commentPost form {
@@ -140,13 +143,21 @@
 }
 
 .Post_comment-avatar {
-	border-radius: 50px;
-	max-width: 30px;
-	max-height: 30px;
+	border-radius: 50%;
+	width: 30px;
+	height: 30px;
 	margin: 5px;
-	object-fit: cover;
+
 	margin-left: -25px;
 }
+
+/* .Post_comment-avatar{
+	width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  position: relative;
+  overflow: hidden;
+} */
 
 .Post_comment-username {
 	margin-left: 5px;
