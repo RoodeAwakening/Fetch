@@ -44,6 +44,8 @@ def getPhoto():
 
 def seed_users():
     quantity = 50
+    demo = User(userName='demo', email='demo@aa.io', password='password', profilePhoto=getPhoto())
+    db.session.add(demo)
 
     with request.urlopen("https://fakerapi.it/api/v1/users?_quantity={0}".format(quantity)) as res:
         users = json.loads(res.read().decode('utf-8'))['data']
